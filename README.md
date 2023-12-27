@@ -11,3 +11,8 @@ Hosting and Distribution (This involves Frontend stuffs)
 
 Ken:
 AI scripts and Video/Graphics Generation
+
+
+Training Procedure:
+You can try to tain the model on with this command: 
+python trainer.py
