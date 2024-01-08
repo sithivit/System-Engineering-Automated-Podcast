@@ -5,7 +5,7 @@ def transcript_to_json(transcript):
     lines = transcript.strip().split("\n")
     pairs = []
 
-    for i in range(0, len(lines), 3):  # Step by 2 to create pairs
+    for i in range(0, len(lines), 4):  # Step by 2 to create pairs
         prompt = lines[i].strip()
         if i+3 > len(lines):
             response = "END"
@@ -22,7 +22,7 @@ def write_json_file(data, file_name):
 
 # Sample data
 files = os.listdir()
-print(files)
+path = os.getcwd()
 for file in files:
     if file.endswith(".txt"):
         f = open(file)

@@ -6,7 +6,7 @@ from langchain.prompts import PromptTemplate
 import os
 import openai
 
-class LocalSingleAgentScript():
+class LocalSingleAgentScript:
     def __init__(self, api_key=None):
 
         local_path = "./models/gpt4all-falcon-q4_0.gguf"  
