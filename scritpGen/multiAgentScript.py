@@ -57,3 +57,6 @@ class MultiAgentScript:
 
         self.host = None
         self.guest = None
+
+    def chat_with_openai(prompt, engine="gpt-3.5-turbo"):
+        pass
