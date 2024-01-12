@@ -1,5 +1,13 @@
+from langchain.callbacks.streaming_stdout import StreamingStdOutCallbackHandler
+from langchain.chains import LLMChain
+from langchain.memory import ConversationBufferMemory
+from langchain.chains import ConversationChain
+from langchain.llms import GPT4All
+from langchain.prompts import PromptTemplate
+from langchain import OpenAI
+
 class MultiAgentScript:
-    def __init__(self, title, description, topic, subtopics, guest_name):
+    def __init__(self, title, description, topic, subtopics, guest_name, api=None):
 
         self.podcast_title = title
         self.podcast_description = description
@@ -49,14 +57,34 @@ class MultiAgentScript:
         self.KICKOFF_PROMPT = """
             Start the conversation repeating something like this:
             ¡Hello! Welcome to the podcast '{podcast_title}', '{podcast_description}'. 
-            My name is '{podcast_host_name}' and today we're going to talk about {podcast_topic}. 
+            My name is '{podcast_host_name}' and today we're going to talk with {podcast_guest}. 
             To discuss this topic, we have an expert on the subject.
             What is your name and what do you do?
         """
 
+        if api != None:
+            self.llm = OpenAI(
+                temperature=0,
+                openai_api_key=api,
+                model_name="text-davinci-003"
+            )
+        else:
+            local_path = "./models/gpt4all-falcon-q4_0.gguf"  
 
-        self.host = None
-        self.guest = None
+            # Callbacks support token-wise streaming
+            callbacks = [StreamingStdOutCallbackHandler()]
 
-    def chat_with_openai(prompt, engine="gpt-3.5-turbo"):
-        pass
+            # Verbose is required to pass to the callback manager
+            self.llm = GPT4All(model=local_path, callbacks=callbacks, max_tokens=1024)
+            self.memeory = ConversationBufferMemory(memory_key="chat_history")
+
+
+    def start_conversation(self):
+        conversation_buf = ConversationChain(llm=self.llm, memory=ConversationBufferMemory())
+
+
+agent = MultiAgentScript("AI", "AI revolution", "Technology", "computer science", "Elon Musk", "")
+
+
+
+
