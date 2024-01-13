@@ -4,8 +4,9 @@ from langchain.memory import ConversationBufferMemory
 from langchain.chains import ConversationChain
 from langchain.llms import GPT4All
 from langchain.prompts import PromptTemplate
-from langchain.llms import OpenAI
 import random
+import openai
+from openai import OpenAI
 
 class MultiAgentScript:
     def __init__(self, title, description, topic, subtopics, guest_name, api=None):
@@ -57,18 +58,17 @@ class MultiAgentScript:
 
         self.KICKOFF_PROMPT = """
             Start the conversation repeating something like this:
-            ¡Hello! Welcome to the podcast '{podcast_title}', '{podcast_description}'. 
-            My name is '{podcast_host_name}' and today we're going to talk with {podcast_guest}. 
+            'Hello! Welcome to the podcast {podcast_title}, {podcast_description}. 
+            My name is {podcast_host_name} and today we're going to talk with {podcast_guest}. 
             To discuss this topic, we have an expert on the subject.
-            What is your name and what do you do?
+            what do you do?'
+
+            (Do not generate HTML style output)
+
         """
 
         if api != None:
-            self.llm = OpenAI(
-                temperature=0,
-                openai_api_key=api,
-                model_name="text-davinci-003"
-            )
+            self.llm = OpenAI(api_key=api).chat.completions
         else:
             local_path = "../models/gpt4all-falcon-q4_0.gguf"  
 
@@ -84,17 +84,25 @@ class MultiAgentScript:
         Generates a response from the LLM based on the provided prompt.
         """
         # If using OpenAI's API
-        if isinstance(self.llm, OpenAI):
-            response = self.llm.generate(prompt)
+        print(prompt)
+        print("_____________________________________")
+        if not isinstance(self.llm, GPT4All):
+            response = self.llm.create(
+                    messages=[
+                        {"role": "system", "content": "Try to simulate what the person you are pretending to be going to say in a podcast."},
+                        {"role": "user", "content": prompt}
+                    ],
+                    model="gpt-3.5-turbo",
+                )
             return response.choices[0].text.strip()
 
         # If using a local GPT-4 model
-        elif isinstance(self.llm, GPT4All):
-            response = self.llm.generate([prompt])
-            return response
-
         else:
-            raise NotImplementedError("LLM type not supported")
+            response = self.llm.generate([prompt])
+            print("This is response from local llm")
+            print(response)
+            print("_________________________________")
+            return response
 
     def generate_prompt(self, template, **kwargs):
         """
@@ -130,7 +138,7 @@ class MultiAgentScript:
         """
         if role.lower() == 'host':
             self.current_role = 'host'
-            self.current_personality_prompt = self.HOST_PERSONALITY_PROMPT.format(podcast_topic=self.podcast_topic)
+            self.current_personality_prompt = self.HOST_PERSONALITY_PROMPT.format(podcast_title=self.podcast_title, podcast_topic=self.podcast_topic)
             self.current_instructions_prompt = self.HOST_INSTRUCTIONS_PROMPT.format(
                 podcast_topic=self.podcast_topic, podcast_subtopics=self.podcast_subtopics)
         elif role.lower() == 'guest':
@@ -171,7 +179,7 @@ class MultiAgentScript:
 
 
 
-agent = MultiAgentScript("AI", "AI revolution", "Technology", "computer science", "Elon Musk")
+agent = MultiAgentScript("AI", "AI revolution", "Technology", "computer science", "Elon Musk", "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")
 agent.run()
 
 
