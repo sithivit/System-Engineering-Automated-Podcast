@@ -9,7 +9,7 @@ import openai
 class LocalSingleAgentScript:
     def __init__(self, api_key=None):
 
-        local_path = "./models/gpt4all-falcon-q4_0.gguf"  
+        local_path = "../models/gpt4all-falcon-q4_0.gguf"  
 
         # Callbacks support token-wise streaming
         callbacks = [StreamingStdOutCallbackHandler()]

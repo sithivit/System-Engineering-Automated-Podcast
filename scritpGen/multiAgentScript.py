@@ -78,9 +78,52 @@ class MultiAgentScript:
             self.llm = GPT4All(model=local_path, callbacks=callbacks, max_tokens=1024)
             self.memeory = ConversationBufferMemory(memory_key="chat_history")
 
+    def generate_response(self, prompt):
+        """
+        Generates a response from the LLM based on the provided prompt.
+        """
+        # If using OpenAI's API
+        if isinstance(self.llm, OpenAI):
+            response = self.llm.generate(prompt)
+            return response.choices[0].text.strip()
 
-    def start_conversation(self):
-        conversation_buf = ConversationChain(llm=self.llm, memory=ConversationBufferMemory())
+        # If using a local GPT-4 model
+        elif isinstance(self.llm, GPT4All):
+            response = self.llm.generate(prompt, verbose=True)
+            return response
+
+        else:
+            raise NotImplementedError("LLM type not supported")
+
+    def generate_prompt(self, template, **kwargs):
+        """
+        Generate a prompt based on the provided template and additional context.
+        """
+        return template.format(**kwargs)
+
+    def start_podcast(self):
+        """
+        Starts the podcast conversation using the KICKOFF_PROMPT.
+        """
+        kickoff_prompt = self.generate_prompt(
+            self.KICKOFF_PROMPT,
+            podcast_title=self.podcast_title,
+            podcast_description=self.podcast_description,
+            podcast_host_name=self.podcast_host_name,
+            podcast_guest=self.podcast_guest_name
+        )
+        return self.generate_response(kickoff_prompt)
+
+    def continue_conversation(self, user_input):
+        """
+        Continues the conversation based on the latest user input.
+        """
+        # Here you can add logic to switch between host and guest roles,
+        # update conversation memory, etc.
+        # For simplicity, this example just forwards the user input to the LLM.
+        return self.generate_response(user_input)
+
+
 
 
 agent = MultiAgentScript("AI", "AI revolution", "Technology", "computer science", "Elon Musk", "")
