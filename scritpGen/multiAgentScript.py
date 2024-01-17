@@ -155,24 +155,31 @@ class MultiAgentScript:
         """
         script = []
         script.append(self.start_podcast())
-        #self.update_memory(script[-1])
 
-        for _ in range(num_exchanges):
-            # Randomly pick the role for each exchange
-            role = random.choice(['host', 'guest'])
-            self.switch_role(role)
+        # Alternate roles for each exchange
+        for i in range(num_exchanges):
+            if i % 2 == 0:  # Host's turn
+                self.switch_role('host')
+                prompt = self.HOST_PERSONALITY_PROMPT + self.HOST_INSTRUCTIONS_PROMPT
+            else:  # Guest's turn
+                self.switch_role('guest')
+                prompt = self.GUEST_PERSONALITY_PROMPT + self.GUEST_INSTRUCTIONS_PROMPT
 
             # Generate conversation based on the role
-            prompt = self.current_personality_prompt + self.current_instructions_prompt
-            response = self.generate_response(prompt)
+            formatted_prompt = self.generate_prompt(
+                prompt,
+                podcast_title=self.podcast_title,
+                podcast_topic=self.podcast_topic,
+                podcast_subtopics=self.podcast_subtopics,
+                podcast_language=self.podcast_language
+            )
+            response = self.generate_response(formatted_prompt)
             script.append(response)
-            #self.update_memory(response)
 
-            # Include a subtopic occasionally
+            # Include a subtopic occasionally (optional)
             if random.random() < 0.3:  # 30% chance to include a subtopic
                 subtopic_script = self.include_subtopic()
                 script.append(subtopic_script)
-                #self.update_memory(subtopic_script)
 
         return '\n'.join(script)
 
