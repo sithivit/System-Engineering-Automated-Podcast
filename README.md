@@ -21,6 +21,8 @@ Dataset:
 - Joe Rogan (Multi)
 - Philosophize this (Solo)
 
+Resource on video generation:
+https://github.com/FelippeChemello/podcast-maker
 
 TODO:
 
