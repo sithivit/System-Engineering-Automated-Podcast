@@ -84,8 +84,6 @@ class MultiAgentScript:
         Generates a response from the LLM based on the provided prompt.
         """
         # If using OpenAI's API
-        print(prompt)
-        print("_____________________________________")
         if not isinstance(self.llm, GPT4All):
             response = self.llm.create(
                     messages=[
@@ -94,14 +92,11 @@ class MultiAgentScript:
                     ],
                     model="gpt-3.5-turbo",
                 )
-            return response.choices[0].text.strip()
+            return response.choices[0].message
 
         # If using a local GPT-4 model
         else:
             response = self.llm.generate([prompt])
-            print("This is response from local llm")
-            print(response)
-            print("_________________________________")
             return response
 
     def generate_prompt(self, template, **kwargs):
@@ -140,7 +135,7 @@ class MultiAgentScript:
             self.current_role = 'host'
             self.current_personality_prompt = self.HOST_PERSONALITY_PROMPT.format(podcast_title=self.podcast_title, podcast_topic=self.podcast_topic)
             self.current_instructions_prompt = self.HOST_INSTRUCTIONS_PROMPT.format(
-                podcast_topic=self.podcast_topic, podcast_subtopics=self.podcast_subtopics)
+                podcast_topic=self.podcast_topic, podcast_subtopics=self.podcast_subtopics, podcast_language=self.podcast_language)
         elif role.lower() == 'guest':
             self.current_role = 'guest'
             self.current_personality_prompt = self.GUEST_PERSONALITY_PROMPT.format(podcast_topic=self.podcast_topic)
@@ -185,8 +180,8 @@ class MultiAgentScript:
 
 
 
-
-agent = MultiAgentScript("AI", "AI revolution", "Technology", "computer science", "Elon Musk", "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")
+api_key = input("Input your api-key: ")
+agent = MultiAgentScript("AI", "AI revolution", "Technology", "computer science", "Elon Musk", api_key)
 agent.run()
 
 
