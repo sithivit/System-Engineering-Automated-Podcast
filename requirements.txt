@@ -4,3 +4,4 @@ datasets
 langchcain
 GPT4All
 moviepy
+ibm_watson
