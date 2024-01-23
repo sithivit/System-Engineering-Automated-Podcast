@@ -34,7 +34,8 @@ class MultiAgentScript:
             to the point. Ask at least two questions about each sub topics such as: {podcast_subtopics}.
             Don't present yourself to the audience or the guest, they already know who you are.
             Don't present the podcast to the audience or the guest, they already know what the podcast is about.
-            Always respond in {podcast_language}."
+            Always respond in {podcast_language}.
+            Can you always reply with 'Hostname: '
         """
 
         self.GUEST_PERSONALITY_PROMPT = """
@@ -54,6 +55,7 @@ class MultiAgentScript:
             personality. Err on the side of eye-rolling humor.
             Keep answers short and to the point. Don't ask questions.
             Always respond in {podcast_language}.
+            Can you always reply with 'Guestname: '
         """
 
         self.KICKOFF_PROMPT = """
@@ -61,7 +63,6 @@ class MultiAgentScript:
             'Hello! Welcome to the podcast {podcast_title}, {podcast_description}. 
             My name is {podcast_host_name} and today we're going to talk with {podcast_guest}. 
             To discuss this topic, we have an expert on the subject.
-            what do you do?'
 
             (Do not generate HTML style output)
 
@@ -79,7 +80,7 @@ class MultiAgentScript:
             self.llm = GPT4All(model=local_path, callbacks=callbacks, max_tokens=1024)
             self.memeory = ConversationBufferMemory(memory_key="chat_history")
 
-    def generate_response(self, prompt):
+    def generate_response(self, prompt, history):
         """
         Generates a response from the LLM based on the provided prompt.
         """
@@ -87,12 +88,12 @@ class MultiAgentScript:
         if not isinstance(self.llm, GPT4All):
             response = self.llm.create(
                     messages=[
-                        {"role": "system", "content": "Try to simulate what the person you are pretending to be going to say in a podcast."},
-                        {"role": "user", "content": prompt}
+                        {"role": "system", "content": prompt},
+                        {"role": "user", "content": history}
                     ],
                     model="gpt-3.5-turbo",
                 )
-            return response.choices[0].message
+            return response.choices[0].message.content
 
         # If using a local GPT-4 model
         else:
@@ -116,16 +117,7 @@ class MultiAgentScript:
             podcast_host_name=self.podcast_host_name,
             podcast_guest=self.podcast_guest_name
         )
-        return self.generate_response(kickoff_prompt)
-
-    def continue_conversation(self, user_input):
-        """
-        Continues the conversation based on the latest user input.
-        """
-        # Here you can add logic to switch between host and guest roles,
-        # update conversation memory, etc.
-        # For simplicity, this example just forwards the user input to the LLM.
-        return self.generate_response(user_input)
+        return self.generate_response(kickoff_prompt, "Host: What do you do?")
 
     def switch_role(self, role):
         """
@@ -168,7 +160,7 @@ class MultiAgentScript:
                 podcast_subtopics=self.podcast_subtopics,
                 podcast_language=self.podcast_language
             )
-            response = self.generate_response(formatted_prompt)
+            response = self.generate_response(formatted_prompt, '\n'.join(script))
             script.append(response)
 
             # Include a subtopic occasionally (optional)
