@@ -144,7 +144,7 @@ class MultiAgentScript:
         else:
             raise ValueError("Invalid role. Choose 'host' or 'guest'.")
 
-    def run(self, num_exchanges=10):
+    def run(self, num_exchanges=2):
         """
         Runs through the logic to create a podcast script.
         """
@@ -172,9 +172,9 @@ class MultiAgentScript:
             script.append(response)
 
             # Include a subtopic occasionally (optional)
-            if random.random() < 0.3:  # 30% chance to include a subtopic
-                subtopic_script = self.include_subtopic()
-                script.append(subtopic_script)
+            #if random.random() < 0.3:  # 30% chance to include a subtopic
+            #    subtopic_script = self.include_subtopic()
+            #    script.append(subtopic_script)
 
         return '\n'.join(script)
 
@@ -182,7 +182,7 @@ class MultiAgentScript:
 
 api_key = input("Input your api-key: ")
 agent = MultiAgentScript("AI", "AI revolution", "Technology", "computer science", "Elon Musk", api_key)
-agent.run()
+print(agent.run())
 
 
 
