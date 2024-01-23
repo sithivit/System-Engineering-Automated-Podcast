@@ -29,3 +29,15 @@ TODO:
 https://ronreiter.medium.com/making-a-news-podcast-generator-1c088fbbd702
 https://learn.microsoft.com/en-us/azure/machine-learning/concept-model-catalog?view=azureml-api-2
 
+
+Change prompting at multiagentscript
+use pinecone for embedding
+
+
+Kirill finish this code:
+Options for voices
+Multiple voices in podcast script
+
+Ken finish this code:
+pinecone embedding for factual documents
+Video generation
