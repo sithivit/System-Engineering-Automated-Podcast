@@ -172,10 +172,5 @@ class MultiAgentScript:
 
 
 
-api_key = input("Input your api-key: ")
-agent = MultiAgentScript("AI", "AI revolution", "Technology", "computer science", "Elon Musk", api_key)
-print(agent.run())
-
-
 
 
