@@ -5,3 +5,5 @@ langchcain
 GPT4All
 moviepy
 ibm_watson
+transformers
+pdfminer.six

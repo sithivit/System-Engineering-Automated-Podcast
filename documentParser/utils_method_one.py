@@ -1,6 +1,14 @@
 import pinecone
 import os
 from sklearn.feature_extraction.text import TfidfVectorizer
+from dotenv import load_dotenv
+
+load_dotenv()
+
+# Pinecone API Key and Index Name
+API_KEY = os.environ.get("PINECONE_API_KEY")
+INDEX_NAME = 'podcast_index'
+VECTOR_DIMENSION = 512  # Example dimension, adjust based on your vector model
 
 class DocumentVectorizer:
     def __init__(self, pinecone_index):
@@ -36,12 +44,12 @@ def query_pinecone(index, query_vector, top_k=5):
     response = index.query(queries=[query_vector], top_k=top_k)
     return response['matches']
 
-def query_pinecone_for_content(query_text, top_k=5):
+def query_pinecone_for_content(dv, query_text, top_k=5):
     """
     Query Pinecone and generate podcast content based on the results.
     """
     query_vector = dv.vectorizer.transform([query_text]).toarray()[0]
-    response = index.query(queries=[query_vector], top_k=top_k)
+    response = dv.index.query(queries=[query_vector], top_k=top_k)
     matches = response['matches']
 
     # Combine the texts from top matches for LLM input

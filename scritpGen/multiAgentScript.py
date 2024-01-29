@@ -7,9 +7,16 @@ from langchain.prompts import PromptTemplate
 import random
 import openai
 from openai import OpenAI
+import os
+from dotenv import load_dotenv
+load_dotenv()
+
+api = openai_api_key = os.environ.get("OPENAI_API_KEY")
+
+print(api)
 
 class MultiAgentScript:
-    def __init__(self, title, description, topic, subtopics, guest_name, api=None):
+    def __init__(self, title, description, topic, subtopics, guest_name, api=api):
 
         self.podcast_title = title
         self.podcast_description = description
