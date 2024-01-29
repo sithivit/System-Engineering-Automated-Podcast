@@ -1,9 +1,10 @@
 openai
 pinecone-client
 datasets
-langchcain
+langchain
 GPT4All
 moviepy
 ibm_watson
 transformers
 pdfminer.six
+dotenv
