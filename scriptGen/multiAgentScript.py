@@ -13,8 +13,6 @@ load_dotenv()
 
 api = openai_api_key = os.environ.get("OPENAI_API_KEY")
 
-print(api)
-
 class MultiAgentScript:
     def __init__(self, title, description, topic, subtopics, guest_name, api=api):
 

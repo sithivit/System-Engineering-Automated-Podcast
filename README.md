@@ -30,6 +30,10 @@ https://ronreiter.medium.com/making-a-news-podcast-generator-1c088fbbd702
 https://learn.microsoft.com/en-us/azure/machine-learning/concept-model-catalog?view=azureml-api-2
 
 
+RAG:
+https://medium.com/international-school-of-ai-data-science/implementing-rag-with-langchain-and-hugging-face-28e3ea66c5f7
+
+
 Change prompting at multiagentscript
 use pinecone for embedding
 
