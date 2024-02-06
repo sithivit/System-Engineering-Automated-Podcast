@@ -32,7 +32,7 @@ https://learn.microsoft.com/en-us/azure/machine-learning/concept-model-catalog?v
 
 RAG:
 https://medium.com/international-school-of-ai-data-science/implementing-rag-with-langchain-and-hugging-face-28e3ea66c5f7
-
+https://medium.com/@thedatabeast/revolutionizing-ai-with-rag-implementing-retrieval-augmented-generation-for-breakthrough-f1509b5c9db0
 
 Change prompting at multiagentscript
 use pinecone for embedding
