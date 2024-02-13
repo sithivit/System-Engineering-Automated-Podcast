@@ -3,7 +3,8 @@
 from ibm_watson import TextToSpeechV1
 from ibm_cloud_sdk_core.authenticators import IAMAuthenticator
 from config import apikey, url
-from AudioMerger import merge_audio_files
+from AudioMerger import merge_audio_files, add_music_based_on_sentiment #add_background_music_to_audio
+from textblob import TextBlob
 
 
 #Setup
@@ -17,10 +18,10 @@ GUEST_VOICE = 'en-GB_JamesV3Voice'
 
 #Voices
 voice_dict = {
-    0: {'name': 'Heidi', 'code': 'en-AU_HeidiV3Voice', 'description': 'Female, Australian'},
-    1: {'name': 'Jack', 'code': 'en-AU_JackV3Voice', 'description': 'Male, Australian'},
+    0: {'name': 'Heidi', 'code': 'en-AU_HeidiExpressive', 'description': 'Female, Australian'},
+    1: {'name': 'Jack', 'code': 'en-AU_JackExpressive', 'description': 'Male, Australian'},
     2: {'name': 'Allison', 'code': 'en-US_AllisonV3Voice', 'description': 'Female, American'},
-    3: {'name': 'Emma', 'code': 'en-US_EmmaV3Voice', 'description': 'Female, American'},
+    3: {'name': 'Emma', 'code': 'en-US_EmmaExpressive', 'description': 'Female, American'},
     4: {'name': 'Lisa', 'code': 'en-US_LisaV3Voice', 'description': 'Female, American'},
     5: {'name': 'Michael', 'code': 'en-US_MichaelV3Voice', 'description': 'Male, American'},
     6: {'name': 'Charlotte', 'code': 'en-GB_CharlotteV3Voice', 'description': 'Female, British'},
@@ -28,6 +29,20 @@ voice_dict = {
     8: {'name': 'Kate', 'code': 'en-GB_KateV3Voice', 'description': 'Female, British'},
     # Add more voices as needed
 }
+
+# Example usage
+text = """
+Host: Hello, I am your host. My name is Allison.
+
+Guest: Hi, am the guest. I am James!
+
+Host: James, how have you been?
+
+Guest: Good! It is nice to be here.
+
+Host: Let's talk about your career!
+
+"""
 
 
 def voice_choice(person):
@@ -69,20 +84,16 @@ def duo_podcast(text, host_voice, guest_voice):
                 audio_file.write(res.content)
                 count += 1
 
+def analyze_sentiment(text):
+    blob = TextBlob(text)
+    sentiment_polarity = blob.sentiment.polarity
+    if sentiment_polarity > 0.5:
+        return "Positive"
+    elif sentiment_polarity < -0.5:
+        return "Negative"
+    else:
+        return "Neutral"
 
-# Example usage
-text = """
-Host: Hello, I am your host. My name is Allison.
-
-Guest: Hi, am the guest. I am James!
-
-Host: James, how have you been?
-
-Guest: Good! It is nice to be here.
-
-Host: Let's talk about ...
-
-"""
 
 def main():
     change_voices = str(input(("Would you like to choose the voices for the host and the guest? Enter 'Yes' or 'No': "))).capitalize()
@@ -100,6 +111,10 @@ def main():
 
     duo_podcast(text, host_voice, guest_voice)
     merge_audio_files()
+
+    sentiment = analyze_sentiment(text)
+    add_music_based_on_sentiment("final_speech.mp3", sentiment)
+
 
 if __name__ == '__main__':
     main()
