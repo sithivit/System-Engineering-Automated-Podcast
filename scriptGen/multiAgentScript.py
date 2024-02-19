@@ -11,6 +11,9 @@ import os
 from dotenv import load_dotenv
 load_dotenv()
 
+
+from documentParser import similarity_search
+
 api = openai_api_key = os.environ.get("OPENAI_API_KEY")
 
 class MultiAgentScript:
@@ -41,6 +44,7 @@ class MultiAgentScript:
             Don't present the podcast to the audience or the guest, they already know what the podcast is about.
             Always respond in {podcast_language}.
             Can you always reply with 'Hostname: '
+            Knowledge: {knowledge}
         """
 
         self.GUEST_PERSONALITY_PROMPT = """
@@ -61,6 +65,7 @@ class MultiAgentScript:
             Keep answers short and to the point. Don't ask questions.
             Always respond in {podcast_language}.
             Can you always reply with 'Guestname: '
+            Knowledge: {knowledge}
         """
 
         self.KICKOFF_PROMPT = """
@@ -160,11 +165,14 @@ class MultiAgentScript:
             # Generate conversation based on the role
             formatted_prompt = self.generate_prompt(
                 prompt,
+                knowledge=similarity_search(),
                 podcast_title=self.podcast_title,
                 podcast_topic=self.podcast_topic,
                 podcast_subtopics=self.podcast_subtopics,
-                podcast_language=self.podcast_language
+                podcast_language=self.podcast_language,
+                knowledge=similarity_search(self.podcast_title)
             )
+
             response = self.generate_response(formatted_prompt, '\n'.join(script))
             script.append(response)
 
