@@ -3,6 +3,7 @@ from langchain.chains import LLMChain
 from langchain.memory import ConversationBufferMemory
 from langchain.llms import GPT4All
 from langchain.prompts import PromptTemplate
+from documentParser.rag_utils import similarity_search
 import os
 import openai
 
@@ -17,17 +18,27 @@ class LocalSingleAgentScript:
         # Verbose is required to pass to the callback manager
         self.llm = GPT4All(model=local_path, callbacks=callbacks, max_tokens=1024)
         self.memeory = ConversationBufferMemory(memory_key="chat_history")
+
+
+    def enrich_brainstorm_with_rag(self, specific_topics):
+        # Example function to query RAG system and retrieve relevant content
+        # This is a placeholder - actual implementation would query the RAG system
+        result = similarity_search(specific_topics)
+        relevant_docs = ["Document content relevant to " + result]  # This should be replaced with actual RAG query results
+        return relevant_docs
         
         
     def brain_storm(self, podcast_name, specific_topics):
+        relevant_docs = self.enrich_brainstorm_with_rag(specific_topics)
+        enriched_context = " ".join(relevant_docs)
         brain_storming_template = """ 
             
             The scripts should also be related to the following topics {topics}
-
+            Based on our research, here is some relevant information: {enriched_context}
             Please expand on this idea and write a brief paragraph in the form of a premise: {name}
             """
 
-        prompt = PromptTemplate(template=brain_storming_template, input_variables=["name", "topics"])
+        prompt = PromptTemplate(template=brain_storming_template, input_variables=["name", "topics", "enriched_context"])
         
         llm_chain = LLMChain(prompt=prompt, llm=self.llm)
         brain_storm = llm_chain.run({
@@ -82,10 +93,19 @@ class OpenAISingleAgentScript():
         self.api_key = api_key
         openai.api_key = self.api_key
 
+    def enrich_brainstorm_with_rag(self, specific_topics):
+        # Example function to query RAG system and retrieve relevant content
+        # This is a placeholder - actual implementation would query the RAG system
+        result = similarity_search(specific_topics)
+        relevant_docs = ["Document content relevant to " + result]  # This should be replaced with actual RAG query results
+        return relevant_docs
+
     def brain_storm(self, podcast_name, specific_topics):
+        relevant_docs = self.enrich_brainstorm_with_rag(specific_topics)
+        enriched_context = " ".join(relevant_docs)
         brain_storming_template = f""" 
             The scripts should also be related to the following topics: {specific_topics}
-
+            Based on our research, here is some relevant information: {enriched_context}
             Please expand on this idea and write a brief paragraph in the form of a premise: {podcast_name}
         """
 
