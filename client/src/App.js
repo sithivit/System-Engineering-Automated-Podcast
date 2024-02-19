@@ -1,7 +1,7 @@
 import NavigationBar from './components/NavigationBar.js'
 import IndexMain from './components/IndexMain.js';
 import HomeMain from './components/HomeMain.js';
-import EpisodesMain from './components/EpisodesMain.js';
+import CategoriesMain from './components/CategoriesMain.js';
 import SignIn from './components/SignIn.js';
 
 export function Login() {
@@ -22,11 +22,11 @@ export function Home() {
   )
 }
 
-export function Episodes() {
+export function Categories() {
   return (
-    <div className="Episodes">
+    <div className="Categories">
       <NavigationBar />
-      <EpisodesMain />
+      <CategoriesMain />
     </div>
   )
 }
