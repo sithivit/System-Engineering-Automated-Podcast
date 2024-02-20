@@ -2,6 +2,7 @@ import NavigationBar from './components/NavigationBar.js'
 import IndexMain from './components/IndexMain.js';
 import HomeMain from './components/HomeMain.js';
 import CategoriesMain from './components/CategoriesMain.js';
+import CreateMain from './components/CreateMain.js';
 import SignIn from './components/SignIn.js';
 
 export function Login() {
@@ -35,7 +36,7 @@ export function Create() {
   return (
     <div className="Create">
       <NavigationBar />
-      <h1>Create</h1>
+      <CreateMain />
     </div>
   )
 }
