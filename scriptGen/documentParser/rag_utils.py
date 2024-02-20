@@ -56,14 +56,13 @@ def save_doc_db(dataset_name="documents", page_content_column="context"):
     embeddings = create_embedding()
     if dataset_name == "documents":
         docs = []
-        for filename in os.listdir(dataset_name):
+        for filename in os.listdir(os.getcwd()+"\\documentParser\\"+dataset_name):
             if filename.endswith('.pdf'):
-                text = extract_text_from_pdf(os.path.join(dataset_name, filename))
+                text = extract_text_from_pdf(os.path.join("documentParser\\"+dataset_name, filename))
                 docs.append(text)
             elif filename.endswith('.txt'):
-                text = extract_text_from_txt(os.path.join(dataset_name, filename))
+                text = extract_text_from_txt(os.path.join("documentParser\\"+dataset_name, filename))
                 docs.append(text)
-        print(docs)
         formatted_docs = [Document(text) for text in docs]
         db = FAISS.from_documents(formatted_docs, embeddings) 
         return db
