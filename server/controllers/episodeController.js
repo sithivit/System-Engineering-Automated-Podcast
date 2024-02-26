@@ -18,7 +18,7 @@ exports.episode_list = asyncHandler(async (req, res, next) => {
 
 // Handle episode create on POST.
 exports.episode_create_post = asyncHandler(async (req, res, next) => {
-    res.send("NOT IMPLEMENTED: episode create POST");
+    res.send("Created new episode using keywords: " + req.body.topicKeywords);
 });
 
 // Display detail page for a specific episode.
