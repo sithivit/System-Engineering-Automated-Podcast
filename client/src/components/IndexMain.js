@@ -1,24 +1,7 @@
 import * as React from 'react';
-import CssBaseline from '@mui/material/CssBaseline';
-import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
-import Link from '@mui/material/Link';
+import { CssBaseline, Box, Typography, Container, Divider } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { Divider } from '@mui/material';
-
-function Copyright() {
-    return (
-        <Typography variant="body2" color="text.secondary" align="center">
-            {'Copyright © '}
-            <Link color="inherit" href="https://mui.com/">
-                Your Website
-            </Link>{' '}
-            {new Date().getFullYear()}
-            {'.'}
-        </Typography>
-    );
-}
+import Copyright from './Copyright.js'
 
 // TODO remove, this demo shouldn't need to reset the theme.
 const defaultTheme = createTheme();

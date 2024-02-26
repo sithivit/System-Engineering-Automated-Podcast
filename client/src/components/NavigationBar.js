@@ -7,7 +7,7 @@ import Button from '@mui/material/Button';
 import { Link } from 'react-router-dom';
 
 export default function NavigationBar() {
-    const navItems = ["home", "categories", "create"]
+    const navItems = ["home", "episodes", "create"]
     return (
         <Box sx={{ flexGrow: 1 }}>
             <AppBar position="static" >
