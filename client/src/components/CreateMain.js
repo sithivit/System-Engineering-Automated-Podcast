@@ -2,14 +2,56 @@ import * as React from 'react';
 import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
 import Copyright from './Copyright.js';
-import { Button, Collapse, Divider, Card, CardMedia } from '@mui/material';
+import { Button, Collapse, Divider, Card, CardMedia, FormGroup, FormControlLabel, Checkbox, Stack, Typography, Switch } from '@mui/material';
 
 import axios from 'axios';
 
 // TODO remove, this demo shouldn't need to reset the theme.
 const defaultTheme = createTheme();
+
+const AntSwitch = styled(Switch)(({ theme }) => ({
+    width: 28,
+    height: 16,
+    padding: 0,
+    display: 'flex',
+    '&:active': {
+        '& .MuiSwitch-thumb': {
+            width: 15,
+        },
+        '& .MuiSwitch-switchBase.Mui-checked': {
+            transform: 'translateX(9px)',
+        },
+    },
+    '& .MuiSwitch-switchBase': {
+        padding: 2,
+        '&.Mui-checked': {
+            transform: 'translateX(12px)',
+            color: '#fff',
+            '& + .MuiSwitch-track': {
+                opacity: 1,
+                backgroundColor: theme.palette.mode === 'dark' ? '#177ddc' : '#1890ff',
+            },
+        },
+    },
+    '& .MuiSwitch-thumb': {
+        boxShadow: '0 2px 4px 0 rgb(0 35 11 / 20%)',
+        width: 12,
+        height: 12,
+        borderRadius: 6,
+        transition: theme.transitions.create(['width'], {
+            duration: 200,
+        }),
+    },
+    '& .MuiSwitch-track': {
+        borderRadius: 16 / 2,
+        opacity: 1,
+        backgroundColor:
+            theme.palette.mode === 'dark' ? 'rgba(255,255,255,.35)' : 'rgba(0,0,0,.25)',
+        boxSizing: 'border-box',
+    },
+}));
 
 export default class CreateMain extends React.Component {
 
@@ -24,6 +66,8 @@ export default class CreateMain extends React.Component {
         responseData: '',
         show: false,
         changed: false,
+        isLocalModel: true,
+        isOpenAI: false,
     }
 
     _handleTextFieldChange(e) {
@@ -47,6 +91,10 @@ export default class CreateMain extends React.Component {
 
     }
 
+    _handleCheckbox(e) {
+        this.setState({ isOpenAI: e });
+    }
+
     render() {
         return (
 
@@ -54,6 +102,21 @@ export default class CreateMain extends React.Component {
                 <CssBaseline />
                 <main>
                     <form onSubmit={this._handleSubmit}>
+                        <Stack
+                            direction="row"
+                            spacing={1}
+                            alignItems="center"
+                            sx={{
+                                width: "40vw",
+                                maxWidth: '100%',
+                                marginTop: "50px",
+                                marginLeft: "30vw"
+                            }}
+                        >
+                            <Typography>Number of Guests: Single</Typography>
+                            <AntSwitch defaultChecked inputProps={{ 'aria-label': 'ant design' }} />
+                            <Typography>Multiple</Typography>
+                        </Stack>
                         <TextField
                             id="filled-multiline-static"
                             label="Topic Keywords"
@@ -64,13 +127,48 @@ export default class CreateMain extends React.Component {
                             sx={{
                                 width: "40vw",
                                 maxWidth: '100%',
-                                marginTop: "50px",
+                                marginTop: "20px",
                                 marginLeft: "30vw"
                             }}
                             onChange={this._handleTextFieldChange}
                             error={this.state.topicKeywords.trim() === "" && this.state.changed}
                             helperText={this.state.topicKeywords.trim() === "" && this.state.changed ? 'Field required!' : ' '}
                         />
+                        <FormGroup
+                            sx={{
+                                width: "40vw",
+                                maxWidth: '100%',
+                                marginLeft: "30vw"
+                            }}
+                        >
+                            <FormControlLabel
+                                control={<Checkbox />}
+                                checked={this.state.isLocalModel}
+                                label="Local Model"
+                                onClick={() => this.setState({ isLocalModel: !this.state.isLocalModel, isOpenAI: false })}
+                            />
+                            <FormControlLabel
+                                control={<Checkbox />}
+                                checked={this.state.isOpenAI}
+                                label={"OpenAI"}
+                                onClick={() => this.setState({ isOpenAI: !this.state.isOpenAI, isLocalModel: false })}
+                            />
+                            <Collapse in={this.state.isOpenAI}>
+                                <TextField
+                                    label="OpenAI API"
+                                    defaultValue=''
+                                    variant="filled"
+                                    type='password'
+                                    sx={{
+                                        width: "40vw",
+                                        maxWidth: '100%',
+                                    }}
+                                />
+                            </Collapse>
+                            {/* <FormControlLabel required control={<Checkbox />} label="Required" />
+                            <FormControlLabel disabled control={<Checkbox />} label="Disabled" /> */}
+                        </FormGroup>
+
                         <Button
                             variant="contained"
                             sx={{
@@ -109,7 +207,7 @@ export default class CreateMain extends React.Component {
                         <Card sx={{ width: '50vw', marginLeft: '25vw' }} >
                             <CardMedia
                                 component='video'
-                                image='https://srvcdn2.2convert.me/dl?hash=mVdLj%2Fs0MZ%2FQax9vQl9g038gxrhZnZWSq9UCYbnxami27%2FxA0pkGhXNxe6k8tdG0VqHxrtxVMrbAsHwFtpwYH0ChQYtmTtWtkkfip9mAS%2BPgY4qsf7V47CtAVvDD6qIvBACI6FsXPZ6ng0WgnWWZL4yupaTk7wxZo391OOnx4Yu5HHvA6n%2FgnUVfjuYOjFljdVpQMyzn3wgEmH%2BpJyBmk1pnMjSqpciZiT3%2FKcIQnO8w8UAjqyQfLevPyhEZanqOh3m6zdCGyYqlq0YoUjAmtCcJNXXFqedwAApUcqub1zM%3D'
+                                image='https://srvcdn15.2convert.me/dl?hash=S61wRx5oRhsl49MKlNzq7ku7eIICJB6seE6VUht9sLO91USCeLpculJ4Mx8AJwtAbpATVwPSRCI0QmC0ElSHjSuknVLHmKMO1RLYG8qvik1aplw3lekeJO29J9wRgehtlv%2Bmckz%2B8J6Xn%2BOv4g4CxIbh3HAcWyPzy%2FAkbDsyXgsJufMRfOhxA2yaZvapu85oeEKfeD%2BaMrsdDl4BiQHlWRn8q7DbYvlxhMfWtyZmgQ5y3eIPFan7HIPsmcGByMrZJIsab01EEGG7xvJzxMUNYJTkaDoSab%2FPgSNclAJ2jsA%3D'
                                 controls
                             />
                         </Card>
