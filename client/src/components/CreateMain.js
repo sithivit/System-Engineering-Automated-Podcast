@@ -4,7 +4,7 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Copyright from './Copyright.js';
-import { Button, Collapse, Divider, Card, CardMedia } from '@mui/material';
+import { Button, Collapse, Divider, Card, CardMedia, FormGroup, FormControlLabel, Checkbox, Grid } from '@mui/material';
 
 import axios from 'axios';
 
@@ -16,35 +16,53 @@ export default class CreateMain extends React.Component {
     constructor(props) {
         super(props);
         this._handleTextFieldChange = this._handleTextFieldChange.bind(this);
+        this._handleApiChange = this._handleApiChange.bind(this);
         this._handleSubmit = this._handleSubmit.bind(this);
     }
 
     state = {
+        topicTitle: 'DefaultTitle',
         topicKeywords: '',
         responseData: '',
-        show: false,
-        changed: false,
+        api: '',
+        isGenerated: false,
+        isSumitAttempted: false,
+        isLocalModel: true,
+        isOpenAI: false,
+        isSingle: true,
+        isMultiple: false,
     }
 
     _handleTextFieldChange(e) {
         this.setState({ topicKeywords: e.target.value });
     }
 
+    _handleApiChange(e) {
+        this.setState({ api: e.target.value })
+    }
+
     _handleSubmit(event) {
         event.preventDefault();
-        this.setState({ changed: true });
+        this.setState({ isSumitAttempted: true });
 
         if (this.state.topicKeywords.trim() !== '') {
             axios.post('http://localhost:3001/episodes/generate/', {
-                topicKeywords: this.state.topicKeywords
+                topicTitle: this.state.topicTitle,
+                topicKeywords: this.state.topicKeywords,
+                isSingleAgent: this.state.isSingle,
+                isLocalModel: this.state.isLocalModel,
+                api: this.state.api
             })
                 .then((response) => {
-                    this.setState({ responseData: response.data, show: true });
-                    // window.location.href = "http://localhost:3000/create-generated?topic=" + this.state.topicKeywords + "&res=" + response.data;
+                    this.setState({ responseData: response.data, isGenerated: true });
                 });
         }
 
 
+    }
+
+    _handleCheckbox(e) {
+        this.setState({ isOpenAI: e });
     }
 
     render() {
@@ -54,40 +72,102 @@ export default class CreateMain extends React.Component {
                 <CssBaseline />
                 <main>
                     <form onSubmit={this._handleSubmit}>
-                        <TextField
-                            id="filled-multiline-static"
-                            label="Topic Keywords"
-                            multiline
-                            rows={4}
-                            defaultValue=""
-                            variant="filled"
+                        <FormGroup
                             sx={{
                                 width: "40vw",
                                 maxWidth: '100%',
-                                marginTop: "50px",
-                                marginLeft: "30vw"
+                                marginLeft: "30vw",
                             }}
-                            onChange={this._handleTextFieldChange}
-                            error={this.state.topicKeywords.trim() === "" && this.state.changed}
-                            helperText={this.state.topicKeywords.trim() === "" && this.state.changed ? 'Field required!' : ' '}
-                        />
-                        <Button
-                            variant="contained"
-                            sx={{
-                                width: "10vw",
-                                minWidth: "100px",
-                                maxWidth: "150px",
-                                marginTop: "50px",
-                                marginLeft: "45vw"
-                            }}
-                            type='submit'
                         >
-                            Generate
-                        </Button>
+                            <Divider sx={{ fontSize: "15px", mt: "50px", mb: "20px" }}>
+                                Enter Topic Keywords Here
+                            </Divider>
+                            <TextField
+                                id="filled-multiline-static"
+                                label="Topic Keywords"
+                                multiline
+                                rows={4}
+                                defaultValue=""
+                                variant="filled"
+                                onChange={this._handleTextFieldChange}
+                                error={this.state.topicKeywords.trim() === "" && this.state.isSumitAttempted}
+                                helperText={this.state.topicKeywords.trim() === "" && this.state.isSumitAttempted ? 'Field required!' : ' '}
+                            />
+                            <Divider sx={{ fontSize: "15px", my: "20px" }}>
+                                Choose number of guests
+                            </Divider>
+                            <Grid container alignItems={"center"}>
+                                <Grid item >
+                                    <FormControlLabel
+                                        control={<Checkbox />}
+                                        label="Single"
+                                        checked={this.state.isSingle}
+                                        onClick={() => this.setState({ isSingle: !this.state.isSingle, isMultiple: false })}
+                                    />
+                                </Grid>
+                                <Grid item>
+                                    <FormControlLabel
+                                        control={<Checkbox />}
+                                        label="Multiple"
+                                        checked={this.state.isMultiple}
+                                        onClick={() => this.setState({ isMultiple: !this.state.isMultiple, isSingle: false })}
+                                    />
+                                </Grid>
+                            </Grid>
+                            <Divider sx={{ fontSize: "15px", my: "20px" }}>
+                                Choose language model
+                            </Divider>
+                            <Grid container alignItems={"center"}>
+                                <Grid item >
+                                    <FormControlLabel
+                                        control={<Checkbox />}
+                                        label="Local Model"
+                                        checked={this.state.isLocalModel}
+                                        onClick={() => this.setState({ isLocalModel: !this.state.isLocalModel, isOpenAI: false, api: '' })}
+                                    />
+                                </Grid>
+                                <Grid item>
+                                    <FormControlLabel
+                                        control={<Checkbox />}
+                                        label="OpenAI"
+                                        checked={this.state.isOpenAI}
+                                        onClick={() => this.setState({ isOpenAI: !this.state.isOpenAI, isLocalModel: false })}
+                                    />
+                                </Grid>
+                            </Grid>
+                            <Collapse in={this.state.isOpenAI}>
+                                <TextField
+                                    label="OpenAI API"
+                                    defaultValue=''
+                                    variant="filled"
+                                    type='password'
+                                    onChange={this._handleApiChange}
+                                    required={this.state.isOpenAI}
+                                    sx={{
+                                        width: "40vw",
+                                        maxWidth: '100%',
+                                    }}
+                                />
+                            </Collapse>
+                            <Button
+                                variant="contained"
+                                sx={{
+                                    width: "10vw",
+                                    minWidth: "100px",
+                                    maxWidth: "150px",
+                                    marginTop: "50px",
+                                    marginLeft: "15vw"
+                                }}
+                                type='submit'
+                            >
+                                Generate
+                            </Button>
+
+                        </FormGroup>
                     </form>
 
                     {/* The part below is displayed after form submission */}
-                    <Collapse in={this.state.show}>
+                    <Collapse in={this.state.isGenerated}>
                         <Divider sx={{
                             width: "80vw",
                             marginTop: "50px",
@@ -109,7 +189,7 @@ export default class CreateMain extends React.Component {
                         <Card sx={{ width: '50vw', marginLeft: '25vw' }} >
                             <CardMedia
                                 component='video'
-                                image='https://srvcdn2.2convert.me/dl?hash=mVdLj%2Fs0MZ%2FQax9vQl9g038gxrhZnZWSq9UCYbnxami27%2FxA0pkGhXNxe6k8tdG0VqHxrtxVMrbAsHwFtpwYH0ChQYtmTtWtkkfip9mAS%2BPgY4qsf7V47CtAVvDD6qIvBACI6FsXPZ6ng0WgnWWZL4yupaTk7wxZo391OOnx4Yu5HHvA6n%2FgnUVfjuYOjFljdVpQMyzn3wgEmH%2BpJyBmk1pnMjSqpciZiT3%2FKcIQnO8w8UAjqyQfLevPyhEZanqOh3m6zdCGyYqlq0YoUjAmtCcJNXXFqedwAApUcqub1zM%3D'
+                                image='https://srvcdn15.2convert.me/dl?hash=S61wRx5oRhsl49MKlNzq7ku7eIICJB6seE6VUht9sLO91USCeLpculJ4Mx8AJwtAbpATVwPSRCI0QmC0ElSHjSuknVLHmKMO1RLYG8qvik1aplw3lekeJO29J9wRgehtlv%2Bmckz%2B8J6Xn%2BOv4g4CxIbh3HAcWyPzy%2FAkbDsyXgsJufMRfOhxA2yaZvapu85oeEKfeD%2BaMrsdDl4BiQHlWRn8q7DbYvlxhMfWtyZmgQ5y3eIPFan7HIPsmcGByMrZJIsab01EEGG7xvJzxMUNYJTkaDoSab%2FPgSNclAJ2jsA%3D'
                                 controls
                             />
                         </Card>
