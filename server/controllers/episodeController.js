@@ -1,5 +1,6 @@
 const Episode = require("../models/episodeModel");
 const asyncHandler = require("express-async-handler");
+const { exec } = require("child_process");
 // const { body, validationResult } = require("express-validator")
 
 // Display list of all episodes.
@@ -18,7 +19,26 @@ exports.episode_list = asyncHandler(async (req, res, next) => {
 
 // Handle episode create on POST.
 exports.episode_create_post = asyncHandler(async (req, res, next) => {
-    res.send("Created new episode using keywords: " + req.body.topicKeywords);
+    // res.send("Created new episode using keywords: " + req.body.topicKeywords);
+    if (req.body.isSingleAgent) {
+        exec(`python scripts/singleAgent.py ${req.body.topicTitle} ${req.body.topicKeywords} ${req.body.isLocalModel} ${req.body.api}`, (error, stdout, stderr) => {
+            if (error) {
+                res.send(`${error}`);
+                return;
+            }
+            res.send('Result: ' + stdout);
+        });
+    }
+    else {
+        exec(`python scripts/multiAgent.py ${req.body.topicTitle} ${req.body.topicKeywords} ${req.body.api}`, (error, stdout, stderr) => {
+            if (error) {
+                res.send(`${error}`);
+                return;
+            }
+            res.send('Result: ' + stdout);
+        });
+    }
+
 });
 
 // Display detail page for a specific episode.

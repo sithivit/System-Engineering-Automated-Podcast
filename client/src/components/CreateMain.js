@@ -16,12 +16,15 @@ export default class CreateMain extends React.Component {
     constructor(props) {
         super(props);
         this._handleTextFieldChange = this._handleTextFieldChange.bind(this);
+        this._handleApiChange = this._handleApiChange.bind(this);
         this._handleSubmit = this._handleSubmit.bind(this);
     }
 
     state = {
+        topicTitle: 'DefaultTitle',
         topicKeywords: '',
         responseData: '',
+        api: '',
         isGenerated: false,
         isSumitAttempted: false,
         isLocalModel: true,
@@ -34,13 +37,21 @@ export default class CreateMain extends React.Component {
         this.setState({ topicKeywords: e.target.value });
     }
 
+    _handleApiChange(e) {
+        this.setState({ api: e.target.value })
+    }
+
     _handleSubmit(event) {
         event.preventDefault();
         this.setState({ isSumitAttempted: true });
 
         if (this.state.topicKeywords.trim() !== '') {
             axios.post('http://localhost:3001/episodes/generate/', {
-                topicKeywords: this.state.topicKeywords
+                topicTitle: this.state.topicTitle,
+                topicKeywords: this.state.topicKeywords,
+                isSingleAgent: this.state.isSingle,
+                isLocalModel: this.state.isLocalModel,
+                api: this.state.api
             })
                 .then((response) => {
                     this.setState({ responseData: response.data, isGenerated: true });
@@ -112,7 +123,7 @@ export default class CreateMain extends React.Component {
                                         control={<Checkbox />}
                                         label="Local Model"
                                         checked={this.state.isLocalModel}
-                                        onClick={() => this.setState({ isLocalModel: !this.state.isLocalModel, isOpenAI: false })}
+                                        onClick={() => this.setState({ isLocalModel: !this.state.isLocalModel, isOpenAI: false, api: '' })}
                                     />
                                 </Grid>
                                 <Grid item>
@@ -130,6 +141,8 @@ export default class CreateMain extends React.Component {
                                     defaultValue=''
                                     variant="filled"
                                     type='password'
+                                    onChange={this._handleApiChange}
+                                    required={this.state.isOpenAI}
                                     sx={{
                                         width: "40vw",
                                         maxWidth: '100%',
