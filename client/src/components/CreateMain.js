@@ -2,67 +2,75 @@ import * as React from 'react';
 import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
 import Copyright from './Copyright.js';
 import { Button, Collapse, Divider, Card, CardMedia, FormGroup, FormControlLabel, Checkbox, Grid } from '@mui/material';
+import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 
 import axios from 'axios';
 
 // TODO remove, this demo shouldn't need to reset the theme.
 const defaultTheme = createTheme();
 
+const VisuallyHiddenInput = styled('input')({
+    clip: 'rect(0 0 0 0)',
+    clipPath: 'inset(50%)',
+    height: 1,
+    overflow: 'hidden',
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    whiteSpace: 'nowrap',
+    width: 1,
+});
+
 export default class CreateMain extends React.Component {
 
     constructor(props) {
         super(props);
-        this._handleTextFieldChange = this._handleTextFieldChange.bind(this);
-        this._handleApiChange = this._handleApiChange.bind(this);
+        this._handleFieldChange = this._handleFieldChange.bind(this);
         this._handleSubmit = this._handleSubmit.bind(this);
     }
 
     state = {
-        topicTitle: 'DefaultTitle',
+        title: '',
+        description: '',
         topicKeywords: '',
-        responseData: '',
+        subtopicKeywords: '',
+        agentOne: '',
+        agentTwo: '',
         api: '',
         isGenerated: false,
-        isSumitAttempted: false,
         isLocalModel: true,
         isOpenAI: false,
-        isSingle: true,
-        isMultiple: false,
+        isSingleAgent: true,
+        isDuoAgent: false,
+        responseData: '',
     }
 
-    _handleTextFieldChange(e) {
-        this.setState({ topicKeywords: e.target.value });
-    }
-
-    _handleApiChange(e) {
-        this.setState({ api: e.target.value })
+    _handleFieldChange(e) {
+        const { id, value } = e.target;
+        this.setState({ [id]: value });
     }
 
     _handleSubmit(event) {
         event.preventDefault();
-        this.setState({ isSumitAttempted: true });
 
-        if (this.state.topicKeywords.trim() !== '') {
-            axios.post('http://localhost:3001/episodes/generate/', {
-                topicTitle: this.state.topicTitle,
-                topicKeywords: this.state.topicKeywords,
-                isSingleAgent: this.state.isSingle,
-                isLocalModel: this.state.isLocalModel,
-                api: this.state.api
-            })
-                .then((response) => {
-                    this.setState({ responseData: response.data, isGenerated: true });
-                });
-        }
+        axios.post('http://localhost:3001/episodes/generate/', {
+            title: this.state.title,
+            description: this.state.description,
+            topicKeywords: this.state.topicKeywords,
+            subtopicKeywords: this.state.subtopicKeywords,
+            isSingleAgent: this.state.isSingleAgent,
+            agentNames: [this.state.agentOne.trim(), this.state.agentTwo.trim()],
+            isLocalModel: this.state.isLocalModel,
+            api: this.state.api
+        })
+            .then((response) => {
+                this.setState({ responseData: response.data, isGenerated: true });
+            });
 
 
-    }
-
-    _handleCheckbox(e) {
-        this.setState({ isOpenAI: e });
     }
 
     render() {
@@ -79,89 +87,165 @@ export default class CreateMain extends React.Component {
                                 marginLeft: "30vw",
                             }}
                         >
-                            <Divider sx={{ fontSize: "15px", mt: "50px", mb: "20px" }}>
-                                Enter Topic Keywords Here
-                            </Divider>
-                            <TextField
-                                id="filled-multiline-static"
-                                label="Topic Keywords"
-                                multiline
-                                rows={4}
-                                defaultValue=""
-                                variant="filled"
-                                onChange={this._handleTextFieldChange}
-                                error={this.state.topicKeywords.trim() === "" && this.state.isSumitAttempted}
-                                helperText={this.state.topicKeywords.trim() === "" && this.state.isSumitAttempted ? 'Field required!' : ' '}
-                            />
-                            <Divider sx={{ fontSize: "15px", my: "20px" }}>
-                                Choose number of guests
-                            </Divider>
-                            <Grid container alignItems={"center"}>
-                                <Grid item >
-                                    <FormControlLabel
-                                        control={<Checkbox />}
-                                        label="Single"
-                                        checked={this.state.isSingle}
-                                        onClick={() => this.setState({ isSingle: !this.state.isSingle, isMultiple: false })}
-                                    />
-                                </Grid>
-                                <Grid item>
-                                    <FormControlLabel
-                                        control={<Checkbox />}
-                                        label="Multiple"
-                                        checked={this.state.isMultiple}
-                                        onClick={() => this.setState({ isMultiple: !this.state.isMultiple, isSingle: false })}
-                                    />
-                                </Grid>
-                            </Grid>
-                            <Divider sx={{ fontSize: "15px", my: "20px" }}>
-                                Choose language model
-                            </Divider>
-                            <Grid container alignItems={"center"}>
-                                <Grid item >
-                                    <FormControlLabel
-                                        control={<Checkbox />}
-                                        label="Local Model"
-                                        checked={this.state.isLocalModel}
-                                        onClick={() => this.setState({ isLocalModel: !this.state.isLocalModel, isOpenAI: false, api: '' })}
-                                    />
-                                </Grid>
-                                <Grid item>
-                                    <FormControlLabel
-                                        control={<Checkbox />}
-                                        label="OpenAI"
-                                        checked={this.state.isOpenAI}
-                                        onClick={() => this.setState({ isOpenAI: !this.state.isOpenAI, isLocalModel: false })}
-                                    />
-                                </Grid>
-                            </Grid>
-                            <Collapse in={this.state.isOpenAI}>
+
+                            <>
+                                <Divider sx={{ fontSize: "15px", mt: "50px", mb: "20px" }}>
+                                    Enter Podcast Information Here
+                                </Divider>
+
                                 <TextField
-                                    label="OpenAI API"
-                                    defaultValue=''
+                                    id="title"
+                                    label="Episode Title"
+                                    defaultValue=""
                                     variant="filled"
-                                    type='password'
-                                    onChange={this._handleApiChange}
-                                    required={this.state.isOpenAI}
-                                    sx={{
-                                        width: "40vw",
-                                        maxWidth: '100%',
-                                    }}
+                                    required
+                                    onChange={this._handleFieldChange}
+                                    error={this.state.topicKeywords.trim() === "" && this.state.isSumitAttempted}
+                                    helperText={this.state.topicKeywords.trim() === "" && this.state.isSumitAttempted ? 'Field required!' : ' '}
                                 />
-                            </Collapse>
-                            <Button
-                                variant="contained"
+                                <TextField
+                                    id="description"
+                                    label="Episode Description"
+                                    multiline
+                                    rows={4}
+                                    defaultValue=""
+                                    variant="filled"
+                                    required
+                                    onChange={this._handleFieldChange}
+                                    error={this.state.topicKeywords.trim() === "" && this.state.isSumitAttempted}
+                                    helperText={this.state.topicKeywords.trim() === "" && this.state.isSumitAttempted ? 'Field required!' : ' '}
+                                />
+                                <TextField
+                                    id="topicKeywords"
+                                    label="Topic Keywords"
+                                    defaultValue=""
+                                    variant="filled"
+                                    required
+                                    onChange={this._handleFieldChange}
+                                    error={this.state.topicKeywords.trim() === "" && this.state.isSumitAttempted}
+                                    helperText={this.state.topicKeywords.trim() === "" && this.state.isSumitAttempted ? 'Field required!' : ' '}
+                                />
+                                <TextField
+                                    id="subtopicKeywords"
+                                    label="Subtopic Keywords"
+                                    defaultValue=""
+                                    variant="filled"
+                                    required
+                                    onChange={this._handleFieldChange}
+                                    // error={this.state.topicKeywords.trim() === "" && this.state.isSumitAttempted}
+                                    helperText={this.state.topicKeywords.trim() === "" && this.state.isSumitAttempted ? 'Field required!' : ' '}
+                                />
+                            </>
+
+                            <>
+                                <Divider sx={{ fontSize: "15px", my: "20px" }}>
+                                    Choose number of agents
+                                </Divider>
+
+                                <Grid container alignItems={"center"}>
+                                    <Grid item >
+                                        <FormControlLabel
+                                            control={<Checkbox />}
+                                            label="Single"
+                                            checked={this.state.isSingleAgent}
+                                            onClick={() => this.setState({ isSingleAgent: !this.state.isSingleAgent, isDuoAgent: false })}
+                                        />
+                                    </Grid>
+                                    <Grid item>
+                                        <FormControlLabel
+                                            control={<Checkbox />}
+                                            label="Duo"
+                                            checked={this.state.isDuoAgent}
+                                            onClick={() => this.setState({ isDuoAgent: !this.state.isDuoAgent, isSingleAgent: false })}
+                                        />
+                                    </Grid>
+                                </Grid>
+                                <Collapse in={this.state.isDuoAgent}>
+                                    <TextField
+                                        id="agentOne"
+                                        label="Agent Name 1"
+                                        variant="filled"
+                                        onChange={this._handleFieldChange}
+                                        required={this.state.isDuoAgent}
+                                        sx={{ width: "19vw" }}
+                                    />
+                                    <TextField
+                                        id="agentTwo"
+                                        label="Agent Name 2"
+                                        variant="filled"
+                                        onChange={this._handleFieldChange}
+                                        required={this.state.isDuoAgent}
+                                        sx={{ width: "19vw", ml: "2vw" }}
+                                    />
+                                </Collapse>
+                            </>
+
+                            <>
+                                <Divider sx={{ fontSize: "15px", my: "20px" }}>
+                                    Choose language model
+                                </Divider>
+                                <Grid container alignItems={"center"}>
+                                    <Grid item >
+                                        <FormControlLabel
+                                            control={<Checkbox />}
+                                            label="Local Model"
+                                            checked={this.state.isLocalModel}
+                                            onClick={() => this.setState({ isLocalModel: !this.state.isLocalModel, isOpenAI: false, api: '' })}
+                                        />
+                                    </Grid>
+                                    <Grid item>
+                                        <FormControlLabel
+                                            control={<Checkbox />}
+                                            label="OpenAI"
+                                            checked={this.state.isOpenAI}
+                                            onClick={() => this.setState({ isOpenAI: !this.state.isOpenAI, isLocalModel: false })}
+                                        />
+                                    </Grid>
+                                </Grid>
+                                <Collapse in={this.state.isOpenAI}>
+                                    <TextField
+                                        id="api"
+                                        label="OpenAI API"
+                                        defaultValue=''
+                                        variant="filled"
+                                        type='password'
+                                        onChange={this._handleFieldChange}
+                                        required={this.state.isOpenAI}
+                                        sx={{
+                                            width: "40vw",
+                                            maxWidth: '100%',
+                                        }}
+                                    />
+                                </Collapse>
+                            </>
+
+                            <Grid
+                                container
+                                spacing={4}
+                                alignItems={"center"}
                                 sx={{
-                                    width: "10vw",
-                                    minWidth: "100px",
-                                    maxWidth: "150px",
-                                    marginTop: "50px",
-                                    marginLeft: "15vw"
+                                    width: "40vw",
+                                    marginTop: "20px",
                                 }}
-                                type='submit'
                             >
-                                Generate
-                            </Button>
+                                <Grid item>
+                                    <Button
+                                        variant="outlined"
+                                        startIcon={<CloudUploadIcon />}
+                                    >
+                                        Upload RAG (Optional)
+                                        <VisuallyHiddenInput type="file" />
+                                    </Button>
+                                </Grid>
+                                <Grid item>
+                                    <Button
+                                        variant="contained"
+                                        type='submit'
+                                    >
+                                        Generate
+                                    </Button>
+                                </Grid>
+                            </Grid>
 
                         </FormGroup>
                     </form>
@@ -189,7 +273,7 @@ export default class CreateMain extends React.Component {
                         <Card sx={{ width: '50vw', marginLeft: '25vw' }} >
                             <CardMedia
                                 component='video'
-                                image='https://srvcdn15.2convert.me/dl?hash=S61wRx5oRhsl49MKlNzq7ku7eIICJB6seE6VUht9sLO91USCeLpculJ4Mx8AJwtAbpATVwPSRCI0QmC0ElSHjSuknVLHmKMO1RLYG8qvik1aplw3lekeJO29J9wRgehtlv%2Bmckz%2B8J6Xn%2BOv4g4CxIbh3HAcWyPzy%2FAkbDsyXgsJufMRfOhxA2yaZvapu85oeEKfeD%2BaMrsdDl4BiQHlWRn8q7DbYvlxhMfWtyZmgQ5y3eIPFan7HIPsmcGByMrZJIsab01EEGG7xvJzxMUNYJTkaDoSab%2FPgSNclAJ2jsA%3D'
+                                image='video-path'
                                 controls
                             />
                         </Card>
