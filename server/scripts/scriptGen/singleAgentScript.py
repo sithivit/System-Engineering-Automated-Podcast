@@ -8,7 +8,7 @@ import os
 import openai
 
 class LocalSingleAgentScript:
-    def __init__(self, api_key=None):
+    def __init__(self, model_name="../models/gpt4all-falcon-q4_0.gguf"):
 
         local_path = "../models/gpt4all-falcon-q4_0.gguf"  
 

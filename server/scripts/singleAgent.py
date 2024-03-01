@@ -1,5 +1,7 @@
 import sys
 
+from scriptGen.singleAgentScript import LocalSingleAgentScript, OpenAISingleAgentScript
+
 class SingleAgent:
 
     def run(name, keywords, api):
@@ -10,11 +12,13 @@ class SingleAgent:
     
     def runLocal(name, keywords):
         # Do the generation work here
-        return 'Local model results'
+        script = LocalSingleAgentScript().run(name, keywords)
+        return script
     
     def runOpenAI(name, keywords, api):
         # Do the generation work here
-        return 'OpenAI results'
+        script = OpenAISingleAgentScript(api).run(name, keywords)
+        return script
     
 
 if __name__ == "__main__":

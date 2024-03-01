@@ -194,7 +194,5 @@ class MultiAgentScript:
         return '\n'.join(script)
 
 
-scriptGen = MultiAgentScript("Tech Innovation", "Podcast about new invention of technology", "AI", "Engineering", "Elon")
-print(scriptGen.run())
 
 
