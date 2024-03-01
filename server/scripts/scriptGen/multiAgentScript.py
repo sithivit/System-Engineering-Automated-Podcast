@@ -4,9 +4,12 @@ from langchain.memory import ConversationBufferMemory
 from langchain.chains import ConversationChain
 from langchain.llms import GPT4All
 from langchain.prompts import PromptTemplate
+
 import random
 import openai
+
 from openai import OpenAI
+
 import os
 from dotenv import load_dotenv
 load_dotenv()
