@@ -4,12 +4,18 @@ from langchain.memory import ConversationBufferMemory
 from langchain.chains import ConversationChain
 from langchain.llms import GPT4All
 from langchain.prompts import PromptTemplate
+
 import random
 import openai
+
 from openai import OpenAI
+
 import os
 from dotenv import load_dotenv
 load_dotenv()
+
+
+from documentParser.rag_utils import similarity_search
 
 api = openai_api_key = os.environ.get("OPENAI_API_KEY")
 
@@ -23,6 +29,8 @@ class MultiAgentScript:
         self.podcast_topic = topic 
         self.podcast_subtopics = subtopics 
         self.podcast_language = "English"
+
+        self.knowledge = similarity_search(title + description)
 
         self.HOST_PERSONALITY_PROMPT = """ 
             Your a podcast host of a conversational podcast named {podcast_title}. You're a bit of a nerd,
@@ -40,7 +48,10 @@ class MultiAgentScript:
             Don't present yourself to the audience or the guest, they already know who you are.
             Don't present the podcast to the audience or the guest, they already know what the podcast is about.
             Always respond in {podcast_language}.
-            Can you always reply with 'Hostname: '
+
+            Always reply with '{name}: '
+
+            Knowledge: {knowledge}
         """
 
         self.GUEST_PERSONALITY_PROMPT = """
@@ -60,14 +71,15 @@ class MultiAgentScript:
             personality. Err on the side of eye-rolling humor.
             Keep answers short and to the point. Don't ask questions.
             Always respond in {podcast_language}.
-            Can you always reply with 'Guestname: '
+
+            Always reply with '{name}: '
+
+            Knowledge: {knowledge}
         """
 
         self.KICKOFF_PROMPT = """
             Start the conversation repeating something like this:
-            'Hello! Welcome to the podcast {podcast_title}, {podcast_description}. 
-            My name is {podcast_host_name} and today we're going to talk with {podcast_guest}. 
-            To discuss this topic, we have an expert on the subject.
+            '{podcast_host_name}: Hello! Welcome to the podcast {podcast_title}, {podcast_description}. My name is {podcast_host_name} and today we're going to talk with {podcast_guest}. To discuss this topic, we have an expert on the subject.
 
             (Do not generate HTML style output)
 
@@ -122,7 +134,7 @@ class MultiAgentScript:
             podcast_host_name=self.podcast_host_name,
             podcast_guest=self.podcast_guest_name
         )
-        return self.generate_response(kickoff_prompt, "Host: What do you do?")
+        return self.generate_response(kickoff_prompt, "")
 
     def switch_role(self, role):
         """
@@ -132,12 +144,12 @@ class MultiAgentScript:
             self.current_role = 'host'
             self.current_personality_prompt = self.HOST_PERSONALITY_PROMPT.format(podcast_title=self.podcast_title, podcast_topic=self.podcast_topic)
             self.current_instructions_prompt = self.HOST_INSTRUCTIONS_PROMPT.format(
-                podcast_topic=self.podcast_topic, podcast_subtopics=self.podcast_subtopics, podcast_language=self.podcast_language)
+                podcast_topic=self.podcast_topic, podcast_subtopics=self.podcast_subtopics, podcast_language=self.podcast_language, knowledge=self.knowledge, name=self.podcast_host_name)
         elif role.lower() == 'guest':
             self.current_role = 'guest'
             self.current_personality_prompt = self.GUEST_PERSONALITY_PROMPT.format(podcast_topic=self.podcast_topic)
             self.current_instructions_prompt = self.GUEST_INSTRUCTIONS_PROMPT.format(
-                podcast_topic=self.podcast_topic, podcast_subtopics=self.podcast_subtopics, podcast_language=self.podcast_language)
+                podcast_topic=self.podcast_topic, podcast_subtopics=self.podcast_subtopics, podcast_language=self.podcast_language, knowledge=self.knowledge, name=self.podcast_guest_name)
         else:
             raise ValueError("Invalid role. Choose 'host' or 'guest'.")
 
@@ -150,12 +162,15 @@ class MultiAgentScript:
 
         # Alternate roles for each exchange
         for i in range(num_exchanges):
-            if i % 2 == 0:  # Host's turn
+            speaker = None
+            if i % 2 != 0:
                 self.switch_role('host')
                 prompt = self.HOST_PERSONALITY_PROMPT + self.HOST_INSTRUCTIONS_PROMPT
-            else:  # Guest's turn
+                speaker = self.podcast_host_name
+            else:  
                 self.switch_role('guest')
                 prompt = self.GUEST_PERSONALITY_PROMPT + self.GUEST_INSTRUCTIONS_PROMPT
+                speaker = self.podcast_guest_name
 
             # Generate conversation based on the role
             formatted_prompt = self.generate_prompt(
@@ -163,8 +178,11 @@ class MultiAgentScript:
                 podcast_title=self.podcast_title,
                 podcast_topic=self.podcast_topic,
                 podcast_subtopics=self.podcast_subtopics,
-                podcast_language=self.podcast_language
+                podcast_language=self.podcast_language,
+                knowledge=self.knowledge,
+                name=speaker
             )
+
             response = self.generate_response(formatted_prompt, '\n'.join(script))
             script.append(response)
 
@@ -174,7 +192,6 @@ class MultiAgentScript:
             #    script.append(subtopic_script)
 
         return '\n'.join(script)
-
 
 
 

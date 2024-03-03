@@ -56,14 +56,13 @@ def save_doc_db(dataset_name="documents", page_content_column="context"):
     embeddings = create_embedding()
     if dataset_name == "documents":
         docs = []
-        for filename in os.listdir(dataset_name):
+        for filename in os.listdir(os.getcwd()+"\\documentParser\\"+dataset_name):
             if filename.endswith('.pdf'):
-                text = extract_text_from_pdf(os.path.join(dataset_name, filename))
+                text = extract_text_from_pdf(os.path.join("documentParser\\"+dataset_name, filename))
                 docs.append(text)
             elif filename.endswith('.txt'):
-                text = extract_text_from_txt(os.path.join(dataset_name, filename))
+                text = extract_text_from_txt(os.path.join("documentParser\\"+dataset_name, filename))
                 docs.append(text)
-        print(docs)
         formatted_docs = [Document(text) for text in docs]
         db = FAISS.from_documents(formatted_docs, embeddings) 
         return db
@@ -73,11 +72,9 @@ def save_doc_db(dataset_name="documents", page_content_column="context"):
         db = FAISS.from_documents(docs, embeddings)
         return db
 
-
-"""
-db = save_doc_db()
-searchDocs = db.similarity_search("Are language models more like libraries or librarians?")
-print(searchDocs[0].page_content)
-"""
+def similarity_search(input):
+    db = save_doc_db()
+    searchDocs = db.similarity_search(input)
+    return searchDocs[0].page_content
 
 
