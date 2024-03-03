@@ -386,8 +386,8 @@ h6 {
 --------------------------------------------------------------*/
 #hero {
   width: 100%;
-  height: 80vh;
-  background: #37517e;
+  height: 40vh;
+  background: #87517e;
 }
 
 #hero .container {
@@ -571,7 +571,7 @@ section {
 }
 
 .clients img {
-  max-width: 45%;
+  max-width: 70%;
   transition: all 0.4s ease-in-out;
   display: inline-block;
   padding: 15px 0;
@@ -583,13 +583,18 @@ section {
   transform: scale(1.1);
 }
 
+.clients .larger-image img {
+  max-width: 200px;
+  height: 150px;
+}
+
 @media (max-width: 768px) {
   .clients img {
     max-width: 40%;
   }
 }
 
-/*--------------------------------------------------------------
+//*--------------------------------------------------------------
 # About Us
 --------------------------------------------------------------*/
 .about .content h3 {
@@ -646,134 +651,870 @@ section {
   text-decoration: none;
 }
 
-/*--------------------------------------------------------------
-# Why Us
---------------------------------------------------------------*/
-.why-us .content {
-  padding: 60px 100px 0 100px;
-}
-
-.why-us .content h3 {
-  font-weight: 400;
-  font-size: 34px;
-  color: #37517e;
-}
-
-.why-us .content h4 {
-  font-size: 20px;
+/* ======= Project Objectives Section ======= */
+.why-us .section-title h2 {
   font-weight: 700;
-  margin-top: 5px;
+  font-size: 32px;
+  color: #37517e;
+  font-family: "Poppins", sans-serif;
+  text-align: center;
+  margin-bottom: 30px;
 }
 
-.why-us .content p {
-  font-size: 15px;
-  color: #848484;
+.why-us ul {
+  list-style: none;
+  padding: 0;
 }
 
-.why-us .img {
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center center;
+.why-us ul li {
+  padding-bottom: 10px;
+  position: relative;
+  font-weight: 600;
+  font-family: "Poppins", sans-serif;
+  color: #37517e;
+  font-size: 18px;
 }
 
-.why-us .accordion-list {
-  padding: 0 100px 60px 100px;
+.why-us ul li:before {
+  content: "\2022"; /* Bullet point character */
+  font-size: 20px;
+  padding-right: 8px;
+  color: #47b2e4;
+  position: relative; /* Adjusted from absolute to relative */
+  top: 1px;
 }
 
-.why-us .accordion-list ul {
+.why-us .content p:last-child {
+  margin-bottom: 0;
+}
+
+
+/* ======= Technology Research Section ======= */
+.tech .container {
+  padding: 0 100px;
+}
+
+.tech .faq-list ul {
   padding: 0;
   list-style: none;
 }
 
-.why-us .accordion-list li+li {
+.tech .faq-list li+li {
   margin-top: 15px;
 }
 
-.why-us .accordion-list li {
+.tech .faq-list li {
   padding: 20px;
-  background: #fff;
+  background: #eee;
   border-radius: 4px;
+  position: relative;
 }
 
-.why-us .accordion-list a {
+.tech .faq-list a {
   display: block;
   position: relative;
   font-family: "Poppins", sans-serif;
   font-size: 16px;
   line-height: 24px;
   font-weight: 500;
-  padding-right: 30px;
+  padding: 0 30px;
   outline: none;
   cursor: pointer;
+  color: #37517e;
+  transition: 0.3s;
 }
 
-.why-us .accordion-list span {
+.tech .faq-list .icon-help {
+  font-size: 24px;
+  position: absolute;
+  right: 0;
+  left: 20px;
   color: #47b2e4;
-  font-weight: 600;
-  font-size: 18px;
-  padding-right: 10px;
 }
 
-.why-us .accordion-list i {
+.tech .faq-list .icon-show,
+.tech .faq-list .icon-close {
   font-size: 24px;
   position: absolute;
   right: 0;
   top: 0;
 }
 
-.why-us .accordion-list p {
+.tech .faq-list p {
   margin-bottom: 0;
   padding: 10px 0 0 0;
 }
 
-.why-us .accordion-list .icon-show {
+.tech .faq-list .icon-show {
   display: none;
 }
 
-.why-us .accordion-list a.collapsed {
-  color: #343a40;
+.tech .faq-list a.collapsed {
+  color: #37517e;
 }
 
-.why-us .accordion-list a.collapsed:hover {
+.tech .faq-list a.collapsed:hover {
   color: #47b2e4;
 }
 
-.why-us .accordion-list a.collapsed .icon-show {
+.tech .faq-list a.collapsed .icon-show {
   display: inline-block;
 }
 
-.why-us .accordion-list a.collapsed .icon-close {
+.tech .faq-list a.collapsed .icon-close {
   display: none;
 }
 
-@media (max-width: 1024px) {
-
-  .why-us .content,
-  .why-us .accordion-list {
-    padding-left: 0;
-    padding-right: 0;
+@media (max-width: 1200px) {
+  .tech .container {
+    padding: 0;
   }
 }
 
-@media (max-width: 992px) {
-  .why-us .img {
-    min-height: 400px;
-  }
+/* ======= Technical Decisions Section ======= */
+.tech-decisions .container {
+  padding: 60px 0;
+}
 
-  .why-us .content {
-    padding-top: 30px;
-  }
+.tech-decisions .section-title h2 {
+  font-weight: 700;
+  font-size: 32px;
+  color: #37517e;
+  font-family: "Poppins", sans-serif;
+  text-align: center;
+  margin-bottom: 30px;
+}
 
-  .why-us .accordion-list {
-    padding-bottom: 30px;
+.tech-decisions .content p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #556877;
+  text-align: justify;
+}
+
+@media (max-width: 768px) {
+  .tech-decisions .container {
+    padding: 30px 0;
   }
 }
 
-@media (max-width: 575px) {
-  .why-us .img {
-    min-height: 200px;
+/* ======= Project Background Section ======= */
+.sketches .container {
+  padding: 60px 0;
+}
+
+.sketches .section-title h2 {
+  font-weight: 700;
+  font-size: 32px;
+  color: #37517e;
+  font-family: "Poppins", sans-serif;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.sketches .content p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #556877;
+  text-align: justify;
+}
+
+.sketches .content img {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+  height: auto;
+}
+
+@media (max-width: 768px) {
+  .sketches .container {
+    padding: 30px 0;
   }
 }
+
+
+/* ======= Prototype Video Section ======= */
+.prototype .container {
+  padding: 60px 0;
+}
+
+.prototype .section-title h2 {
+  font-weight: 700;
+  font-size: 32px;
+  color: #37517e;
+  font-family: "Poppins", sans-serif;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.prototype .section-title p {
+  font-size: 16px;
+  color: #556877;
+  text-align: center;
+}
+
+.prototype .d-flex {
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.prototype .btn-watch-video {
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 1px;
+  display: inline-block;
+  padding: 12px 32px;
+  border-radius: 4px;
+  transition: 0.3s;
+  line-height: 1;
+  text-align: center;
+  margin: 15px 0;
+}
+
+
+.prototype .btn-watch-video {
+  background-color: #37517e;
+  color: #fff;
+  display: flex;
+  align-items: center;
+}
+
+.prototype .btn-watch-video i {
+  font-size: 24px;
+  margin-right: 8px;
+}
+
+.prototype .btn-watch-video:hover,
+.prototype .btn-get-started:hover {
+  background-color: #47b2e4;
+  color: #fff;
+  text-decoration: none;
+}
+
+@media (max-width: 768px) {
+  .prototype .container {
+    padding: 30px 0;
+  }
+}
+
+/* ======= System Architecture Section ======= */
+#sys_arc .container {
+  padding: 60px 0;
+}
+
+#sys_arc .section-title h2 {
+  font-weight: 700;
+  font-size: 32px;
+  color: #37517e;
+  font-family: "Poppins", sans-serif;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+#sys_arc .content p {
+  font-size: 16px;
+  color: #556877;
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  #sys_arc .container {
+    padding: 30px 0;
+  }
+}
+
+}
+
+/* ======= Data Storage Section ======= */
+.database .container {
+  padding: 60px 0;
+}
+
+.database .section-title h2 {
+  font-weight: 700;
+  font-size: 32px;
+  color: #37517e;
+  font-family: "Poppins", sans-serif;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.database .content p {
+  font-size: 16px;
+  color: #556877;
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .database .container {
+    padding: 30px 0;
+  }
+}
+
+
+/* ======= APIs Section ======= */
+.apis .container {
+  padding: 60px 0;
+}
+
+.apis .section-title h2 {
+  font-weight: 700;
+  font-size: 32px;
+  color: #37517e;
+  font-family: "Poppins", sans-serif;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.apis .content p {
+  font-size: 16px;
+  color: #556877;
+  line-height: 1.6;
+  text-align: center;
+}
+
+.apis .faq-list {
+  margin-top: 30px;
+}
+
+.apis .faq-list ul {
+  padding: 0;
+  list-style: none;
+}
+
+.apis .faq-list li+li {
+  margin-top: 15px;
+}
+
+.apis .faq-list li {
+  padding: 20px;
+  background: #eee;
+  border-radius: 4px;
+  position: relative;
+}
+
+.apis .faq-list a {
+  display: block;
+  position: relative;
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 500;
+  padding: 10px 30px;
+  outline: none;
+  cursor: pointer;
+  color: #37517e;
+  transition: 0.3s;
+}
+
+.apis .faq-list .icon-show,
+.apis .faq-list .icon-close {
+  font-size: 24px;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.apis .faq-list p {
+  margin-bottom: 0;
+  padding: 10px 0 0 0;
+}
+
+.apis .faq-list .icon-show {
+  display: none;
+}
+
+.apis .faq-list a.collapsed {
+  color: #37517e;
+}
+
+.apis .faq-list a.collapsed:hover {
+  color: #47b2e4;
+}
+
+.apis .faq-list a.collapsed .icon-show {
+  display: inline-block;
+}
+
+.apis .faq-list a.collapsed .icon-close {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .apis .container {
+    padding: 30px 0;
+  }
+}
+
+
+/* ======= Dependencies Section ======= */
+.dependencies .faq-list ul {
+  padding: 0;
+  list-style: none;
+}
+
+.dependencies .faq-list li+li {
+  margin-top: 15px;
+}
+
+.dependencies .faq-list li {
+  padding: 20px;
+  background: #eee;
+  border-radius: 4px;
+  position: relative;
+}
+
+.dependencies .faq-list a {
+  display: block;
+  position: relative;
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 500;
+  padding: 10px 30px;
+  outline: none;
+  cursor: pointer;
+  color: #37517e;
+  transition: 0.3s;
+}
+
+.dependencies .faq-list .icon-show,
+.dependencies .faq-list .icon-close {
+  font-size: 24px;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.dependencies .faq-list p {
+  margin-bottom: 0;
+  padding: 10px 0 0 0;
+}
+
+.dependencies .faq-list .icon-show {
+  display: none;
+}
+
+.dependencies .faq-list a.collapsed {
+  color: #37517e;
+}
+
+.dependencies .faq-list a.collapsed:hover {
+  color: #47b2e4;
+}
+
+.dependencies .faq-list a.collapsed .icon-show {
+  display: inline-block;
+}
+
+.dependencies .faq-list a.collapsed .icon-close {
+  display: none;
+}
+
+
+
+/* ======= Video Generation Section ======= */
+.video .container {
+  padding: 60px 0;
+}
+
+.video .section-title h2 {
+  font-weight: 700;
+  font-size: 32px;
+  color: #37517e;
+  font-family: "Poppins", sans-serif;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.video .content p {
+  font-size: 16px;
+  color: #556877;
+  line-height: 1.6;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .video .container {
+    padding: 30px 0;
+  }
+}
+
+
+
+/* ======= Testing Strategy Section ======= */
+.test_strat .container {
+  padding: 60px 0;
+}
+
+.test_strat .section-title h2 {
+  font-weight: 700;
+  font-size: 32px;
+  color: #37517e;
+  font-family: "Poppins", sans-serif;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.test_strat .content p {
+  font-size: 16px;
+  color: #556877;
+  line-height: 1.6;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .test_strat .container {
+    padding: 30px 0;
+  }
+}
+
+
+
+/* ======= Compatibility Testing Section ======= */
+#compatibility {
+  padding: 60px 0; /* Adjust padding as needed */
+}
+
+#compatibility .container {
+  text-align: center;
+}
+
+#compatibility .section-title h2 {
+  font-weight: 700;
+  font-size: 32px;
+  color: #37517e; /* Title text color */
+  font-family: "Poppins", sans-serif;
+  margin-bottom: 30px;
+}
+
+#compatibility .content p {
+  font-size: 16px;
+  color: #556877; /* Text color */
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  #compatibility .container {
+    padding: 30px 0;
+  }
+}
+
+/* ======= User Acceptance Testing Section ======= */
+.user_acceptance .container {
+  padding: 60px 0;
+}
+
+.user_acceptance .section-title h2 {
+  font-weight: 700;
+  font-size: 32px;
+  color: #37517e;
+  font-family: "Poppins", sans-serif;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.user_acceptance .content p {
+  font-size: 16px;
+  color: #556877;
+  line-height: 1.6;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .user_acceptance .container {
+    padding: 30px 0;
+  }
+}
+
+
+/* ======= Achievements Section ======= */
+#achievements {
+  padding: 60px 0; /* Adjust padding as needed */
+
+}
+
+#achievements .container {
+  text-align: center;
+}
+
+#achievements .section-title h2 {
+  font-weight: 700;
+  font-size: 32px;
+  color: #37517e; /* Title text color */
+  font-family: "Poppins", sans-serif;
+  margin-bottom: 30px;
+}
+
+#achievements .content {
+  margin-top: 30px;
+}
+
+#achievements .content h2 {
+  font-size: 28px;
+  color: #37517e; /* Subtitle text color */
+  font-family: "Poppins", sans-serif;
+  margin-bottom: 15px;
+}
+
+#achievements .content p {
+  font-size: 16px;
+  color: #556877; /* Text color */
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  #achievements .container {
+    padding: 30px 0;
+  }
+}
+
+
+
+
+/* ======= Evaluation Section ======= */
+#eval {
+  padding: 60px 0;
+  background-color: #f8f9fa; /* Background color */
+}
+
+#eval .container {
+  text-align: center;
+}
+
+#eval .section-title h2 {
+  font-weight: 700;
+  font-size: 32px;
+  color: #37517e; /* Title text color */
+  font-family: "Poppins", sans-serif;
+  margin-bottom: 30px;
+}
+
+#eval .content p {
+  font-size: 16px;
+  color: #556877; /* Text color */
+  line-height: 1.6;
+  text-align: center;
+}
+
+#eval .faq-list {
+  margin-top: 30px;
+}
+
+#eval .faq-list ul {
+  padding: 0;
+  list-style: none;
+}
+
+#eval .faq-list li+li {
+  margin-top: 15px;
+}
+
+#eval .faq-list li {
+  padding: 20px;
+  background: #eee;
+  border-radius: 4px;
+  position: relative;
+}
+
+#eval .faq-list a {
+  display: block;
+  position: relative;
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 500;
+  padding: 10px 30px;
+  outline: none;
+  cursor: pointer;
+  color: #37517e;
+  transition: 0.3s;
+}
+
+#eval .faq-list .icon-show,
+#eval .faq-list .icon-close {
+  font-size: 24px;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+#eval .faq-list p {
+  margin-bottom: 0;
+  padding: 10px 0 0 0;
+}
+
+#eval .faq-list .icon-show {
+  display: none;
+}
+
+#eval .faq-list a.collapsed {
+  color: #37517e;
+}
+
+#eval .faq-list a.collapsed:hover {
+  color: #47b2e4;
+}
+
+#eval .faq-list a.collapsed .icon-show {
+  display: inline-block;
+}
+
+#eval .faq-list a.collapsed .icon-close {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  #eval .container {
+    padding: 30px 0;
+  }
+}
+
+/* ======= Future Work Section ======= */
+.future_work .container {
+  padding: 60px 0;
+}
+
+.future_work .section-title h2 {
+  font-weight: 700;
+  font-size: 32px;
+  color: #37517e;
+  font-family: "Poppins", sans-serif;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.future_work .content p {
+  font-size: 16px;
+  color: #556877;
+  line-height: 1.6;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .future_work .container {
+    padding: 30px 0;
+  }
+}
+
+
+
+/* ======= User Manual Section ======= */
+#user_man {
+  padding: 60px 0;
+  background-color: #f8f9fa; /* Background color */
+}
+
+#user_man .container {
+  text-align: center;
+}
+
+#user_man .section-title h2 {
+  font-weight: 700;
+  font-size: 32px;
+  color: #37517e; /* Title text color */
+  font-family: "Poppins", sans-serif;
+  margin-bottom: 30px;
+}
+
+#user_man .content p {
+  font-size: 16px;
+  color: #556877; /* Text color */
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  #user_man .container {
+    padding: 30px 0;
+  }
+}
+
+
+/* ======= Deployment Manual Section ======= */
+.deployment .container {
+  padding: 60px 0;
+}
+
+.deployment .section-title h2 {
+  font-weight: 700;
+  font-size: 32px;
+  color: #37517e;
+  font-family: "Poppins", sans-serif;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.deployment .content p {
+  font-size: 16px;
+  color: #556877;
+  line-height: 1.6;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .deployment .container {
+    padding: 30px 0;
+  }
+}
+
+
+/* ======= Weekly Reports Section ======= */
+.reports .container {
+  padding: 60px 0;
+}
+
+.reports .section-title h2 {
+  font-weight: 700;
+  font-size: 32px;
+  color: #37517e;
+  font-family: "Poppins", sans-serif;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.reports .content p {
+  font-size: 16px;
+  color: #556877;
+  line-height: 1.6;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .reports .container {
+    padding: 30px 0;
+  }
+}
+
+
+/* ======= Legal Issues Section ======= */
+.legal .container {
+  padding: 60px 0;
+}
+
+.legal .section-title h2 {
+  font-weight: 700;
+  font-size: 32px;
+  color: #37517e;
+  font-family: "Poppins", sans-serif;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.legal .content p {
+  font-size: 16px;
+  color: #556877;
+  line-height: 1.6;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .legal .container {
+    padding: 30px 0;
+  }
+}
+
 
 /*--------------------------------------------------------------
 # Skills
@@ -882,6 +1623,91 @@ section {
 .services .icon-box:hover h4 a {
   color: #47b2e4;
 }
+
+/* ======= Moscow Requirements List Section ======= */
+
+#mscw .container {
+  padding: 0 100px;
+}
+
+#mscw .faq-list ul {
+  padding: 0;
+  list-style: none;
+}
+
+#mscw .faq-list li+li {
+  margin-top: 15px;
+}
+
+#mscw .faq-list li {
+  padding: 20px;
+  background: #eee;
+  border-radius: 4px;
+  position: relative;
+}
+
+#mscw .faq-list a {
+  display: block;
+  position: relative;
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 500;
+  padding: 0 30px;
+  outline: none;
+  cursor: pointer;
+  color: #37517e;
+  transition: 0.3s;
+}
+
+#mscw .faq-list .icon-help {
+  font-size: 24px;
+  position: absolute;
+  right: 0;
+  left: 20px;
+  color: #47b2e4;
+}
+
+#mscw .faq-list .icon-show,
+#mscw .faq-list .icon-close {
+  font-size: 24px;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+#mscw .faq-list p {
+  margin-bottom: 0;
+  padding: 10px 0 0 0;
+}
+
+#mscw .faq-list .icon-show {
+  display: none;
+}
+
+#mscw .faq-list a.collapsed {
+  color: #37517e;
+}
+
+#mscw .faq-list a.collapsed:hover {
+  color: #47b2e4;
+}
+
+#mscw .faq-list a.collapsed .icon-show {
+  display: inline-block;
+}
+
+#mscw .faq-list a.collapsed .icon-close {
+  display: none;
+}
+
+@media (max-width: 1200px) {
+  #mscw .container {
+    padding: 0;
+  }
+}
+
+
 
 /*--------------------------------------------------------------
 # Cta
