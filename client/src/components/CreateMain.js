@@ -35,8 +35,8 @@ export default class CreateMain extends React.Component {
     state = {
         title: '',
         description: '',
-        topicKeywords: '',
-        subtopicKeywords: '',
+        keywords: '',
+        subKeywords: '',
         agentOne: '',
         agentTwo: '',
         api: '',
@@ -59,8 +59,8 @@ export default class CreateMain extends React.Component {
         axios.post('http://localhost:3001/episodes/generate/', {
             title: this.state.title,
             description: this.state.description,
-            topicKeywords: this.state.topicKeywords,
-            subtopicKeywords: this.state.subtopicKeywords,
+            keywords: this.state.keywords,
+            subKeywords: this.state.subKeywords,
             isSingleAgent: this.state.isSingleAgent,
             agentNames: [this.state.agentOne.trim(), this.state.agentTwo.trim()],
             isLocalModel: this.state.isLocalModel,
@@ -100,8 +100,8 @@ export default class CreateMain extends React.Component {
                                     variant="filled"
                                     required
                                     onChange={this._handleFieldChange}
-                                    error={this.state.topicKeywords.trim() === "" && this.state.isSumitAttempted}
-                                    helperText={this.state.topicKeywords.trim() === "" && this.state.isSumitAttempted ? 'Field required!' : ' '}
+                                    error={this.state.keywords.trim() === "" && this.state.isSumitAttempted}
+                                    helperText={this.state.keywords.trim() === "" && this.state.isSumitAttempted ? 'Field required!' : ' '}
                                 />
                                 <TextField
                                     id="description"
@@ -112,28 +112,28 @@ export default class CreateMain extends React.Component {
                                     variant="filled"
                                     required
                                     onChange={this._handleFieldChange}
-                                    error={this.state.topicKeywords.trim() === "" && this.state.isSumitAttempted}
-                                    helperText={this.state.topicKeywords.trim() === "" && this.state.isSumitAttempted ? 'Field required!' : ' '}
+                                    error={this.state.keywords.trim() === "" && this.state.isSumitAttempted}
+                                    helperText={this.state.keywords.trim() === "" && this.state.isSumitAttempted ? 'Field required!' : ' '}
                                 />
                                 <TextField
-                                    id="topicKeywords"
+                                    id="keywords"
                                     label="Topic Keywords"
                                     defaultValue=""
                                     variant="filled"
                                     required
                                     onChange={this._handleFieldChange}
-                                    error={this.state.topicKeywords.trim() === "" && this.state.isSumitAttempted}
-                                    helperText={this.state.topicKeywords.trim() === "" && this.state.isSumitAttempted ? 'Field required!' : ' '}
+                                    error={this.state.keywords.trim() === "" && this.state.isSumitAttempted}
+                                    helperText={this.state.keywords.trim() === "" && this.state.isSumitAttempted ? 'Field required!' : ' '}
                                 />
                                 <TextField
-                                    id="subtopicKeywords"
+                                    id="subKeywords"
                                     label="Subtopic Keywords"
                                     defaultValue=""
                                     variant="filled"
                                     required
                                     onChange={this._handleFieldChange}
-                                    // error={this.state.topicKeywords.trim() === "" && this.state.isSumitAttempted}
-                                    helperText={this.state.topicKeywords.trim() === "" && this.state.isSumitAttempted ? 'Field required!' : ' '}
+                                    // error={this.state.keywords.trim() === "" && this.state.isSumitAttempted}
+                                    helperText={this.state.keywords.trim() === "" && this.state.isSumitAttempted ? 'Field required!' : ' '}
                                 />
                             </>
 
