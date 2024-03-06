@@ -689,6 +689,89 @@ section {
 }
 
 
+/* ======= Project Background Section ======= */
+.project_bg .container {
+  padding: 60px 0;
+}
+
+.project_bg .section-title h2 {
+  font-weight: 700;
+  font-size: 32px;
+  color: #37517e;
+  font-family: "Poppins", sans-serif;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.project_bg .section-title p {
+  font-size: 16px;
+  color: #556877;
+  line-height: 1.6;
+  text-align: center;
+}
+
+.project_bg .row {
+  margin-top: 30px;
+}
+
+.project_bg .col-lg-6 {
+  width: 50%;
+}
+
+.project_bg ul {
+  list-style: none;
+  padding: 0;
+}
+
+.project_bg ul li {
+  padding-bottom: 10px;
+  position: relative;
+  font-weight: 600;
+  font-family: "Poppins", sans-serif;
+  color: #37517e;
+  font-size: 18px;
+}
+
+.project_bg .text-center {
+  text-align: center;
+}
+
+.project_bg img {
+  width: 100%;
+  max-width: 600px; /* Adjust the maximum width as needed */
+  height: auto;
+  margin-top: 20px;
+}
+
+.project_bg figcaption {
+  font-size: 14px;
+  color: #556877;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.project_bg .col-lg-12 {
+  margin-top: 30px;
+}
+
+.project_bg .col-lg-12 p {
+  font-size: 16px;
+  color: #556877;
+  line-height: 1.6;
+  text-align: justify;
+}
+
+@media (max-width: 768px) {
+  .project_bg .container {
+    padding: 30px 0;
+  }
+
+  .project_bg .col-lg-6 {
+    width: 100%;
+  }
+}
+
+
 /* ======= Technology Research Section ======= */
 .tech .container {
   padding: 0 100px;
@@ -813,9 +896,10 @@ section {
 }
 
 .sketches .content p {
-  font-size: 16px;
+  font-size: 18px;
   line-height: 1.6;
-  color: #556877;
+  /*color: #556877;*/
+  color: #37517e
   text-align: justify;
 }
 
@@ -1050,6 +1134,30 @@ section {
 
 
 /* ======= Dependencies Section ======= */
+.dependencies .container {
+  padding: 60px 0;
+}
+
+.dependencies .section-title h2 {
+  font-weight: 700;
+  font-size: 32px;
+  color: #37517e;
+  font-family: "Poppins", sans-serif;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.dependencies .content p {
+  font-size: 16px;
+  color: #556877;
+  line-height: 1.6;
+  text-align: center;
+}
+
+.dependencies .faq-list {
+  margin-top: 30px;
+}
+
 .dependencies .faq-list ul {
   padding: 0;
   list-style: none;
@@ -1065,6 +1173,19 @@ section {
   border-radius: 4px;
   position: relative;
 }
+
+.dependencies .faq-list img {
+  max-width: 33%;
+  height: auto;
+  margin-bottom: 10px; /* Optional spacing below the logo */
+}
+
+.dependencies .faq-list #faq-list-7 img {
+  max-width: 66%; /* Adjust the maximum width as needed */
+  height: auto;
+  /* Additional styles if needed */
+}
+
 
 .dependencies .faq-list a {
   display: block;
@@ -1113,6 +1234,84 @@ section {
   display: none;
 }
 
+@media (max-width: 768px) {
+  .dependencies .container {
+    padding: 30px 0;
+  }
+}
+
+
+
+
+/* ======= Audio Generation Section ======= */
+.audio .container {
+  padding: 60px 0;
+}
+
+.audio .section-title h2 {
+  font-weight: 700;
+  font-size: 32px;
+  color: #37517e;
+  font-family: "Poppins", sans-serif;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.audio .content p {
+  font-size: 16px;
+  color: #556877;
+  line-height: 1.6;
+  text-align: center;
+}
+
+.audio .text-center {
+  position: relative;
+}
+
+.audio img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 35px; /* Increase the space between images and text */
+}
+
+.audio figcaption {
+  position: absolute;
+  bottom: 2%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 14px; /* Adjust the font size as needed */
+  color: #8a8a8a; /* Change the color of the label */
+  margin-top: 15px; /* Adjust the space between label and image */
+}
+
+
+.audio .text-center .image2-label {
+  position: absolute;
+  bottom: 20%; /* Adjust the bottom value as needed */
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 10px; /* Adjust the margin-top value as needed */
+  font-size: 14px; /* Adjust the font size of the label */
+  color: #8a8a8a; /* Change the color of the label */
+}
+
+.audio .text-center .image6-label {
+  position: absolute;
+  bottom: 15%; /* Adjust the bottom value as needed */
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 10px; /* Adjust the margin-top value as needed */
+  font-size: 14px; /* Adjust the font size of the label */
+  color: #8a8a8a; /* Change the color of the label */
+}
+
+
+
+@media (max-width: 768px) {
+  .audio .container {
+    padding: 30px 0;
+  }
+}
 
 
 /* ======= Video Generation Section ======= */
