@@ -65,7 +65,7 @@
             <ul>
               <li><a href="requirements.html#background">Project Background</a></li>
               <li><a href="requirements.html#objectives">Project Objectives</a></li>
-              <li><a href="requirements.html#analysis">Project Analysis</a></li>
+              <li><a href="requirements.html#req_gathering">Requirement gathering</a></li>
               <li><a href="requirements.html#personas">Personas</a></li>
               <li><a href="requirements.html#mscw">MoSCoW Requirements</a></li>
             </ul>
@@ -221,12 +221,22 @@
           <a data-bs-toggle="collapse" class="collapse" data-bs-target="#faq-list-2">ElevenLabs API<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
           <div id="faq-list-2" class="collapse show" data-bs-parent=".faq-list">
             <p>For converting Text to Speech and cloning voices (e.g., cloning Joe Rogan voice).</p>
+            <p>
+            For instance, to clone the voice of Joe Rogan, we followed a straightforward process.
+            We first uploaded sections of his speech from his podcast "Joe Rogan Experience".
+            Then, we used the Voice ID generated and incorporated it as a voice option within our
+            Text-To-Speech component of the code, called AudioGeneration. From there, it is very
+            easy to generate audio chunks, using his or someone else's voice by selecting the preferred voice option.</p>
           </div>
         </li>
         <li data-aos="fade-up" data-aos-delay="100">
           <a data-bs-toggle="collapse" class="collapse" data-bs-target="#faq-list-3">IBM Watson API<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
           <div id="faq-list-3" class="collapse show" data-bs-parent=".faq-list">
             <p>For converting Text to Speech.</p>
+            <p>
+            Just like with ElevenLabs API, IBM Watson API helps us turn text into speech.
+            However here, we chose to work with pre-recorded voices, making things a bit easier,
+            though sacrificing a bit of naturalness in the voice quality.</p>
           </div>
         </li>
         <li data-aos="fade-up" data-aos-delay="100">
