@@ -88,7 +88,7 @@ class MultiAgentScript:
         if api != None:
             self.llm = OpenAI(api_key=api).chat.completions
         else:
-            local_path = "../../../models/gpt4all-falcon-q4_0.gguf"  
+            local_path = "/models/gpt4all-falcon-q4_0.gguf"  
 
             # Callbacks support token-wise streaming
             callbacks = [StreamingStdOutCallbackHandler()]

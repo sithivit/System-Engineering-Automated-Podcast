@@ -1,7 +1,7 @@
 from langchain.callbacks.streaming_stdout import StreamingStdOutCallbackHandler
 from langchain.chains import LLMChain
 from langchain.memory import ConversationBufferMemory
-from langchain.llms import GPT4All
+from langchain_community.llms import GPT4All
 from langchain.prompts import PromptTemplate
 from documentParser.rag_utils import similarity_search
 import os
@@ -10,12 +10,10 @@ import openai
 class LocalSingleAgentScript:
     def __init__(self):
 
-        local_path = "../../../models/gpt4all-falcon-q4_0.gguf"  
+        local_path = "/models/gpt4all-falcon-q4_0.gguf"  
 
-        # Callbacks support token-wise streaming
         callbacks = [StreamingStdOutCallbackHandler()]
 
-        # Verbose is required to pass to the callback manager
         self.llm = GPT4All(model=local_path, callbacks=callbacks, max_tokens=1024)
         self.memeory = ConversationBufferMemory(memory_key="chat_history")
 
@@ -110,7 +108,7 @@ class OpenAISingleAgentScript():
         """
 
         response = openai.ChatCompletion.create(
-            model="gpt-4",  # Assuming you are using GPT-4
+            model="gpt-3.5-turbo", 
             messages=[{"role": "system", "content": brain_storming_template}]
         )
         return response.choices[0].message['content']
@@ -156,4 +154,10 @@ class OpenAISingleAgentScript():
 
         full_text = para1 + para2 + para3
         return full_text
-    
+
+"""
+
+if __name__ == "__main__" :
+    model = OpenAISingleAgentScript("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")
+    print(model.run("AI", "topics"))
+"""
