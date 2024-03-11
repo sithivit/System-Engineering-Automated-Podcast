@@ -5,17 +5,23 @@ from langchain_community.llms import GPT4All
 from langchain.prompts import PromptTemplate
 from documentParser.rag_utils import similarity_search
 import os
+import sys
 import openai
+
+from ..audioGen import TextToSpeech
 
 class LocalSingleAgentScript:
     def __init__(self):
 
-        local_path = "/models/gpt4all-falcon-q4_0.gguf"  
+        # local_path = "/models/gpt4all-falcon-q4_0.gguf"  
+        local_path = os.getcwd()+"\\scripts\\scriptGen\\models\\mistral-7b-openorca.gguf2.Q4_0.gguf"
 
         callbacks = [StreamingStdOutCallbackHandler()]
 
         self.llm = GPT4All(model=local_path, callbacks=callbacks, max_tokens=1024)
         self.memeory = ConversationBufferMemory(memory_key="chat_history")
+
+        self.tts = TextToSpeech
 
 
     def enrich_brainstorm_with_rag(self, specific_topics):
@@ -108,7 +114,7 @@ class OpenAISingleAgentScript():
         """
 
         response = openai.ChatCompletion.create(
-            model="gpt-3.5-turbo", 
+            model="gpt-3.5-turbo-0125", 
             messages=[{"role": "system", "content": brain_storming_template}]
         )
         return response.choices[0].message['content']
@@ -119,7 +125,7 @@ class OpenAISingleAgentScript():
         """
 
         response = openai.ChatCompletion.create(
-            model="gpt-4",
+            model="gpt-3.5-turbo-0125",
             messages=[{"role": "system", "content": template}]
         )
 
@@ -138,7 +144,7 @@ class OpenAISingleAgentScript():
         """
 
         response = openai.ChatCompletion.create(
-            model="gpt-4",
+            model="gpt-3.5-turbo-0125",
             messages=[{"role": "system", "content": template}]
         )
 
@@ -155,9 +161,22 @@ class OpenAISingleAgentScript():
         full_text = para1 + para2 + para3
         return full_text
 
-"""
-
 if __name__ == "__main__" :
-    model = OpenAISingleAgentScript("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")
-    print(model.run("AI", "topics"))
-"""
+
+    args= sys.argv[1:]
+
+    title = args[0]
+    keywords = args[1]
+    local = args[2]
+    api = ''
+
+    if local == 'false':
+        api = str(args[3])
+        model = OpenAISingleAgentScript(api)
+        print(model.run(title, keywords))
+        # text = model.run(title, keywords)
+        # TextToSpeech.main(text)
+
+    else:
+        model = LocalSingleAgentScript()
+        print(model.run(title, keywords))

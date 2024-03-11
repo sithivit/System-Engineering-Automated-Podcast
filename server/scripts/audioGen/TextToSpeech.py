@@ -10,7 +10,6 @@ import time
 from elevenlabs.api.error import APIError
 from elevenlabs import generate
 
-
 #Setup
 authenticator = IAMAuthenticator(apikey)
 tts = TextToSpeechV1(authenticator=authenticator)
@@ -37,7 +36,7 @@ voice_dict = {
 }
 
 # Example usage
-text = """
+text_1 = """
 Host: Hello, I am your host. My name is Joe.
 
 Guest: Hi, I am the guest. I am James!
@@ -123,14 +122,13 @@ def analyze_sentiment(text):
     else:
         return "Neutral"
 
-def getAudioFile(script, host_voice_number, guest_voice_number):
-    host_voice, guest_voice = voice_choice('Host', host_voice_number), voice_choice('Guest', guest_voice_number)
-    duo_podcast(script, host_voice, guest_voice)
-    merge_audio_files()
-    add_music_based_on_sentiment("final_speech.mp3", analyze_sentiment(script))
+# def getAudioFile(script, host_voice_number, guest_voice_number):
+#     host_voice, guest_voice = voice_choice('Host', host_voice_number), voice_choice('Guest', guest_voice_number)
+#     duo_podcast(script, host_voice, guest_voice)
+#     merge_audio_files()
+#     add_music_based_on_sentiment("final_speech.mp3", analyze_sentiment(script))
 
-"""
-def main():
+def get_audio_file(text):
     change_voices = str(input(("Would you like to choose the voices for the host and the guest? Enter 'Yes' or 'No': "))).capitalize()
     while change_voices not in ["Yes", "No"]:
         print(change_voices)
@@ -150,8 +148,7 @@ def main():
     sentiment = analyze_sentiment(text)
     add_music_based_on_sentiment("final_speech.mp3", sentiment)
 
-
-if __name__ == '__main__':
-    main()
-"""
+# if __name__ == '__main__':
+#     text = 'example script text'
+#     get_audio_file(text)
 
