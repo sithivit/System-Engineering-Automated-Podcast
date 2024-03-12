@@ -5,7 +5,7 @@ const { exec } = require("child_process");
 
 // Display list of all episodes.
 exports.episode_list = asyncHandler(async (req, res, next) => {
-    const allEpisodes = await Episode.find({}, "title description")
+    const allEpisodes = await Episode.find({}, "title description audio")
         .sort({ title: 1 })
         .exec();
 

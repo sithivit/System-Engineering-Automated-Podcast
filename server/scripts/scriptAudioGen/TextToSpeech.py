@@ -30,17 +30,7 @@ voice_dict = {
     6: {'name': 'Charlotte', 'code': 'en-GB_CharlotteV3Voice', 'description': 'Female, British'},
     7: {'name': 'James', 'code': 'en-GB_James_3Voice', 'description': 'Male, British'},
     8: {'name': 'Kate', 'code': 'en-GB_KateV3Voice', 'description': 'Female, British'},
-    9: {'name': 'Joe Rogan', 'code': 'BkUZzkMAAPP1NeOSx3Gz', 'description': 'Joe Rogan, American'},    #SFqBacV9QmTgExZ0UzU4
-    10: {'name': 'Rowan Atkinson', 'code': '63QpnmWLWLkcsADaIjJL', 'description': 'Rowan Atkinson, British'},
-    11: {'name': 'Lebron James', 'code': 'S7FPaLv9KoU8avlTGzdg', 'description': 'Lebron James, American'},
-    12: {'name': 'Elon Musk', 'code': 'WYq8XiuI3ZWCHlgYJyXd', 'description': 'Elon Musk, American'},
-    13: {'name': 'Dwayne Johnson', 'code': 'X6koFsdijBDKfhLTEoej', 'description': 'Dwayne Johnson, American'},
-    14: {'name': 'Mark Zuckerberg', 'code': 'YC1myRnOQZlmLW2UCmdS', 'description': 'Mark Zuckerberg, American'},
-    15: {'name': 'Steve Jobs', 'code': 'gXIAlgQovuFD9m9tkI3i', 'description': 'Steve Jobs, American'},
-    16: {'name': 'Leonardo DiCaprio', 'code': 'keIYVYqLXT1lmkzMY8Ck', 'description': 'Leonardo DiCaprio, American'},
-    17: {'name': 'Tom Holland', 'code': 'zU7OYQgpIH2kTwJbxAMi', 'description': 'Tom Holland, British'},
-
-
+    9: {'name': 'Joe Rogan', 'code': 'WYq8XiuI3ZWCHlgYJyXd', 'description': 'Joe Rogan, American'}, #SFqBacV9QmTgExZ0UzU4
     #10: {'name': 'AT', 'code': 'gJIoR7EUWm3sBsEIIFEr', 'description': 'at, American'}
     # Add more voices as needed
 }
@@ -60,30 +50,16 @@ Host: Let's talk about your career!
 """
 
 
-# def voice_choice(person, number):
-#     if number in range(10):
-#         print(f"Available {person} Voices:")
-#         for key, voice_info in voice_dict.items():
-#             print(f"{key}: {voice_info['name']} - {voice_info['description']}")
-#
-#         selected_voice = voice_dict[number]['code']
-#         return selected_voice
-#     else:
-#         NotImplementedError
+def voice_choice(person, number):
+    if number in range(10):
+        print(f"Available {person} Voices:")
+        for key, voice_info in voice_dict.items():
+            print(f"{key}: {voice_info['name']} - {voice_info['description']}")
 
-def voice_choice(person):
-    print(f"Available {person} Voices:")
-    for key, voice_info in voice_dict.items():
-        print(f"{key}: {voice_info['name']} - {voice_info['description']}")
-
-    choice = int(input(f"Choose the {person} voice by entering the corresponding number: "))
-
-    if choice not in voice_dict:
-        print("Invalid choice. Please enter a valid number.")
-        choice = voice_choice(person)
-
-    selected_voice = voice_dict[choice]['code']
-    return selected_voice
+        selected_voice = voice_dict[number]['code']
+        return selected_voice
+    else:
+        NotImplementedError
 
 
 def duo_podcast(text, host_voice, guest_voice):
@@ -155,7 +131,8 @@ def analyze_sentiment(text):
 #     add_music_based_on_sentiment("final_speech.mp3", analyze_sentiment(script))
 
 def get_audio_file(text):
-    change_voices = str(input(("Would you like to choose the voices for the host and the guest? Enter 'Yes' or 'No': "))).capitalize()
+    # change_voices = str(input(("Would you like to choose the voices for the host and the guest? Enter 'Yes' or 'No': "))).capitalize()
+    change_voices = "No"
     while change_voices not in ["Yes", "No"]:
         print(change_voices)
         change_voices = str(input(
@@ -174,7 +151,7 @@ def get_audio_file(text):
     sentiment = analyze_sentiment(text)
     add_music_based_on_sentiment("final_speech.mp3", sentiment)
 
-if __name__ == '__main__':
-    # text = 'example script text'
-    get_audio_file(text_1)
+# if __name__ == '__main__':
+#     text = 'example script text'
+#     get_audio_file(text)
 

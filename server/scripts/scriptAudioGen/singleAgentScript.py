@@ -8,7 +8,8 @@ import os
 import sys
 import openai
 
-from ..audioGen import TextToSpeech
+import TextToSpeech
+import uploadSpeech
 
 class LocalSingleAgentScript:
     def __init__(self):
@@ -171,12 +172,16 @@ if __name__ == "__main__" :
     api = ''
 
     if local == 'false':
-        api = str(args[3])
-        model = OpenAISingleAgentScript(api)
-        print(model.run(title, keywords))
+        # api = str(args[3])
+        # model = OpenAISingleAgentScript(api)
         # text = model.run(title, keywords)
-        # TextToSpeech.main(text)
+        text = "example text"
+        # print(text)
 
     else:
         model = LocalSingleAgentScript()
         print(model.run(title, keywords))
+
+    TextToSpeech.get_audio_file(text)
+    
+    # uploadSpeech.run(title)
