@@ -9,6 +9,7 @@
 .pnp.js
 /server/scripts/scriptAudioGen/models
 /server/scripts/scriptAudioGen/__pycache__
+/server/scripts/scriptAudioGen/documentParser/__pycache__
 
 # testing
 /coverage
