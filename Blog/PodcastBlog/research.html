@@ -147,7 +147,9 @@
           <h1>Research</h1>
         </div>
           <div class="col-lg-12 d-flex flex-column justify-content-center pt-6 pt-lg-0 order-2 order-lg-1" data-aos="fade-up" data-aos-delay="200">
-            <h2>We had ...</h2>
+            <h2>Having identified the project requirements, our next step involved an in-depth exploration of similar projects.
+              This research not only helped us identify essential features but also showed us ways to learn and improve.
+            </h2>
           </div>
       </div>
     </div>
@@ -225,22 +227,62 @@
 
     <div class="section-title text-center">
       <h2>Technology Research</h2>
-        <p>We have also used a number of technologies such as...</p>
+        <p>We had a lot of decisions to make when it came to the technologies that our podcast would use, hence we
+        had done an in-depth research about as many technologies as we could.</p>
     </div>
 
     <div class="faq-list">
       <ul>
+
         <li data-aos="fade-up" data-aos-delay="100">
-          <a data-bs-toggle="collapse" class="collapse" data-bs-target="#faq-list-1">Script Generation<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+          <a data-bs-toggle="collapse" class="collapse" data-bs-target="#faq-list-1">Programming Language<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
           <div id="faq-list-1" class="collapse show" data-bs-parent=".faq-list">
+            <p>We opted for Python as our programming language because it is one of the most common languages, thus it would be easier
+                to get help with and all three team members were already comfortable and familiar with it prior to the project.
+                Also, it has a lot of extensive libraries and using APIs in our project was another key element, which python
+              would help us with.</p>
+          </div>
+        </li>
+
+        <li data-aos="fade-up" data-aos-delay="100">
+          <a data-bs-toggle="collapse" class="collapse" data-bs-target="#faq-list-2">Script Generation<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+          <div id="faq-list-2" class="collapse show" data-bs-parent=".faq-list">
             <p>Script generation inlcludes..</p>
           </div>
         </li>
 
         <li data-aos="fade-up" data-aos-delay="100">
-          <a data-bs-toggle="collapse" class="collapse" data-bs-target="#faq-list-2">Text to Speech Generation<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
-          <div id="faq-list-2" class="collapse show" data-bs-parent=".faq-list">
-            <p>Text-to-Speech(TTS) generation inlcludes..</p>
+          <a data-bs-toggle="collapse" class="collapse" data-bs-target="#faq-list-3">Audio Generation<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+          <div id="faq-list-3" class="collapse show" data-bs-parent=".faq-list">
+            <p>We evaluated several technologies when it came to audio generation, each with its own strengths and weaknesses. Our goal
+                was to select the ones tailored specifically to our project's objectives. </p>
+            <p class="section-title">Text To Speech</p>
+            <p>Initially, we needed to determine our Text-to-Speech tool. Some platforms provided pre-existing voices with various
+              specifications (e.g., Male, American or Female, Australian), while others allowed voice cloning [1]. After considering
+              the options, we opted for IBM Watson for its pre-made voices due to its high accuracy, quality voices, reliable algorithms
+              (e.g., processing human speech), and future-ready features such as integration with Watson Assistant and multilingualism[3].
+              Regarding voice-cloning, ElevenLabs emerged as our choice for its instant voice cloning capabilities and cost-effectiveness
+              compared to alternatives. Although PlayHT was considered, given its usage by PodcastAI, a thorough comparison with ElevenLabs
+              revealed its diminished functionality and quality, coupled with a higher cost.</p>
+            <p class="section-title">Audio Processing</p>
+            <p>We then needed to figure out the audio proccesing part, including merging files together,
+            adding music, cutting, etc. A crucial requirement for us was the tool's capability to import and export mp3 files,
+            rather than solely playing the sound within Python. Considering that many Python libraries offer similar audio processing functionalities,
+            so we decided to choose pydub as it seemed to cover our needs, while also being easy to use[4].</p>
+            <p class="section-title">Sentiment Analysis</p>
+            <p>Also, we needed a tool or a library to analyse the mood of our script to then select the appropriate music. Similarly to audio
+            processing, the sentiment analysis libraries offered similar features[5], at least for the functions we required (accurately analysing the text sentiment).
+            Therefore, we selected textblob as it was a library we were already familiar with and hence knew how to use effectively.</p>
+            <p class="section-title">Music</p>
+            <p>In the final phase, we required a selection of at least 3 different themed soundtracks with positive, negative or a neutral mood. The decision was made
+            to use YouTube Audio library as the platform is copyright free, fairly rich, and it is easy to find the soundtracks needed by using the 'mood' filter tab.</p>
+          </div>
+        </li>
+
+        <li data-aos="fade-up" data-aos-delay="100">
+          <a data-bs-toggle="collapse" class="collapse" data-bs-target="#faq-list-4">Video Generation<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+          <div id="faq-list-4" class="collapse show" data-bs-parent=".faq-list">
+            <p>Video generation inlcludes..</p>
           </div>
         </li>
       </ul>
@@ -261,10 +303,14 @@
 
         <div class="row content">
           <div class="col-lg-12">
-            <p>
-              We had a number of potential solutions
-            </p>
-            <p>Also, ...</p>
+            <div class="text-center">
+              <h2>Summary</h2>
+              <p>In short, we ..</p>
+            </div>
+
+
+
+
 
       </div>
 
