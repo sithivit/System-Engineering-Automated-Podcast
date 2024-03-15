@@ -233,70 +233,66 @@
 
 
 
-    <!-- ======= Portfolio Section ======= -->
+<!-- ======= Portfolio Section ======= -->
 <section id="req_gathering" class="req_gathering">
   <div class="container" data-aos="fade-up">
 
     <div class="section-title">
       <h2>Requirement Gathering</h2>
-      <p>In order to gather the requirements, we conducted 2 interviews: one with Alex (Podcast Listener) and one
-            with Joe(Podcast Creator)</p>
+      <p>In order to gather the requirements, we conducted 2 interviews: one with Alex (Podcast Listener) and one with Joe (Podcast Creator)</p>
     </div>
 
-    <ul id="portfolio-flters" class="d-flex justify-content-center" data-aos="fade-up" data-aos-delay="100">
-<!--      <li data-filter="*" class="filter-active">All<-->
-      <li data-filter=".filter-1" class="filter-active">Interview 1 (Steve)</li>
-      <li data-filter=".filter-2">Interview 2 (Joe)</li>
-    </ul>
+    <div class="row" data-aos="fade-up" data-aos-delay="200">
 
-    <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
-
-      <div class="col-lg-4 col-md-6 portfolio-item filter-1 text-center" style="display: none;">
-        <div class="portfolio-img"><img src="assets/img/Interview1.png" class="img-fluid" alt=""></div>
+      <div class="col-lg-6 text-center">
+        <div class="img"><img src="assets/img/Interview1.png" class="img-fluid" alt="Interview 1 (Alex)"></div>
+        <h3>Interview 1 (Alex)</h3>
       </div>
 
-      <div class="col-lg-4 col-md-6 portfolio-item filter-2 text-center" style="display: none;">
-        <div class="portfolio-img"><img src="assets/img/Interview2.png" class="img-fluid" alt=""></div>
+      <div class="col-lg-6 text-center">
+        <div class="img"><img src="assets/img/Interview2.png" class="img-fluid" alt="Interview 2 (Joe)"></div>
+        <h3>Interview 2 (Joe)</h3>
       </div>
+
+      <p>Alex's main points were...</p>
     </div>
   </div>
 </section><!-- End Requirement Gathering Section -->
 
 
-<!-- ======= Portfolio Section ======= -->
-<section id="personas" class="portfolio section-bg">
+
+<!-- ======= Personas Section ======= -->
+<section id="personas" class="personas section-bg">
   <div class="container" data-aos="fade-up">
 
     <div class="section-title">
       <h2>Personas</h2>
-      <p>After conducting the interviews, we created 2 personas and scenarios for our potential users just so we can
-            have a deeper understanding of their wants and needs.</p>
+      <p>After conducting the interviews, we created 2 personas and scenarios for our potential users just so we can have a deeper understanding of their wants and needs.</p>
     </div>
 
-    <ul id="portfolio-flters" class="d-flex justify-content-center" data-aos="fade-up" data-aos-delay="100">
-<!--      <li data-filter="*" class="filter-active">All<-->
-      <li data-filter=".filter-3" class="filter-active">Persona 1 (Steve)</li>
-      <li data-filter=".filter-4">Persona 2 (Joe)</li>
-    </ul>
+    <div class="row" data-aos="fade-up" data-aos-delay="200">
 
-    <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
-
-      <div class="col-lg-4 col-md-6 portfolio-item filter-3" style="display: none;">
-        <div class="portfolio-img"><img src="assets/img/Persona1.png" class="img-fluid" alt=""></div>
+      <div class="col-lg-6 text-center">
+        <div class="img"><img src="assets/img/Persona1.png" class="img-fluid" alt="Persona 1 (Alex)"></div>
+        <h3>Persona 1 (Alex)</h3>
       </div>
 
-      <div class="col-lg-4 col-md-6 portfolio-item filter-4" style="display: none;">
-        <div class="portfolio-img"><img src="assets/img/Persona2.png" class="img-fluid" alt=""></div>
+      <div class="col-lg-6 text-center">
+        <div class="img"><img src="assets/img/Persona2.png" class="img-fluid" alt="Persona 2 (Joe)"></div>
+        <h3>Persona 2 (Joe)</h3>
       </div>
+
+      <p>Alex's main points were...</p>
     </div>
   </div>
 </section>
-<!-- End Portfolio Section -->
+<!-- End Personas Section -->
 
 
 
-    <!-- ======= MoSCoW Requirements Section ======= -->
-<section id="mscw" class="mscw">
+
+<!-- ======= MoSCoW Requirements Section ======= -->
+<section id="mscw" class="apis">
   <div class="container" data-aos="fade-up">
 
     <div class="section-title">
@@ -308,49 +304,53 @@
     <div class="faq-list">
       <ul>
         <li data-aos="fade-up" data-aos-delay="100">
-          <a data-bs-toggle="collapse" class="collapse" data-bs-target="#faq-list-musts">MUSTs <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
-          <div id="faq-list-musts" class="collapse show" data-bs-parent=".faq-list">
-            <p>Use of appropriate music (intro, outro)</p>
-            <p>Podcast Structure (intros, greetings, meaningful filtered information)</p>
-            <p>Text to Speech (generate text based on a topic or description and then use text to speech tool, eg ElevenLabs)</p>
-            <p>Functioning and not overloading UI (easy to use and navigate)</p>
-            <p>Interactive elements for episodes (play, forward, volume etc buttons)</p>
-            <p>Implement a scheme where a recent video (or article) can be transcribed to create a new episode on the topic of that source</p>
+          <a data-bs-toggle="collapse" class="collapsed" data-bs-target="#faq-list-1">MUSTs <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+          <div id="faq-list-1" class="collapse" data-bs-parent=".faq-list">
+            <p>Use appropriate music (music for intro, outro, etc.).</p>
+            <p>Create a podcast structure (have intros, greetings, with meaningful filtered information).</p>
+            <p>Convert text to speech (generate text based on a topic or description and then use the text to speech tool)
+              to generate audio, eg use ElevenLabs for text-to-speech conversion).</p>
+            <p>Implement interactive elements for episodes (create play/forward/volume buttons).</p>
+            <p>Implement a scheme where (an article or any other pdf) can be transcribed to create a new episode on the topic of that source.</p>
           </div>
         </li>
 
         <li data-aos="fade-up" data-aos-delay="100">
-          <a data-bs-toggle="collapse" class="collapse" data-bs-target="#faq-list-shoulds">SHOULDs <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
-          <div id="faq-list-shoulds" class="collapse show" data-bs-parent=".faq-list">
-            <p>Detailed episode descriptions</p>
-            <p>Suggestions on topics (users could type a topic that they would like an episode to cover)</p>
-            <p>User Accounts (for recommendations. Users can have existing episodes recommended to them based on what they have liked and listened to)</p>
-            <p>Help Page (explaining how to navigate the tool)</p>
-            <p>Episodes Search (Based on keyword or types)</p>
-            <p>Transcriptions and translations</p>
-            <p>Diverse range of guests and topics</p>
-            <p>Simulations of interviews with historical figures</p>
-            <p>Saved episodes feature</p>
+          <a data-bs-toggle="collapse" class="collapsed" data-bs-target="#faq-list-2">SHOULDs <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+          <div id="faq-list-2" class="collapse" data-bs-parent=".faq-list">
+            <p>Create detailed episode descriptions.</p>
+            <p>Add user suggestions on topics (users could type a topic that they would like an episode to cover).
+            We’ll have a box in which users can enter their preferences and the future episodes will be about these themes. </p>
+            <p>Create user Accounts (for recommendations. Users can have existing episodes recommended to them based on
+              what they have liked and already listened to).</p>
+            <p>Add a help page (which explains how to navigate the tool).</p>
+            <p>Create an episodes search (Based on the keywords or the name).</p>
+            <p>Add transcriptions and translations.</p>
+            <p>Have a diverse range of guests and topics.</p>
+            <p>Simulate interviews with historical figures.</p>
+            <p>Implement a 'saved' feature (to which users can add episodes they like).</p>
           </div>
         </li>
 
         <li data-aos="fade-up" data-aos-delay="100">
-          <a data-bs-toggle="collapse" class="collapse" data-bs-target="#faq-list-coulds">COULDs <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
-          <div id="faq-list-coulds" class="collapse show" data-bs-parent=".faq-list">
-            <p>Comedic elements in the episodes (the user can select the style of the episode whether its comedic, formal, entertaining etc)</p>
-            <p>Use of relevant stats or graphics (eg if the episode covers a recent sport match, there can be a relevant graph to show some interesting data)</p>
-            <p>Immersive 3d audio</p>
-            <p>Light/Dark mode</p>
-            <p>Download Episodes</p>
-            <p>Share options</p>
+          <a data-bs-toggle="collapse" class="collapsed" data-bs-target="#faq-list-3">COULDs <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+          <div id="faq-list-3" class="collapse" data-bs-parent=".faq-list">
+            <p>Add comedic elements in the episodes (the user can select the style of the episode whether its comedic,
+              formal, entertaining, etc).</p>
+            <p>Use relevant stats or graphics (eg if the episode covers a recent sport match, there can be a relevant
+              graph to show some interesting data).</p>
+            <p>Implement immersive 3d audio.</p>
+            <p>Add Light/Dark modes.</p>
+            <p>Allow users to download episodes.</p>
+            <p>Add share options.</p>
           </div>
         </li>
 
         <li data-aos="fade-up" data-aos-delay="100">
-          <a data-bs-toggle="collapse" class="collapse" data-bs-target="#faq-list-wonthaves">WONT'HAVEs <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
-          <div id="faq-list-wonthaves" class="collapse show" data-bs-parent=".faq-list">
-            <p>Augmented Reality</p>
-            <p>Website Translation</p>
+          <a data-bs-toggle="collapse" class="collapsed" data-bs-target="#faq-list-4">WONT'HAVEs <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+          <div id="faq-list-4" class="collapse" data-bs-parent=".faq-list">
+            <p>Implement augmented reality.</p>
+            <p>Translate the website to other languages.</p>
           </div>
         </li>
 
@@ -358,7 +358,9 @@
     </div>
 
   </div>
-</section><!-- End Moscow Requirements List Section -->
+</section><!-- End MoSCoW Requirements Section -->
+
+
 
 
 

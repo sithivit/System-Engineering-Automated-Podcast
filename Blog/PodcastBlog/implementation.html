@@ -177,7 +177,7 @@
 
 
   <!-- ======= Dependencies Section ======= -->
-<section id="dependencies" class="dependencies">
+<section id="dependencies" class="dependencies section-bg">
   <div class="container" data-aos="fade-up">
 
     <div class="section-title">
@@ -298,7 +298,7 @@
 </section><!-- End Tools Section -->
 
     <!-- ======= Script Generation Section ======= -->
-<section id="script" class="video section-bg">
+<section id="script" class="video">
   <div class="container" data-aos="fade-up">
 
     <div class="section-title text-center">
@@ -310,7 +310,7 @@
 <!--      <div class="col-lg-12 d-flex flex-column justify-content-center align-items-center">-->
       <div class="col-lg-12">
         <p>
-          The script generatios works as follows:...
+          The script generation works as follows:...
         </p>
       </div>
     </div>
@@ -319,7 +319,7 @@
 
 
     <!-- ======= Audio Generation Section ======= -->
-<section id="audio" class="audio">
+<section id="audio" class="audio section-bg">
   <div class="container" data-aos="fade-up">
 
     <div class="section-title text-center">
@@ -384,11 +384,12 @@
 </section><!-- End Audio Generation Section -->
 
     <!-- ======= Video Generation Section ======= -->
-<section id="video" class="video section-bg">
+<section id="video" class="video">
   <div class="container" data-aos="fade-up">
 
     <div class="section-title text-center">
       <h2>Video Generation</h2>
+      <p>The video generation works as follows:</p>
     </div>
 
     <div class="row">
@@ -396,8 +397,70 @@
 <!--      <div class="col-lg-12 d-flex flex-column justify-content-center align-items-center">-->
       <div class="col-lg-12">
         <p>
-          The video generation works as follows:...
+          To begin with, an image needs to be generated to be displayed throughout the video. There are two ways it
+          can be generated. The first one is: the function called generate_image gets executed with the text variable
+          (that contains the script generated) as a parameter. Then, it activates another function called extract_keywords
+          to retrieve 7 keywords (we discovered it works well with 7 keywords; but it can be changed to a different number;).
+          All the function does is it tokenises words (splits the text into individual words), then gets rid of the
+          stopwords (such as 'the', 'a', 'and'; words that do not contribute to the meaning of the text) and counts
+          the number of times each word appears to determine the 7 most common words in the text; they become keywords.
         </p>
+
+        <div class="row">
+          <div class="col-lg-12 text-center">
+            <img src="assets/img/code/video/Code1.png" alt="Image 1">
+            <figcaption class="image2-label">Identifying Keywords of Script</figcaption>
+          </div>
+        </div>
+
+        <p>Then, the function generate_image makes use of the keywords inside the prompt, providing StabilityAI with
+        the details of the image desired. Once it receives the image, it checks if the HTTP response is successful (status code 200),
+        extracts image data from the response JSON (json converts http responses into pytthon dictionaries that can be accessed
+        within python), and saves it as a PNG file named "text_to_image.png" in the current directory. However, if the response is not successful
+        , it raises an exception.</p>
+
+        <div class="row">
+          <div class="col-lg-6 text-center">
+            <img src="assets/img/code/video/Code3.png" alt="Image 2">
+            <figcaption>Sending a prompt</figcaption>
+          </div>
+          <div class="col-lg-6 text-center">
+            <img src="assets/img/code/video/Code2.png" alt="Image 3">
+            <figcaption class="image3-label">Checking for errors and naming the image</figcaption>
+          </div>
+        </div>
+
+        <p>A different, more simple approach, includes randomly selecting an image from a folder with pre-made pictures.
+        It starts with determining a file path of image (that's going to be used) by applying a very intuitive function called
+        choose_image, which randomly selects a number between 1 and 50 and the image with this number gets chosen.
+        </p>
+
+        <div class="row">
+          <div class="col-lg-6 text-center">
+            <img src="assets/img/code/video/Code4.png" alt="Image 4">
+            <figcaption class="image4-label">Choosing a random image</figcaption>
+          </div>
+
+          <div class="col-lg-6 text-center">
+            <img src="assets/img/code/video/Code6.png" alt="Image 5">
+            <figcaption>Pre-made images</figcaption>
+          </div>
+        </div>
+
+        <p>Once we get an image, the process of creating a video out of it begins. Firstly, it loads an image from the
+        specified path using the PIL library. After that, it converts this image into a NumPy array for more efficient
+        manipulation and processing of the image data. Then, the code determines the length of the audio clip and
+        creates a video clip with a static image, using the image array as the frame generator function and setting the
+        duration of the video to match the audio duration. Finally, it combines the video clip with the audio clip to
+          create the final video and writes it to an MP4 file with specified codecs, frame rate, and threading options.</p>
+
+        <div class="row">
+          <div class="col-lg-12 text-center">
+            <img src="assets/img/code/video/Code5.png" alt="Image 6">
+            <figcaption>Creating video clip.</figcaption>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
@@ -406,7 +469,7 @@
 
 
 <!-- ======= Clients Section ======= -->
-<section id="clients" class="clients">
+<section id="clients" class="clients section-bg">
   <div class="container">
 
     <div class="row justify-content-center" data-aos="zoom-in">
