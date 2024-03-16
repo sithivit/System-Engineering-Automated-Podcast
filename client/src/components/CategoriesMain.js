@@ -14,7 +14,7 @@ export default class CategoriesMain extends React.Component {
     }
 
     componentDidMount() {
-        axios.get(`http://localhost:3001/episodes`)
+        axios.get(`/episodes`)
             .then(res => {
                 const episodes = res.data;
                 this.setState({ episodes });

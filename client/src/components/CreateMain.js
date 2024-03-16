@@ -56,7 +56,7 @@ export default class CreateMain extends React.Component {
     _handleSubmit(event) {
         event.preventDefault();
 
-        axios.post('http://localhost:3001/episodes/generate/', {
+        axios.post('/episodes/generate/', {
             title: this.state.title,
             description: this.state.description,
             keywords: this.state.keywords,
