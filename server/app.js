@@ -4,6 +4,8 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 // const cors = require('cors');
+const mongoose = require("mongoose");
+require('dotenv').config();
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
@@ -11,16 +13,12 @@ const episodeRouter = require('./routes/episodes');
 
 const app = express();
 
-// Set up mongoose connection
-const mongoose = require("mongoose");
-mongoose.set("strictQuery", false);
-// const mongoDB = "mongodb://localhost:27017";
-const mongoDB = "mongodb+srv://team2:gSbSMx9UfrLg70ng@cluster0.bw9vipj.mongodb.net/podcastdb?retryWrites=true&w=majority";
-
-main().catch((err) => console.log(err));
+// Mongoose connection to Cosmos DB
+const connection_uri = `mongodb://${process.env.COSMOSDB_USER}:${process.env.COSMOSDB_PASSWORD}@${process.env.COSMOSDB_HOST}:${process.env.COSMOSDB_PORT}/${process.env.COSMOSDB_DBNAME}?${process.env.COSMOSDB_ARGS}`;
 async function main() {
-  await mongoose.connect(mongoDB);
+  await mongoose.connect(connection_uri);
 }
+main().catch((err) => console.log(err));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
