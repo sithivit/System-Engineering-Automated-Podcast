@@ -1,0 +1,8 @@
+{
+    "appService.zipIgnorePattern": [
+        "node_modules{,/**}",
+        ".vscode{,/**}"
+    ],
+    "appService.defaultWebAppToDeploy": "/subscriptions/60f40cd4-bf06-487b-9f44-8c28c95d6aee/resourceGroups/AIPodcast_group/providers/Microsoft.Web/sites/AIPodcast",
+    "appService.deploySubpath": "server"
+}

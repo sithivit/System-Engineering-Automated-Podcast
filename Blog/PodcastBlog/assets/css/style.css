@@ -740,14 +740,6 @@ section {
   text-align: center;
 }
 
-.project_bg .row {
-  margin-top: 30px;
-}
-
-.project_bg .col-lg-6 {
-  width: 50%;
-}
-
 .project_bg ul {
   list-style: none;
   padding: 0;
@@ -772,6 +764,14 @@ section {
   height: auto;
   margin-top: 20px;
 }
+
+.project_bg .enlarged-img {
+  width: 200%;
+  max-width: 1000px; /* Adjust the maximum width as needed */
+  height: auto;
+  margin-top: 20px;
+}
+
 
 .project_bg figcaption {
   font-size: 14px;
@@ -800,6 +800,7 @@ section {
     width: 100%;
   }
 }
+
 
 
 /* ======= Technology Research Section ======= */
@@ -910,11 +911,40 @@ section {
   margin-bottom: 30px;
 }
 
-.tech-decisions .content p {
+.tech-decisions .section-title p {
   font-size: 16px;
-  line-height: 1.6;
   color: #556877;
-  text-align: justify;
+  line-height: 1.6;
+  text-align: center;
+}
+
+.tech-decisions table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 30px;
+  border: 2px solid #000; /* Increased border thickness */
+}
+
+.tech-decisions th,
+.tech-decisions td {
+  padding: 20px; /* Increased padding */
+  text-align: left;
+  border-bottom: 1px solid #000; /* Added border at the bottom of each row */
+  width: 50%;
+}
+
+.tech-decisions th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+  color: #37517e;
+}
+
+.tech-decisions tbody tr:hover {
+  background-color: #f2f2f2;
+}
+
+.tech-decisions tbody tr:nth-child(even) {
+  background-color: #e6f2ff; /* Slightly different color for even rows */
 }
 
 @media (max-width: 768px) {
@@ -922,6 +952,62 @@ section {
     padding: 30px 0;
   }
 }
+
+
+
+
+
+
+/* ======= References Section ======= */
+.references .container {
+  padding: 60px 0;
+}
+
+.references .section-title h2 {
+  font-weight: 700;
+  font-size: 32px;
+  color: #37517e;
+  font-family: "Poppins", sans-serif;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.references .row {
+  margin-top: 30px;
+}
+
+.references .col-lg-12 {
+  width: 100%;
+}
+
+.references ul {
+  list-style: none;
+  padding: 0;
+}
+
+.references ul li {
+  position: relative;
+  font-weight: 600;
+  font-family: "Poppins", sans-serif;
+  color: #37517e;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.references ul li a {
+  text-decoration: none;
+}
+
+.references ul li a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .references .container {
+    padding: 30px 0;
+  }
+}
+
 
 /* ======= Project Background Section ======= */
 .sketches .container {
@@ -950,6 +1036,11 @@ section {
   margin: 0 auto;
   max-width: 100%;
   height: auto;
+}
+
+/* Add the small-image class */
+.sketches .content .small-image {
+  max-width: 100%; /* Adjust the width as needed */
 }
 
 @media (max-width: 768px) {
@@ -1370,18 +1461,61 @@ section {
   margin-bottom: 30px;
 }
 
+.video .row {
+  margin-top: 30px;
+}
+
 .video .content p {
   font-size: 16px;
   color: #556877;
   line-height: 1.6;
-  text-align: center;
+  text-align: justify;
 }
+
+.video .text-center {
+  position: relative;
+}
+
+.video img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 35px; /* Increase the space between images and text */
+}
+
+.video figcaption {
+  position: absolute;
+  bottom: 2%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 14px; /* Adjust the font size as needed */
+  color: #8a8a8a; /* Change the color of the label */
+  margin-top: 15px; /* Adjust the space between label and image */
+}
+
+.video .text-center .image3-label {
+  position: absolute;
+  bottom: 30%; /* Adjust the bottom value as needed */
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 10px; /* Adjust the margin-top value as needed */
+  font-size: 14px; /* Adjust the font size of the label */
+  color: #8a8a8a; /* Change the color of the label */
+
+  .video .text-center .image4-label {
+  position: absolute;
+  bottom: 100%; /* Adjust the bottom value as needed */
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 10px; /* Adjust the margin-top value as needed */
+  font-size: 14px; /* Adjust the font size of the label */
+  color: #8a8a8a; /* Change the color of the label */
 
 @media (max-width: 768px) {
   .video .container {
     padding: 30px 0;
   }
 }
+
 
 
 
@@ -1865,90 +1999,6 @@ section {
   color: #47b2e4;
 }
 
-/* ======= Moscow Requirements List Section ======= */
-
-#mscw .container {
-  padding: 0 100px;
-}
-
-#mscw .faq-list ul {
-  padding: 0;
-  list-style: none;
-}
-
-#mscw .faq-list li+li {
-  margin-top: 15px;
-}
-
-#mscw .faq-list li {
-  padding: 20px;
-  background: #eee;
-  border-radius: 4px;
-  position: relative;
-}
-
-#mscw .faq-list a {
-  display: block;
-  position: relative;
-  font-family: "Poppins", sans-serif;
-  font-size: 16px;
-  line-height: 24px;
-  font-weight: 500;
-  padding: 0 30px;
-  outline: none;
-  cursor: pointer;
-  color: #37517e;
-  transition: 0.3s;
-}
-
-#mscw .faq-list .icon-help {
-  font-size: 24px;
-  position: absolute;
-  right: 0;
-  left: 20px;
-  color: #47b2e4;
-}
-
-#mscw .faq-list .icon-show,
-#mscw .faq-list .icon-close {
-  font-size: 24px;
-  position: absolute;
-  right: 0;
-  top: 0;
-}
-
-#mscw .faq-list p {
-  margin-bottom: 0;
-  padding: 10px 0 0 0;
-}
-
-#mscw .faq-list .icon-show {
-  display: none;
-}
-
-#mscw .faq-list a.collapsed {
-  color: #37517e;
-}
-
-#mscw .faq-list a.collapsed:hover {
-  color: #47b2e4;
-}
-
-#mscw .faq-list a.collapsed .icon-show {
-  display: inline-block;
-}
-
-#mscw .faq-list a.collapsed .icon-close {
-  display: none;
-}
-
-@media (max-width: 1200px) {
-  #mscw .container {
-    padding: 0;
-  }
-}
-
-
 
 /*--------------------------------------------------------------
 # Cta
@@ -2003,189 +2053,108 @@ section {
 }
 
 /* ======= Requirement Gathering Section ======= */
-.req_gathering #req_gathering-flters {
-  list-style: none;
-  margin-bottom: 20px;
+.req_gathering .container {
+  padding: 60px 0;
 }
 
-.req_gathering #portfolio-flters li {
-  cursor: pointer;
-  display: inline-block;
-  margin: 10px 5px;
-  font-size: 15px;
-  font-weight: 500;
-  line-height: 1;
-  color: #444444;
-  transition: all 0.3s;
-  padding: 8px 20px;
-  border-radius: 50px;
+.req_gathering .section-title h2 {
+  font-weight: 700;
+  font-size: 32px;
+  color: #37517e;
   font-family: "Poppins", sans-serif;
-}
-
-.req_gathering #portfolio-flters li:hover,
-.req_gathering #portfolio-flters li.filter-active {
-  background: #47b2e4;
-  color: #fff;
-}
-
-.req_gathering .portfolio-item {
+  text-align: center;
   margin-bottom: 30px;
 }
 
-.req_gathering .portfolio-item .portfolio-img {
-  overflow: hidden;
-}
-
-.req_gathering .portfolio-item .portfolio-img img {
-  transition: all 0.6s;
-}
-
-.req_gathering .portfolio-item .portfolio-info {
-  opacity: 0;
-  position: absolute;
-  left: 15px;
-  bottom: 0;
-  z-index: 3;
-  right: 15px;
-  transition: all 0.3s;
-  background: rgba(55, 81, 126, 0.8);
-  padding: 10px 15px;
-}
-
-.req_gathering .portfolio-item .portfolio-info h4 {
+.req_gathering p {
   font-size: 18px;
-  color: #fff;
-  font-weight: 600;
-  margin-bottom: 0px;
+  line-height: 1.6;
+  color: #37517e;
+  text-align: justify;
 }
 
-.req_gathering .portfolio-item .portfolio-info p {
-  color: #f9fcfe;
-  font-size: 14px;
-  margin-bottom: 0;
+.req_gathering  {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  margin-bottom: 15px;
 }
 
-.req_gathering .portfolio-item .portfolio-info .preview-link,
-.req_gathering .portfolio-item .portfolio-info .details-link {
-  position: absolute;
-  right: 40px;
+.req_gathering img {
+  width: 90%;
+  border-radius: 10px;
+  display: block;
+  margin: 0 auto;
+}
+
+.req_gathering h3 {
   font-size: 24px;
-  top: calc(50% - 18px);
-  color: #fff;
-  transition: 0.3s;
+  margin-bottom: 10px;
+  text-align: center;
 }
 
-.req_gathering .portfolio-item .portfolio-info .preview-link:hover,
-.req_gathering .portfolio-item .portfolio-info .details-link:hover {
-  color: #47b2e4;
+@media (max-width: 768px) {
+  .req_gathering .container {
+    padding: 30px 0;
+  }
 }
 
-.req_gathering .portfolio-item .portfolio-info .details-link {
-  right: 10px;
-}
-
-.req_gathering .portfolio-item:hover .portfolio-img img {
-  transform: scale(1.15);
-}
-
-.req_gathering .portfolio-item:hover .portfolio-info {
-  opacity: 1;
-}
 
 
 
 /*--------------------------------------------------------------
-# Portfolio
+# Personas
 --------------------------------------------------------------*/
-.portfolio #portfolio-flters {
+.personas #portfolio-flters {
   list-style: none;
   margin-bottom: 20px;
 }
 
-.portfolio #portfolio-flters li {
-  cursor: pointer;
+.personas #portfolio-flters li {
   display: inline-block;
   margin: 10px 5px;
   font-size: 15px;
   font-weight: 500;
   line-height: 1;
   color: #444444;
-  transition: all 0.3s;
   padding: 8px 20px;
   border-radius: 50px;
   font-family: "Poppins", sans-serif;
 }
 
-.portfolio #portfolio-flters li:hover,
-.portfolio #portfolio-flters li.filter-active {
+.personas #portfolio-flters li:hover,
+.personas #portfolio-flters li.filter-active {
   background: #47b2e4;
   color: #fff;
 }
 
-.portfolio .portfolio-item {
+.personas .portfolio-item {
   margin-bottom: 30px;
+  text-align: center; /* Center the image */
 }
 
-.portfolio .portfolio-item .portfolio-img {
+.personas .portfolio-item .portfolio-img {
   overflow: hidden;
+  display: flex; /* Use flexbox for centering */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
 }
 
-.portfolio .portfolio-item .portfolio-img img {
+.personas .portfolio-item .portfolio-img img {
   transition: all 0.6s;
+  max-width: 50%; /* Ensure the image does not exceed its container */
+  height: auto; /* Maintain aspect ratio */
 }
 
-.portfolio .portfolio-item .portfolio-info {
-  opacity: 0;
-  position: absolute;
-  left: 15px;
-  bottom: 0;
-  z-index: 3;
-  right: 15px;
-  transition: all 0.3s;
-  background: rgba(55, 81, 126, 0.8);
-  padding: 10px 15px;
+.personas .filter-4 .portfolio-img img {
+  transform: scale(1.8); /* Increase scale factor as desired */
 }
 
-.portfolio .portfolio-item .portfolio-info h4 {
-  font-size: 18px;
-  color: #fff;
-  font-weight: 600;
-  color: #fff;
-  margin-bottom: 0px;
-}
-
-.portfolio .portfolio-item .portfolio-info p {
-  color: #f9fcfe;
-  font-size: 14px;
-  margin-bottom: 0;
-}
-
-.portfolio .portfolio-item .portfolio-info .preview-link,
-.portfolio .portfolio-item .portfolio-info .details-link {
-  position: absolute;
-  right: 40px;
-  font-size: 24px;
-  top: calc(50% - 18px);
-  color: #fff;
-  transition: 0.3s;
-}
-
-.portfolio .portfolio-item .portfolio-info .preview-link:hover,
-.portfolio .portfolio-item .portfolio-info .details-link:hover {
-  color: #47b2e4;
-}
-
-.portfolio .portfolio-item .portfolio-info .details-link {
-  right: 10px;
-}
-
-.portfolio .portfolio-item:hover .portfolio-img img {
+.personas .portfolio-item:hover .portfolio-img img {
   transform: scale(1.15);
 }
 
-.portfolio .portfolio-item:hover .portfolio-info {
-  opacity: 1;
-}
+
 
 /*--------------------------------------------------------------
 # Portfolio Details
@@ -2252,103 +2221,82 @@ section {
   padding: 0;
 }
 
-/*--------------------------------------------------------------
-# Team
---------------------------------------------------------------*/
-.team .member {
-  position: relative;
-  box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
-  padding: 30px;
-  border-radius: 5px;
-  background: #fff;
-  transition: 0.5s;
-  height: 100%;
+.team .container {
+  padding: 60px 0;
 }
 
-.team .member .pic {
-  overflow: hidden;
-  width: 180px;
-  border-radius: 50%;
+.team .section-title {
+  text-align: center;
+  margin-bottom: 30px;
 }
 
-.team .member .pic img {
-  transition: ease-in-out 0.3s;
-}
-
-.team .member:hover {
-  transform: translateY(-10px);
-}
-
-.team .member .member-info {
-  padding-left: 30px;
-}
-
-.team .member h4 {
+.team .section-title h2 {
   font-weight: 700;
-  margin-bottom: 5px;
-  font-size: 20px;
+  font-size: 32px;
   color: #37517e;
+  font-family: "Poppins", sans-serif;
 }
 
-.team .member span {
-  display: block;
-  font-size: 15px;
-  padding-bottom: 10px;
-  position: relative;
-  font-weight: 500;
-}
-
-.team .member span::after {
-  content: "";
-  position: absolute;
-  display: block;
-  width: 50px;
-  height: 1px;
-  background: #cbd6e9;
-  bottom: 0;
-  left: 0;
-}
-
-.team .member p {
-  margin: 10px 0 0 0;
-  font-size: 14px;
-}
-
-.team .member .social {
-  margin-top: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-}
-
-.team .member .social a {
-  transition: ease-in-out 0.3s;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50px;
-  width: 32px;
-  height: 32px;
-  background: #eff2f8;
-}
-
-.team .member .social a i {
-  color: #37517e;
+.team .section-title p {
   font-size: 16px;
-  margin: 0 2px;
+  color: #556877;
+  line-height: 1.6;
+  text-align: center;
 }
 
-.team .member .social a:hover {
-  background: #47b2e4;
+.team .member {
+  text-align: center;
 }
 
-.team .member .social a:hover i {
+.team .pic img {
+  border-radius: 50%;
+  max-width: 100%;
+}
+
+.team .member-info h4 {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.team .member-info span {
+  display: block;
+  color: #556877;
+  margin-bottom: 10px;
+}
+
+.team .member-info p {
+  color: #556877;
+}
+
+.team .social {
+  margin-top: 20px;
+}
+
+.team .social a {
+  display: inline-block;
+  background-color: #37517e;
   color: #fff;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  border-radius: 50%;
+  margin-right: 5px;
+  transition: 0.3s;
 }
 
-.team .member .social a+a {
-  margin-left: 8px;
+.team .social a:hover {
+  background-color: #47b2e4;
 }
+
+
+@media (max-width: 768px) {
+  .team .container {
+    padding: 30px 0;
+  }
+}
+
 
 /*--------------------------------------------------------------
 # Pricing

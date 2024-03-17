@@ -9,7 +9,11 @@ import sys
 import openai
 
 import TextToSpeech
-import uploadSpeech
+# import uploadSpeech
+import TextToImage
+import GenerateVideo
+import time
+
 
 class LocalSingleAgentScript:
     def __init__(self):
@@ -184,7 +188,9 @@ if __name__ == "__main__" :
         # api = str(args[3])
         # model = OpenAISingleAgentScript(api)
         # text = model.run(title, keywords)
-        text = "example text"
+        text ="""
+[Intro] hey hey! this is (example text) a test, lets see if it works or not! Hello! i'm Joe.         
+        """
         # print(text)
 
     else:
@@ -192,5 +198,8 @@ if __name__ == "__main__" :
         print(model.run(title, keywords))
 
     TextToSpeech.get_audio_file(text)
+    TextToImage.generate_image(text)
+    GenerateVideo.generate_static_video()
+
     
     # uploadSpeech.run(title)

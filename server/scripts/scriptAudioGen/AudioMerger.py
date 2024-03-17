@@ -1,6 +1,7 @@
 import os
 from moviepy.editor import concatenate_audioclips, AudioFileClip
 from pydub import AudioSegment
+import time
 
 
 def merge_audio_files():
@@ -38,9 +39,9 @@ def adjust_music(music):
 def add_music_based_on_sentiment(audio_file_path, sentiment):
 
     # Define paths to your music files
-    positive_music_path = "music/sappheiros-embrace.mp3"
-    negative_music_path = "music/DangerousToys-SefChol.mp3"
-    neutral_music_path = "music/lost-ambient-lofi-60s-10821.mp3" #add more types
+    positive_music_path = "server/scripts/scriptAudioGen/music/sappheiros-embrace.mp3"
+    negative_music_path = "server/scripts/scriptAudioGen/music/DangerousToys-SefChol.mp3"
+    neutral_music_path = "server/scripts/scriptAudioGen/music/lost-ambient-lofi-60s-10821.mp3" #add more types
 
     # Load audio files as MP3
     positive_music = AudioSegment.from_mp3(positive_music_path)
@@ -61,13 +62,14 @@ def add_music_based_on_sentiment(audio_file_path, sentiment):
 
 
     # Export the final audio as MP3
+    # output_audio.export("server/scripts/scriptAudioGen/final_speech_with_music.mp3", format="mp3")
     output_audio.export("final_speech_with_music.mp3", format="mp3")
 
     try:
         os.remove("final_speech.mp3")
     except PermissionError:
         print(f"Could not remove file, (in use by another process)")
-
+    # time.sleep(3) #gives time for audio file to get uploaded
 
 
 #Note: Punctuation in the script is really important for appropriate pauses.
