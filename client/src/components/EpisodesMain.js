@@ -15,7 +15,7 @@ export default class EpisodesMain extends React.Component {
     }
 
     componentDidMount() {
-        axios.get(`/episodes`)
+        axios.get(`/api/episodes`)
             .then(res => {
                 const episodes = res.data;
                 this.setState({ episodes });
