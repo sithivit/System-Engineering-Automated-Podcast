@@ -4,6 +4,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Copyright from './Copyright.js'
 
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 // TODO remove, this demo shouldn't need to reset the theme.
 const defaultTheme = createTheme();
@@ -54,12 +55,12 @@ export default class EpisodesMain extends React.Component {
                                         sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
                                     >
                                         <CardMedia
-                                            component="div"
-                                            sx={{
-                                                // 16:9
-                                                pt: '56.25%',
-                                            }}
-                                            image="https://source.unsplash.com/random?wallpapers"
+                                            component="video"
+                                            // sx={{
+                                            //     // 16:9
+                                            //     pt: '56.25%',
+                                            // }}
+                                            image="https://aipodcaststorage.blob.core.windows.net/podcast-media/sample.mp4"
                                         />
                                         <CardContent sx={{ flexGrow: 1 }}>
                                             <Typography gutterBottom variant="h5" component="h2">
@@ -70,7 +71,9 @@ export default class EpisodesMain extends React.Component {
                                             </Typography>
                                         </CardContent>
                                         <CardActions>
-                                            <Button size="small">View</Button>
+                                            <Link to="/episodes/view">
+                                                <Button size="small">View</Button>
+                                            </Link>
                                             <Button size="small">Edit</Button>
                                         </CardActions>
                                     </Card>

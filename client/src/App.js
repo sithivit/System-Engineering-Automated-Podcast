@@ -2,6 +2,7 @@ import NavigationBar from './components/NavigationBar.js'
 import IndexMain from './components/IndexMain.js';
 import HomeMain from './components/HomeMain.js';
 import EpisodesMain from './components/EpisodesMain.js';
+import ViewEpisodeMain from './components/ViewEpisodeMain.js';
 import CreateMain from './components/CreateMain.js';
 import SignIn from './components/SignIn.js';
 
@@ -28,6 +29,15 @@ export function Episodes() {
     <div className="Episodes">
       <NavigationBar />
       <EpisodesMain />
+    </div>
+  )
+}
+
+export function ViewEpisode() {
+  return (
+    <div className="ViewEpisode">
+      <NavigationBar />
+      <ViewEpisodeMain />
     </div>
   )
 }
