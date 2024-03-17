@@ -8,7 +8,7 @@ import random
 
 def choose_image():
     random_image_number = random.randint(1, 23)
-    images_folder = 'server/scripts/scriptAudioGen/photos/'
+    images_folder = 'scripts/scriptAudioGen/photos/'
 
     # Construct the filename based on the random number
     random_image_filename = f"BGImage{random_image_number}.png"

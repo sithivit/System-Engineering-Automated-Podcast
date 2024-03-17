@@ -11,6 +11,9 @@
 /server/scripts/scriptAudioGen/__pycache__
 /server/scripts/scriptAudioGen/documentParser/__pycache__
 
+ffmpeg.exe
+ffprobe.exe
+
 # testing
 /coverage
 
