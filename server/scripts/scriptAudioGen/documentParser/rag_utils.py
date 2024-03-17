@@ -1,10 +1,11 @@
 import warnings
 warnings.filterwarnings("ignore")
+import re
 
-from langchain_community.document_loaders import HuggingFaceDatasetLoader
+from langchain.document_loaders import HuggingFaceDatasetLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
-from langchain_community.embeddings import HuggingFaceEmbeddings
-from langchain_community.vectorstores import FAISS
+from langchain.embeddings import HuggingFaceEmbeddings
+from langchain.vectorstores import FAISS
 from transformers import AutoTokenizer, AutoModelForQuestionAnswering
 from transformers import AutoTokenizer, pipeline
 from langchain import HuggingFacePipeline
@@ -56,12 +57,12 @@ def save_doc_db(dataset_name="documents", page_content_column="context"):
     embeddings = create_embedding()
     if dataset_name == "documents":
         docs = []
-        for filename in os.listdir(os.getcwd()+"\\scripts\\scriptGen\\documentParser\\"+dataset_name):
+        for filename in os.listdir(os.getcwd()+"\\documentParser\\"+dataset_name):
             if filename.endswith('.pdf'):
-                text = extract_text_from_pdf(os.path.join("scripts\\scriptGen\\documentParser\\"+dataset_name, filename))
+                text = extract_text_from_pdf(os.path.join(os.getcwd()+"\\documentParser\\"+dataset_name, filename))
                 docs.append(text)
             elif filename.endswith('.txt'):
-                text = extract_text_from_txt(os.path.join("scripts\\scriptGen\\documentParser\\"+dataset_name, filename))
+                text = extract_text_from_txt(os.path.join(os.getcwd()+"\\documentParser\\"+dataset_name, filename))
                 docs.append(text)
         formatted_docs = [Document(text) for text in docs]
         db = FAISS.from_documents(formatted_docs, embeddings) 
@@ -71,6 +72,20 @@ def save_doc_db(dataset_name="documents", page_content_column="context"):
         docs = load_HuggingfaceDataset(dataset_name, page_content_column)
         db = FAISS.from_documents(docs, embeddings)
         return db
+
+def extract_text_by_keywords(text, topics, subtopics):
+    
+    extracted_text = []
+    
+    keywords = topics + subtopics
+    
+    sections = text.split('.')
+    
+    for section in sections:
+        if any(keyword.lower() in section.lower() for keyword in keywords):
+            extracted_text.append(section)
+            
+    return '\n'.join(extracted_text)
 
 def similarity_search(input):
     db = save_doc_db()

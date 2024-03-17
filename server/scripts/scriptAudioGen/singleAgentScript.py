@@ -1,9 +1,9 @@
 from langchain.callbacks.streaming_stdout import StreamingStdOutCallbackHandler
 from langchain.chains import LLMChain
 from langchain.memory import ConversationBufferMemory
-from langchain_community.llms import GPT4All
 from langchain.prompts import PromptTemplate
-from documentParser.rag_utils import similarity_search
+from langchain.llms import GPT4All
+from documentParser.rag_utils import similarity_search, extract_text_by_keywords
 import os
 import sys
 import openai
@@ -14,15 +14,14 @@ import uploadSpeech
 class LocalSingleAgentScript:
     def __init__(self):
 
-        # local_path = "/models/gpt4all-falcon-q4_0.gguf"  
-        local_path = os.getcwd()+"\\scripts\\scriptGen\\models\\mistral-7b-openorca.gguf2.Q4_0.gguf"
+        local_path = os.getcwd()+"\\models\\mistral-7b-openorca.gguf2.Q4_0.gguf"
 
         callbacks = [StreamingStdOutCallbackHandler()]
 
         self.llm = GPT4All(model=local_path, callbacks=callbacks, max_tokens=1024)
         self.memeory = ConversationBufferMemory(memory_key="chat_history")
 
-        self.tts = TextToSpeech
+        #self.tts = TextToSpeech
 
 
     def enrich_brainstorm_with_rag(self, specific_topics):
@@ -36,6 +35,8 @@ class LocalSingleAgentScript:
     def brain_storm(self, podcast_name, specific_topics):
         relevant_docs = self.enrich_brainstorm_with_rag(specific_topics)
         enriched_context = " ".join(relevant_docs)
+        enriched_context = extract_text_by_keywords(enriched_context, podcast_name, specific_topics)
+        enriched_context=""
         brain_storming_template = """ 
             
             The scripts should also be related to the following topics {topics}
@@ -45,10 +46,11 @@ class LocalSingleAgentScript:
 
         prompt = PromptTemplate(template=brain_storming_template, input_variables=["name", "topics", "enriched_context"])
         
-        llm_chain = LLMChain(prompt=prompt, llm=self.llm)
+        llm_chain = LLMChain(prompt=prompt, llm=self.llm, verbose=False)
         brain_storm = llm_chain.run({
             "name": podcast_name, 
-            "topics": specific_topics
+            "topics": specific_topics,
+            "enriched_context": enriched_context,
             })
 
         return brain_storm
@@ -59,7 +61,7 @@ class LocalSingleAgentScript:
         """
 
         prompt = PromptTemplate(template=template, input_variables=["premise"])
-        llm_chain = LLMChain(prompt=prompt, llm=self.llm)
+        llm_chain = LLMChain(prompt=prompt, llm=self.llm, verbose=False)
         three_para = llm_chain.run({"premise": brain_storm})
 
         segments = three_para.strip().split('\n')
@@ -70,14 +72,16 @@ class LocalSingleAgentScript:
             Act as a solo podcast scriptwriter. 
             Don't write Host and Segment.
             Don't write this as a conversation between two people.
-            
+            Don't write Introduction
+            Don't mention the Point number
+            Don't write 'Expand this point into a podcast script:' 
             Talk more on the points
 
-            Expand this point into a podcast script: {segment}
+            Expand this point into a podcast script:{segment}
         """
 
         prompt = PromptTemplate(template=template, input_variables=["segment"])
-        llm_chain = LLMChain(prompt=prompt, llm=self.llm)
+        llm_chain = LLMChain(prompt=prompt, llm=self.llm, verbose=False)
 
         expanded_para = llm_chain.run({"segment": segment})
         return expanded_para
@@ -138,6 +142,10 @@ class OpenAISingleAgentScript():
             Act as a solo podcast scriptwriter. 
             Don't write Host and Segment.
             Don't write this as a conversation between two people.
+            Don't write Introduction
+            Don't mention the Point number
+            Don't write 'Expand this point into a podcast script:' 
+            Talk more on the points
             
             Talk more on the points
 
@@ -161,6 +169,7 @@ class OpenAISingleAgentScript():
 
         full_text = para1 + para2 + para3
         return full_text
+
 
 if __name__ == "__main__" :
 
