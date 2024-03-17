@@ -18,7 +18,7 @@ import time
 class LocalSingleAgentScript:
     def __init__(self):
 
-        local_path = os.getcwd()+"\\models\\mistral-7b-openorca.gguf2.Q4_0.gguf"
+        local_path = os.getcwd()+"\\llm_models\\mistral-7b-openorca.gguf2.Q4_0.gguf"
 
         callbacks = [StreamingStdOutCallbackHandler()]
 
@@ -195,7 +195,8 @@ if __name__ == "__main__" :
 
     else:
         model = LocalSingleAgentScript()
-        print(model.run(title, keywords))
+        text = model.run(title, keywords)
+        print(text)
 
     TextToSpeech.get_audio_file(text)
     TextToImage.generate_image(text)

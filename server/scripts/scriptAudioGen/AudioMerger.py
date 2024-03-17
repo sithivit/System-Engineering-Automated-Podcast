@@ -39,9 +39,9 @@ def adjust_music(music):
 def add_music_based_on_sentiment(audio_file_path, sentiment):
 
     # Define paths to your music files
-    positive_music_path = "server/scripts/scriptAudioGen/music/sappheiros-embrace.mp3"
-    negative_music_path = "server/scripts/scriptAudioGen/music/DangerousToys-SefChol.mp3"
-    neutral_music_path = "server/scripts/scriptAudioGen/music/lost-ambient-lofi-60s-10821.mp3" #add more types
+    positive_music_path = os.getcwd() + "\\scripts\\scriptAudioGen\\music\\sappheiros-embrace.mp3"
+    negative_music_path = os.getcwd() + "\\scripts\\scriptAudioGen\\music\\DangerousToys-SefChol.mp3"
+    neutral_music_path = os.getcwd() + "\\scripts\\scriptAudioGen\\music\\lost-ambient-lofi-60s-10821.mp3" #add more types
 
     # Load audio files as MP3
     positive_music = AudioSegment.from_mp3(positive_music_path)
