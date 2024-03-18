@@ -12,7 +12,8 @@ import TextToSpeech
 # import uploadSpeech
 import TextToImage
 import GenerateVideo
-import time
+import uploadEpisode
+import cleanUpFiles
 
 
 class LocalSingleAgentScript:
@@ -180,12 +181,13 @@ if __name__ == "__main__" :
     args= sys.argv[1:]
 
     title = args[0]
-    keywords = args[1]
-    local = args[2]
+    description = args[1]
+    keywords = args[2]
+    local = args[3]
     api = ''
 
     if local == 'false':
-        # api = str(args[3])
+        # api = str(args[4])
         # model = OpenAISingleAgentScript(api)
         # text = model.run(title, keywords)
         text ="""
@@ -202,5 +204,5 @@ if __name__ == "__main__" :
     TextToImage.generate_image(text)
     GenerateVideo.generate_static_video()
 
-    
-    # uploadSpeech.run(title)
+    uploadEpisode.run(title, description)
+    cleanUpFiles.run()
