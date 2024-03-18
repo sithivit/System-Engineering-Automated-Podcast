@@ -60,7 +60,7 @@ export default class EpisodesMain extends React.Component {
                                             //     // 16:9
                                             //     pt: '56.25%',
                                             // }}
-                                            image="https://aipodcaststorage.blob.core.windows.net/podcast-media/sample.mp4"
+                                            image="https://aipodcaststorage.blob.core.windows.net/podcast-media/title.mp4"
                                         />
                                         <CardContent sx={{ flexGrow: 1 }}>
                                             <Typography gutterBottom variant="h5" component="h2">
@@ -71,7 +71,7 @@ export default class EpisodesMain extends React.Component {
                                             </Typography>
                                         </CardContent>
                                         <CardActions>
-                                            <Link to="/episodes/view">
+                                            <Link to={"/episodes/view?title=" + episode.title}>
                                                 <Button size="small">View</Button>
                                             </Link>
                                             <Button size="small">Edit</Button>
