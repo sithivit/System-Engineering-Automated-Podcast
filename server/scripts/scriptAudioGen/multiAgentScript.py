@@ -88,13 +88,13 @@ class MultiAgentScript:
         if api != None:
             self.llm = OpenAI(api_key=api).chat.completions
         else:
-            local_path = "/models/gpt4all-falcon-q4_0.gguf"  
+            local_path = "/models/mistral-7b-openorca.gguf2.Q4_0.gguf"  
 
             # Callbacks support token-wise streaming
             callbacks = [StreamingStdOutCallbackHandler()]
 
             # Verbose is required to pass to the callback manager
-            self.llm = GPT4All(model=local_path, callbacks=callbacks, max_tokens=1024)
+            self.llm = GPT4All(model=local_path, callbacks=callbacks, max_tokens=2048)
             self.memeory = ConversationBufferMemory(memory_key="chat_history")
 
     def generate_response(self, prompt, history):
