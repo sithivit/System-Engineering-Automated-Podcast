@@ -23,7 +23,7 @@ class LocalSingleAgentScript:
 
         callbacks = [StreamingStdOutCallbackHandler()]
 
-        self.llm = GPT4All(model=local_path, callbacks=callbacks, max_tokens=1024)
+        self.llm = GPT4All(model=local_path, callbacks=callbacks, max_tokens=2048)
         self.memeory = ConversationBufferMemory(memory_key="chat_history")
 
         #self.tts = TextToSpeech
@@ -100,6 +100,7 @@ class LocalSingleAgentScript:
         para3 = self.expand_segments(segment3)
 
         full_text = para1 + para2 + para3
+        full_text = full_text.replace("Expand this point into a podcast script:", "")
         return full_text
 
 class OpenAISingleAgentScript():
@@ -115,8 +116,12 @@ class OpenAISingleAgentScript():
         return relevant_docs
 
     def brain_storm(self, podcast_name, specific_topics):
-        relevant_docs = self.enrich_brainstorm_with_rag(specific_topics)
-        enriched_context = " ".join(relevant_docs)
+        if os.listdir("//documentParser//documents") == []:
+            enriched_context = ""
+        else:
+            relevant_docs = self.enrich_brainstorm_with_rag(specific_topics)
+            enriched_context = " ".join(relevant_docs)
+
         brain_storming_template = f""" 
             The scripts should also be related to the following topics: {specific_topics}
             Based on our research, here is some relevant information: {enriched_context}
@@ -150,7 +155,6 @@ class OpenAISingleAgentScript():
             Don't write Introduction
             Don't mention the Point number
             Don't write 'Expand this point into a podcast script:' 
-            Talk more on the points
             
             Talk more on the points
 
@@ -173,6 +177,7 @@ class OpenAISingleAgentScript():
         para3 = self.expand_segments(segment3)
 
         full_text = para1 + para2 + para3
+        full_text = full_text.replace("Expand this point into a podcast script:", "")
         return full_text
 
 
