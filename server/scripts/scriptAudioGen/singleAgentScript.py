@@ -187,12 +187,12 @@ if __name__ == "__main__" :
     api = ''
 
     if local == 'false':
-        # api = str(args[4])
-        # model = OpenAISingleAgentScript(api)
-        # text = model.run(title, keywords)
-        text ="""
-[Intro] hey hey! this is (example text) a test, lets see if it works or not! Hello! i'm Joe.         
-        """
+        api = str(args[4])
+        model = OpenAISingleAgentScript(api)
+        text = model.run(title, keywords)
+#         text ="""
+# [Intro] hey hey! this is (example text) a test, lets see if it works or not! Hello! i'm Joe.         
+#         """
         # print(text)
 
     else:
