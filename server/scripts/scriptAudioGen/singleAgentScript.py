@@ -193,16 +193,16 @@ if __name__ == "__main__" :
 #         text ="""
 # [Intro] hey hey! this is (example text) a test, lets see if it works or not! Hello! i'm Joe.         
 #         """
-        # print(text)
+        print(text)
 
     else:
         model = LocalSingleAgentScript()
         text = model.run(title, keywords)
         print(text)
 
-    TextToSpeech.get_audio_file(text)
-    TextToImage.generate_image(text)
-    GenerateVideo.generate_static_video()
+    # TextToSpeech.get_audio_file(text)
+    # TextToImage.generate_image(text)
+    # GenerateVideo.generate_static_video()
 
-    uploadEpisode.run(title, description)
-    cleanUpFiles.run()
+    # uploadEpisode.run(title, description)
+    # cleanUpFiles.run()

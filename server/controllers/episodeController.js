@@ -21,7 +21,7 @@ exports.episode_list = asyncHandler(async (req, res, next) => {
 exports.episode_create_post = asyncHandler(async (req, res, next) => {
     // res.send("Created new episode using keywords: " + req.body.topicKeywords);
     if (req.body.isSingleAgent) {
-        exec(`python scripts/scriptAudioGen/singleAgentScript.py ${req.body.title} ${req.body.description} ${req.body.keywords} ${req.body.isLocalModel} ${req.body.api}`, (error, stdout, stderr) => {
+        exec(`python scripts/scriptAudioGen/singleAgentScript.py "${req.body.title}" "${req.body.description}" "${req.body.keywords}" "${req.body.isLocalModel}" "${req.body.api}"`, (error, stdout, stderr) => {
             if (error) {
                 res.send(`${error}`);
                 return;
@@ -30,7 +30,7 @@ exports.episode_create_post = asyncHandler(async (req, res, next) => {
         });
     }
     else {
-        exec(`python scripts/scriptAudioGen/multiAgentScript.py ${req.body.title} ${req.body.keywords} ${req.body.isLocalModel} ${req.body.api}`, (error, stdout, stderr) => {
+        exec(`python scripts/scriptAudioGen/multiAgentScript.py "${req.body.title}" "${req.body.description}" "${req.body.keywords}" "${req.body.isLocalModel}" "${req.body.api}"`, (error, stdout, stderr) => {
             if (error) {
                 res.send(`${error}`);
                 return;
