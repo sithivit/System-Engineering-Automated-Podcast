@@ -8,7 +8,7 @@ import random
 
 def choose_image():
     random_image_number = random.randint(1, 23)
-    images_folder = 'server/scripts/scriptAudioGen/photos/'
+    images_folder = 'scripts/scriptAudioGen/photos/'
 
     # Construct the filename based on the random number
     random_image_filename = f"BGImage{random_image_number}.png"
@@ -46,14 +46,6 @@ def generate_static_video():
 
     # Write the final video to an MP4 file
     final_video_clip.write_videofile(output_video_path, codec="libx264", audio_codec="aac", fps=30, threads=4, write_logfile=False)
-
-    time.sleep(5) #allows to close other processes to then remove them
-    try:
-        pass
-        # os.remove("final_speech_with_music.mp3")
-        # os.remove("text_to_image.png")
-    except PermissionError:
-        print(f"Could not remove file, (in use by another process)")
 
 # if __name__ == '__main__':
 #      generate_static_video()

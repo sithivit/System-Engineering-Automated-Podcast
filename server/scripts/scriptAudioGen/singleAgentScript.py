@@ -12,13 +12,14 @@ import TextToSpeech
 # import uploadSpeech
 import TextToImage
 import GenerateVideo
-import time
+import uploadEpisode
+import cleanUpFiles
 
 
 class LocalSingleAgentScript:
     def __init__(self):
 
-        local_path = os.getcwd()+"\\models\\mistral-7b-openorca.gguf2.Q4_0.gguf"
+        local_path = os.getcwd()+"\\llm_models\\mistral-7b-openorca.gguf2.Q4_0.gguf"
 
         callbacks = [StreamingStdOutCallbackHandler()]
 
@@ -185,26 +186,28 @@ if __name__ == "__main__" :
     args= sys.argv[1:]
 
     title = args[0]
-    keywords = args[1]
-    local = args[2]
+    description = args[1]
+    keywords = args[2]
+    local = args[3]
     api = ''
 
     if local == 'false':
-        # api = str(args[3])
-        # model = OpenAISingleAgentScript(api)
-        # text = model.run(title, keywords)
-        text ="""
-[Intro] hey hey! this is (example text) a test, lets see if it works or not! Hello! i'm Joe.         
-        """
+        api = str(args[4])
+        model = OpenAISingleAgentScript(api)
+        text = model.run(title, keywords)
+#         text ="""
+# [Intro] hey hey! this is (example text) a test, lets see if it works or not! Hello! i'm Joe.         
+#         """
         # print(text)
 
     else:
         model = LocalSingleAgentScript()
-        print(model.run(title, keywords))
+        text = model.run(title, keywords)
+        print(text)
 
     TextToSpeech.get_audio_file(text)
     TextToImage.generate_image(text)
     GenerateVideo.generate_static_video()
 
-    
-    # uploadSpeech.run(title)
+    uploadEpisode.run(title, description)
+    cleanUpFiles.run()
