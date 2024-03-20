@@ -9,8 +9,7 @@
 /.pnp
 .pnp.js
 /server/scripts/scriptAudioGen/models
-/server/scripts/scriptAudioGen/__pycache__
-/server/scripts/scriptAudioGen/documentParser/__pycache__
+**/__pycache__/
 
 ffmpeg.exe
 ffprobe.exe

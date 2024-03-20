@@ -1,6 +1,8 @@
 const Episode = require("../models/episodeModel");
 const asyncHandler = require("express-async-handler");
-const { exec } = require("child_process");
+// const { exec } = require("child_process");
+const { axios } = require("axios");
+
 // const { body, validationResult } = require("express-validator")
 
 // Display list of all episodes.
@@ -21,22 +23,52 @@ exports.episode_list = asyncHandler(async (req, res, next) => {
 exports.episode_create_post = asyncHandler(async (req, res, next) => {
     // res.send("Created new episode using keywords: " + req.body.topicKeywords);
     if (req.body.isSingleAgent) {
-        exec(`python scripts/scriptAudioGen/singleAgentScript.py "${req.body.title}" "${req.body.description}" "${req.body.keywords}" "${req.body.isLocalModel}" "${req.body.api}"`, (error, stdout, stderr) => {
-            if (error) {
-                res.send(`${error}`);
-                return;
-            }
-            res.send('Result: ' + stdout);
-        });
+        axios.post('https://episodesgen.azurewebsites.net/api/GenerateEpisode', {
+            title: req.body.title,
+            description: req.body.description,
+            keywords: req.body.keywords,
+            local: this.state.isLocalModel,
+            api: this.state.api,
+            subKeywords: req.body.subKeywords,
+        })
+            .then(response => {
+                console.log(response.data); // Handle the response data here
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        // exec(`python scripts/scriptAudioGen/singleAgentScript.py "${req.body.title}" "${req.body.description}" "${req.body.keywords}" "${req.body.isLocalModel}" "${req.body.api}"`, (error, stdout, stderr) => {
+        //     if (error) {
+        //         res.send(`${error}`);
+        //         return;
+        //     }
+        //     res.send('Result: ' + stdout);
+        // });
     }
     else {
-        exec(`python scripts/scriptAudioGen/multiAgentScript.py "${req.body.title}" "${req.body.description}" "${req.body.keywords}" "${req.body.isLocalModel}" "${req.body.api}"`, (error, stdout, stderr) => {
-            if (error) {
-                res.send(`${error}`);
-                return;
-            }
-            res.send('Result: ' + stdout);
-        });
+        axios.post('https://episodesgen.azurewebsites.net/api/GenerateEpisode', {
+            title: req.body.title,
+            description: req.body.description,
+            keywords: req.body.keywords,
+            local: this.state.isLocalModel,
+            api: this.state.api,
+            subKeywords: req.body.subKeywords,
+            agentNames: [this.state.agentOne.trim(), this.state.agentTwo.trim()],
+        })
+            .then(response => {
+                console.log(response.data); // Handle the response data here
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        // exec(`py
+        // exec(`python scripts/scriptAudioGen/multiAgentScript.py "${req.body.title}" "${req.body.description}" "${req.body.keywords}" "${req.body.isLocalModel}" "${req.body.api}"`, (error, stdout, stderr) => {
+        //     if (error) {
+        //         res.send(`${error}`);
+        //         return;
+        //     }
+        //     res.send('Result: ' + stdout);
+        // });
     }
 
 });

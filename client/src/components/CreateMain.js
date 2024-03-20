@@ -268,8 +268,7 @@ export default class CreateMain extends React.Component {
                                 my: '50px',
                             }}
                         >
-                            {this.state.responseData}
-                            {/* Episode generated and uploaded successfully! */}
+                            Episode generated and uploaded successfully!
                         </Box>
                         {/* <Card sx={{ width: '50vw', marginLeft: '25vw' }} >
                             <CardMedia
