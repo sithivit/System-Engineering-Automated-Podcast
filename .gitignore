@@ -3,12 +3,12 @@
 # dependencies
 /client/node_modules
 /server/node_modules
-/server/llm_models
 /server/public/*
 /node_modules
 /.pnp
 .pnp.js
 /server/scripts/scriptAudioGen/models
+**/llm_models
 **/__pycache__/
 
 ffmpeg.exe
