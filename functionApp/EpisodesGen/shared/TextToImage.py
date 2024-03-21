@@ -66,7 +66,11 @@ def generate_image(text):
     data = response.json()
     image = data["artifacts"][0]  # Take the first image
 
-    with open("./text_to_image.png", "wb") as f:
+    # Construct the path to save the image in the 'tmp' folder
+    tmp_folder = os.path.join(os.path.dirname(__file__), '..', '..', '..', 'tmp')
+    image_path = os.path.join(tmp_folder, 'text_to_image.png')
+
+    with open(image_path, "wb") as f:
         f.write(base64.b64decode(image["base64"]))
 
 
@@ -76,5 +80,5 @@ def generate_image(text):
 #         Cats are fluffy. I like to watch cats play."""
 
 
-# if __name__ == '__main__':
-#      generate_image(text)
+ # if __name__ == '__main__':
+ #      generate_image(text)

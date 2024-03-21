@@ -4,7 +4,8 @@ from ibm_watson import TextToSpeechV1
 from ibm_cloud_sdk_core.authenticators import IAMAuthenticator
 # from config import apikey, url, elevenlabs_api
 from dotenv import load_dotenv
-from shared.AudioMerger import merge_audio_files, add_music_based_on_sentiment #add_background_music_to_audio
+#from shared.AudioMerger import merge_audio_files, add_music_based_on_sentiment #add_background_music_to_audio
+from AudioMerger import merge_audio_files, add_music_based_on_sentiment #add_background_music_to_audio
 from textblob import TextBlob
 
 import time
@@ -136,23 +137,29 @@ def duo_podcast(text, host_voice, guest_voice, person1_name=None, person2_name=N
 
 #ElevenLabs is a great Text To Speech tool for cloning real voices
 def generate_with_elevenlabs(text, voice, count):
-        try:
-            # Generate audio
-            audio = generate(
-                text=text,
-                voice=voice,
-                api_key=elevenlabs_api,
-            )
+    try:
+        # Generate audio
+        audio = generate(
+            text=text,
+            voice=voice,
+            api_key=elevenlabs_api,
+        )
 
-            # Save the audio to a file
-            with open(f'./speech{count}.mp3', 'wb') as audio_file:
-                audio_file.write(audio)
-        except APIError as e:
-            print(f"API Error: {e}")
-            if "User not found, it is likely still being created" in str(e):
-                print("Waiting for user creation to complete. Retrying in 1 minute...")
-                time.sleep(60)
-                generate_with_elevenlabs(text, voice)
+        # Define the relative path to the tmp folder
+        tmp_folder = os.path.join(os.path.dirname(__file__), '..', '..', '..', 'tmp')
+
+        # Create the tmp folder if it doesn't exist
+        os.makedirs(tmp_folder, exist_ok=True)
+
+        # Save the audio to a file in the tmp folder
+        with open(os.path.join(tmp_folder, f'speech{count}.mp3'), 'wb') as audio_file:
+            audio_file.write(audio)
+    except APIError as e:
+        print(f"API Error: {e}")
+        if "User not found, it is likely still being created" in str(e):
+            print("Waiting for user creation to complete. Retrying in 1 minute...")
+            time.sleep(60)
+            generate_with_elevenlabs(text, voice)
 
 
 def analyze_sentiment(text):
@@ -190,9 +197,12 @@ def get_audio_file(text, person1_name=None, person2_name=None):
     merge_audio_files()
 
     sentiment = analyze_sentiment(text)
-    add_music_based_on_sentiment("final_speech.mp3", sentiment)
+    tmp_folder = os.path.join(os.path.dirname(__file__), '..', '..', '..', 'tmp')
+    add_music_based_on_sentiment(os.path.join(tmp_folder, 'final_speech.mp3'), sentiment)
 
-if __name__ == '__main__':
-    text = 'example script text'
-    get_audio_file(text)
+# if __name__ == '__main__':
+#     text = '''
+# Host: example script text
+# '''
+#     get_audio_file(text)
 
