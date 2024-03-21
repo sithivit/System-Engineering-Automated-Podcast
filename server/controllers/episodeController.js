@@ -1,7 +1,7 @@
 const Episode = require("../models/episodeModel");
 const asyncHandler = require("express-async-handler");
-// const { exec } = require("child_process");
 const { axios } = require("axios");
+const { response } = require("express");
 
 // const { body, validationResult } = require("express-validator")
 
@@ -21,54 +21,50 @@ exports.episode_list = asyncHandler(async (req, res, next) => {
 
 // Handle episode create on POST.
 exports.episode_create_post = asyncHandler(async (req, res, next) => {
-    // res.send("Created new episode using keywords: " + req.body.topicKeywords);
     if (req.body.isSingleAgent) {
-        axios.post('https://episodesgen.azurewebsites.net/api/GenerateEpisode', {
-            title: req.body.title,
-            description: req.body.description,
-            keywords: req.body.keywords,
-            local: this.state.isLocalModel,
-            api: this.state.api,
-            subKeywords: req.body.subKeywords,
+        fetch('https://episodesgen.azurewebsites.net/api/GenerateEpisode', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                title: req.body.title,
+                description: req.body.description,
+                keywords: req.body.keywords,
+                local: req.body.isLocalModel,
+                api: req.body.api,
+                subKeywords: req.body.subKeywords,
+            })
         })
             .then(response => {
-                console.log(response.data); // Handle the response data here
+                res.send(response.data);
             })
             .catch(error => {
-                console.error('Error:', error);
+                res.send(error.data);
             });
-        // exec(`python scripts/scriptAudioGen/singleAgentScript.py "${req.body.title}" "${req.body.description}" "${req.body.keywords}" "${req.body.isLocalModel}" "${req.body.api}"`, (error, stdout, stderr) => {
-        //     if (error) {
-        //         res.send(`${error}`);
-        //         return;
-        //     }
-        //     res.send('Result: ' + stdout);
-        // });
     }
     else {
-        axios.post('https://episodesgen.azurewebsites.net/api/GenerateEpisode', {
-            title: req.body.title,
-            description: req.body.description,
-            keywords: req.body.keywords,
-            local: this.state.isLocalModel,
-            api: this.state.api,
-            subKeywords: req.body.subKeywords,
-            agentNames: [this.state.agentOne.trim(), this.state.agentTwo.trim()],
+        fetch('https://episodesgen.azurewebsites.net/api/GenerateEpisode', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                title: req.body.title,
+                description: req.body.description,
+                keywords: req.body.keywords,
+                local: this.state.isLocalModel,
+                api: this.state.api,
+                subKeywords: req.body.subKeywords,
+                agentNames: [this.state.agentOne.trim(), this.state.agentTwo.trim()],
+            })
         })
             .then(response => {
-                console.log(response.data); // Handle the response data here
+                res.send(response.data);
             })
             .catch(error => {
-                console.error('Error:', error);
+                res.send(error.data);
             });
-        // exec(`py
-        // exec(`python scripts/scriptAudioGen/multiAgentScript.py "${req.body.title}" "${req.body.description}" "${req.body.keywords}" "${req.body.isLocalModel}" "${req.body.api}"`, (error, stdout, stderr) => {
-        //     if (error) {
-        //         res.send(`${error}`);
-        //         return;
-        //     }
-        //     res.send('Result: ' + stdout);
-        // });
     }
 
 });
