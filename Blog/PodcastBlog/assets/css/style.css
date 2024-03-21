@@ -1363,6 +1363,18 @@ section {
   /* Additional styles if needed */
 }
 
+.dependencies .faq-list #faq-list-8 img {
+  max-width: 20%; /* Adjust the maximum width as needed */
+  height: auto;
+  /* Additional styles if needed */
+}
+
+.dependencies .faq-list #faq-list-11 img {
+  max-width: 20%; /* Adjust the maximum width as needed */
+  height: auto;
+  /* Additional styles if needed */
+}
+
 
 .dependencies .faq-list a {
   display: block;

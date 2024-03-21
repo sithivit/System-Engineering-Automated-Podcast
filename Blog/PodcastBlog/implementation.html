@@ -187,7 +187,7 @@
     <div class="row content">
       <div class="col-lg-12 text-center">
         <p>Throughout the project we used python as the language for the backend. We also used a total
-        number of .. libraries within python to code the backend part of the project.</p>
+        number of 13 libraries within python to code the backend part of the project.</p>
       </div>
     </div>
 
@@ -213,7 +213,9 @@
             <div class="row">
               <div class="col-lg-6 text-center">
                 <p>Python library for audio processing</p>
-                <p>We used moviepy to deal with the audio files including concatintaing multiple mp3 files and</p>
+                <p>We used moviepy to process audio files, including concatenating multiple mp3 files, giving mp3 file a name etc.
+                We also used it for video processing, helping us do tasks like working out the duration of a video, combining video
+                  and audio clips together, etc.</p>
               </div>
               <div class="col-lg-6 text-center">
                 <img src="assets/img/logos/moviepy.png" alt="Image 2">
@@ -226,8 +228,9 @@
           <div id="faq-list-3" class="collapse show" data-bs-parent=".faq-list">
             <div class="row">
               <div class="col-lg-6 text-center">
-                <p>Python library for ...</p>
-                <p>We used ibm watson for</p>
+                <p>Python library for text-to-speech conversion.</p>
+                <p>We used ibm watson for pre-made voices that we added to our voices' dictionary. We also
+                needed to use IBM Watson's API, which the library helped us with.</p>
               </div>
               <div class="col-lg-6 text-center">
                 <img src="assets/img/logos/IBM_Watson.png" alt="Image 3">
@@ -240,8 +243,8 @@
           <div id="faq-list-4" class="collapse show" data-bs-parent=".faq-list">
             <div class="row">
               <div class="col-lg-6 text-center">
-                <p>Python library for ...</p>
-                <p>We used ...</p>
+                <p>Python library for text-to-speech conversion.</p>
+                <p>We used elevenlabs library to generate an audio file using the voice, text and the API.</p>
               </div>
               <div class="col-lg-6 text-center">
                 <img src="assets/img/logos/Eleven_Labs.png" alt="Image 4">
@@ -292,17 +295,92 @@
           </div>
         </li>
 
+
         <li data-aos="fade-up" data-aos-delay="100">
-          <a data-bs-toggle="collapse" class="collapse" data-bs-target="#faq-list-7">requests<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
-          <div id="faq-list-7" class="collapse show" data-bs-parent=".faq-list">
+          <a data-bs-toggle="collapse" class="collapse" data-bs-target="#faq-list-8">nltk<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+          <div id="faq-list-8" class="collapse show" data-bs-parent=".faq-list">
+            <div class="row">
+              <div class="col-lg-6 text-center">
+                <p>Python library for natural language processing tasks.</p>
+                <p>We used nltk's functions to identify the keywords of the script, that we later used in the image
+                generation prompt.</p>
+              </div>
+              <div class="col-lg-6 text-center">
+                <img src="assets/img/logos/nltk.png" alt="Image 6">
+              </div>
+          </div>
+        </li>
+
+        <li data-aos="fade-up" data-aos-delay="100">
+          <a data-bs-toggle="collapse" class="collapse" data-bs-target="#faq-list-9">dotenv<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+          <div id="faq-list-9" class="collapse show" data-bs-parent=".faq-list">
+            <div class="row">
+              <div class="col-lg-6 text-center">
+                <p>Python module used for loading environment variables.</p>
+                <p>We used dotenv to hide sensitive information, while still being able to use it. We created a .env file,
+                  stored the APIs in there and used dotenv to load them back in.</p>
+              </div>
+              <div class="col-lg-6 text-center">
+                <img src="assets/img/logos/python.png" alt="Image 6">
+              </div>
+          </div>
+        </li>
+
+        <li data-aos="fade-up" data-aos-delay="100">
+          <a data-bs-toggle="collapse" class="collapse" data-bs-target="#faq-list-10">collections<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+          <div id="faq-list-10" class="collapse show" data-bs-parent=".faq-list">
+            <div class="row">
+              <div class="col-lg-6 text-center">
+                <p>Python module used for providing specialized data structures.</p>
+                <p>We used module called Counter from collection to count the frequency of some words, which
+                helped us in determining the keywords used for image generation.</p>
+              </div>
+              <div class="col-lg-6 text-center">
+                <img src="assets/img/logos/python.png" alt="Image 6">
+              </div>
+          </div>
+        </li>
+
+        <li data-aos="fade-up" data-aos-delay="100">
+          <a data-bs-toggle="collapse" class="collapse" data-bs-target="#faq-list-11">requests<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+          <div id="faq-list-11" class="collapse show" data-bs-parent=".faq-list">
             <div class="row">
               <div class="col-lg-6 text-center">
                 <p>Python library for making HTTP requests.</p>
                 <p>We used requests to send a POST request to a specified URL in order to generate an image based on
-                  given text prompts and additional parameters,.</p>
+                  given text prompts and additional parameters.</p>
               </div>
               <div class="col-lg-6 text-center">
-                <img src="assets/img/logos/os.png" alt="Image 6">
+                <img src="assets/img/logos/req1.png" alt="Image 6">
+              </div>
+          </div>
+        </li>
+
+        <li data-aos="fade-up" data-aos-delay="100">
+          <a data-bs-toggle="collapse" class="collapse" data-bs-target="#faq-list-12">numpy<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+          <div id="faq-list-12" class="collapse show" data-bs-parent=".faq-list">
+            <div class="row">
+              <div class="col-lg-6 text-center">
+                <p>Python library used for numerical computing.</p>
+                <p>We used numpy to convert an image into a numpy array, which helped take the image's dimension
+                that were later used in the video generation.</p>
+              </div>
+              <div class="col-lg-6 text-center">
+                <img src="assets/img/logos/numpy.png" alt="Image 6">
+              </div>
+          </div>
+        </li>
+
+        <li data-aos="fade-up" data-aos-delay="100">
+          <a data-bs-toggle="collapse" class="collapse" data-bs-target="#faq-list-13">random<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+          <div id="faq-list-13" class="collapse show" data-bs-parent=".faq-list">
+            <div class="row">
+              <div class="col-lg-6 text-center">
+                <p>Python module used for generating random numbers.</p>
+                <p>We used random to generate a picture used for video generation from a folder with 20+ pictures.</p>
+              </div>
+              <div class="col-lg-6 text-center">
+                <img src="assets/img/logos/python.png" alt="Image 6">
               </div>
           </div>
         </li>
