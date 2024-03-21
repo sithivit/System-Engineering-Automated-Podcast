@@ -3,13 +3,16 @@
 # dependencies
 /client/node_modules
 /server/node_modules
-/server/llm_models
+/server/public/*
 /node_modules
 /.pnp
 .pnp.js
 /server/scripts/scriptAudioGen/models
-/server/scripts/scriptAudioGen/__pycache__
-/server/scripts/scriptAudioGen/documentParser/__pycache__
+**/llm_models
+**/__pycache__/
+
+ffmpeg.exe
+ffprobe.exe
 
 # testing
 /coverage

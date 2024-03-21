@@ -4,7 +4,7 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
 import Copyright from './Copyright.js';
-import { Button, Collapse, Divider, Card, CardMedia, FormGroup, FormControlLabel, Checkbox, Grid } from '@mui/material';
+import { Button, Collapse, Divider, Card, CardMedia, FormGroup, FormControlLabel, Checkbox, Grid, Link } from '@mui/material';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 
 import axios from 'axios';
@@ -268,27 +268,30 @@ export default class CreateMain extends React.Component {
                                 my: '50px',
                             }}
                         >
-                            {this.state.responseData}
+                            Episode generated and uploaded successfully!
                         </Box>
-                        <Card sx={{ width: '50vw', marginLeft: '25vw' }} >
+                        {/* <Card sx={{ width: '50vw', marginLeft: '25vw' }} >
                             <CardMedia
                                 component='video'
-                                image='video-path'
+                                image={`https://aipodcaststorage.blob.core.windows.net/podcast-media/${this.state.title}.mp4`}
                                 controls
                             />
-                        </Card>
-                        <Button
-                            variant="contained"
-                            sx={{
-                                width: "10vw",
-                                minWidth: "100px",
-                                maxWidth: "150px",
-                                marginTop: "50px",
-                                marginLeft: "45vw"
-                            }}
-                        >
-                            Upload
-                        </Button>
+                        </Card> */}
+                        {/* <Link to={"/episodes"}>
+                            <Button
+                                variant="contained"
+                                sx={{
+                                    width: "20vw",
+                                    minWidth: "200px",
+                                    maxWidth: "300px",
+                                    marginTop: "50px",
+                                    marginLeft: "40vw"
+                                }}
+                            >
+                                Return to Episodes
+                            </Button>
+                        </Link> */}
+
                     </Collapse>
                 </main>
                 {/* Footer */}

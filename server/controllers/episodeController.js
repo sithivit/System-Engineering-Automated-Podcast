@@ -1,6 +1,6 @@
 const Episode = require("../models/episodeModel");
 const asyncHandler = require("express-async-handler");
-const { exec } = require("child_process");
+
 // const { body, validationResult } = require("express-validator")
 
 // Display list of all episodes.
@@ -19,24 +19,50 @@ exports.episode_list = asyncHandler(async (req, res, next) => {
 
 // Handle episode create on POST.
 exports.episode_create_post = asyncHandler(async (req, res, next) => {
-    // res.send("Created new episode using keywords: " + req.body.topicKeywords);
     if (req.body.isSingleAgent) {
-        exec(`python scripts/scriptAudioGen/singleAgentScript.py ${req.body.title} ${req.body.keywords} ${req.body.isLocalModel} ${req.body.api}`, (error, stdout, stderr) => {
-            if (error) {
-                res.send(`${error}`);
-                return;
-            }
-            res.send('Result: ' + stdout);
-        });
+        fetch('https://episodesgen.azurewebsites.net/api/GenerateEpisode', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                title: req.body.title,
+                description: req.body.description,
+                keywords: req.body.keywords,
+                local: req.body.isLocalModel,
+                api: req.body.api,
+                subKeywords: req.body.subKeywords,
+            })
+        })
+            .then(response => {
+                res.send(response.data);
+            })
+            .catch(error => {
+                res.send(error.data);
+            });
     }
     else {
-        exec(`python scripts/scriptAudioGen/multiAgentScript.py ${req.body.title} ${req.body.keywords} ${req.body.isLocalModel} ${req.body.api}`, (error, stdout, stderr) => {
-            if (error) {
-                res.send(`${error}`);
-                return;
-            }
-            res.send('Result: ' + stdout);
-        });
+        fetch('https://episodesgen.azurewebsites.net/api/GenerateEpisode', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                title: req.body.title,
+                description: req.body.description,
+                keywords: req.body.keywords,
+                local: this.state.isLocalModel,
+                api: this.state.api,
+                subKeywords: req.body.subKeywords,
+                agentNames: [this.state.agentOne.trim(), this.state.agentTwo.trim()],
+            })
+        })
+            .then(response => {
+                res.send(response.data);
+            })
+            .catch(error => {
+                res.send(error.data);
+            });
     }
 
 });
