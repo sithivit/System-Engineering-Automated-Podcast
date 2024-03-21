@@ -2263,7 +2263,7 @@ section {
 
 .team .pic img {
   border-radius: 50%;
-  max-width: 100%;
+  max-width: 75%;
 }
 
 .team .member-info h4 {
