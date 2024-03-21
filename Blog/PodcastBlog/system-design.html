@@ -147,7 +147,7 @@
           <h1>System Design</h1>
         </div>
           <div class="col-lg-12 d-flex flex-column justify-content-center pt-6 pt-lg-0 order-2 order-lg-1" data-aos="fade-up" data-aos-delay="200">
-            <h2>We had ...</h2>
+            <h2>The design of our system architecture</h2>
           </div>
       </div>
     </div>
@@ -168,9 +168,15 @@
         <div class="row content">
           <div class="col-lg-12 text-center">
             <p>
-              We have used css+html for the frontend of our project as well as Python for the backend....
+<!--              We have used css+html for the frontend of our project as well as Python for the backend....-->
+              Our project has 4? main components: user, frontend, backend and data storage.
             </p>
-            <p></p>
+          </div>
+          <div class="row">
+          <div class="col-lg-6 text-center">
+            <img src="assets/img/hci/Image.png" alt="Image 1">
+            <figcaption>1</figcaption>
+          </div>
 
       </div>
     </section><!-- End System Architecture Section -->
@@ -204,7 +210,9 @@
     <div class="row content">
       <div class="col-lg-12 text-center">
         <p>
-          Throughout the project, we have used different APIs (change for tools, etc)....
+          Throughout the project, we have used different APIs (application programming interfaces that connect
+          components to communicate with each other). They enabled us to automate most of the tasks that had
+          to be done for our podcast including script, audio and video generation.
         </p>
       </div>
     </div>
@@ -212,15 +220,16 @@
     <div class="faq-list">
       <ul>
         <li data-aos="fade-up" data-aos-delay="100">
-          <a data-bs-toggle="collapse" class="collapse" data-bs-target="#faq-list-1">OPEN AI API<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+          <a data-bs-toggle="collapse" class="collapse" data-bs-target="#faq-list-1">OpenAI API<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
           <div id="faq-list-1" class="collapse show" data-bs-parent=".faq-list">
-            <p>For ...</p>
+            <p>-Used for generating the script.</p>
+            <p>?</p>
           </div>
         </li>
         <li data-aos="fade-up" data-aos-delay="100">
           <a data-bs-toggle="collapse" class="collapse" data-bs-target="#faq-list-2">ElevenLabs API<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
           <div id="faq-list-2" class="collapse show" data-bs-parent=".faq-list">
-            <p>For converting Text to Speech and cloning voices (e.g., cloning Joe Rogan voice).</p>
+            <p>-Used for converting Text to Speech and cloning voices (e.g., cloning Joe Rogan voice).</p>
             <p>
             For instance, to clone the voice of Joe Rogan, we followed a straightforward process.
             We first uploaded sections of his speech from his podcast "Joe Rogan Experience".
@@ -232,17 +241,20 @@
         <li data-aos="fade-up" data-aos-delay="100">
           <a data-bs-toggle="collapse" class="collapse" data-bs-target="#faq-list-3">IBM Watson API<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
           <div id="faq-list-3" class="collapse show" data-bs-parent=".faq-list">
-            <p>For converting Text to Speech.</p>
+            <p>-Also used for converting Text to Speech.</p>
             <p>
             Just like with ElevenLabs API, IBM Watson API helps us turn text into speech.
-            However here, we chose to work with pre-recorded voices, making things a bit easier,
+            However, using IBM watson we chose to work with pre-recorded voices, making things a bit easier,
             though sacrificing a bit of naturalness in the voice quality.</p>
           </div>
         </li>
         <li data-aos="fade-up" data-aos-delay="100">
-          <a data-bs-toggle="collapse" class="collapse" data-bs-target="#faq-list-4">Play.ht API<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+          <a data-bs-toggle="collapse" class="collapse" data-bs-target="#faq-list-4">StabilityAI API<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
           <div id="faq-list-4" class="collapse show" data-bs-parent=".faq-list">
-            <p>For converting Text to Speech and cloning voices. Very similar to ElevenLabs, but...</p>
+            <p>-Tool used for converting Text to Image.</p>
+            <p>We used StabilityAI API to automate the process of generating images that are used for video generation.
+            A function within video generation uses the text script to identify its keywords and then these
+            keywords are used in a prompt in order to generate an image using StabilityAI. </p>
           </div>
         </li>
       </ul>
