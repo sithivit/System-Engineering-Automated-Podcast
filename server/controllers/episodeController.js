@@ -1,7 +1,5 @@
 const Episode = require("../models/episodeModel");
 const asyncHandler = require("express-async-handler");
-const { axios } = require("axios");
-const { response } = require("express");
 
 // const { body, validationResult } = require("express-validator")
 
