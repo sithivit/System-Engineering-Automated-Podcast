@@ -21,7 +21,7 @@ def generate_static_video():
     #if the image generated is not suitable
     image_path = choose_image()
     # Construct the paths to the files in the 'tmp' folder
-    tmp_folder = os.path.join(os.path.dirname(__file__), '..', '..', '..', 'tmp')
+    tmp_folder = os.path.join(os.getcwd(), "tmp")
     # image_path = os.path.join(tmp_folder, 'text_to_image.png')
     mp3_path = os.path.join(tmp_folder, 'final_speech_with_music.mp3')
     output_video_path = os.path.join(tmp_folder, 'output_video.mp4')

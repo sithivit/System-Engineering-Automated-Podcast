@@ -4,7 +4,7 @@ from pydub import AudioSegment
 
 def merge_audio_files():
     # Define the path to the tmp folder
-    tmp_folder = os.path.join(os.path.dirname(__file__), '..', '..', '..', 'tmp')
+    tmp_folder = os.path.join(os.getcwd(), "tmp")
 
     # List all MP3 files in the tmp folder
     input_audio_files = [os.path.join(tmp_folder, file) for file in os.listdir(tmp_folder) if file.endswith(".mp3")]
@@ -39,7 +39,7 @@ def adjust_music(music):
     return music
 def add_music_based_on_sentiment(audio_file_path, sentiment):
     # Define the path to the tmp folder
-    tmp_folder = os.path.join(os.path.dirname(__file__), '..', '..', '..', 'tmp')
+    tmp_folder = os.path.join(os.getcwd(), "tmp")
 
     # root_path = os.path.join(os.getcwd(), "shared","music")
     root_path = os.path.join(os.getcwd(), "music")
