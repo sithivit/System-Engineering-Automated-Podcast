@@ -1857,7 +1857,6 @@ section {
 }
 
 
-/* ======= Weekly Reports Section ======= */
 .reports .container {
   padding: 60px 0;
 }
@@ -1872,45 +1871,34 @@ section {
 }
 
 .reports .content p {
-  font-size: 16px;
+  font-size: 18px;
   color: #556877;
   line-height: 1.6;
   text-align: center;
 }
 
-@media (max-width: 768px) {
-  .reports .container {
-    padding: 30px 0;
-  }
+.reports .content ul {
+  padding: 0;
+  list-style: none;
+  margin-top: 20px;
 }
 
-
-/* ======= Legal Issues Section ======= */
-.legal .container {
-  padding: 60px 0;
+.reports .content ul li {
+  margin-bottom: 10px;
 }
 
-.legal .section-title h2 {
-  font-weight: 700;
-  font-size: 32px;
+.reports .content ul li a {
+  display: inline-block;
+  font-size: 16px;
   color: #37517e;
-  font-family: "Poppins", sans-serif;
-  text-align: center;
-  margin-bottom: 30px;
+  text-decoration: none;
+  transition: color 0.3s;
 }
 
-.legal .content p {
-  font-size: 16px;
-  color: #556877;
-  line-height: 1.6;
-  text-align: center;
+.reports .content ul li a:hover {
+  color: #47b2e4;
 }
 
-@media (max-width: 768px) {
-  .legal .container {
-    padding: 30px 0;
-  }
-}
 
 
 /*--------------------------------------------------------------
