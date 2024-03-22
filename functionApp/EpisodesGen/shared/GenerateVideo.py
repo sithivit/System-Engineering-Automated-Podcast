@@ -47,7 +47,7 @@ def generate_static_video():
     final_video_clip = CompositeVideoClip([video_clip.set_audio(audio_clip)])
 
     # Write the final video to an MP4 file
-    final_video_clip.write_videofile(output_video_path, codec="libx264", audio_codec="aac", fps=30, threads=4, write_logfile=False)
+    final_video_clip.write_videofile(output_video_path, codec="libx264", audio_codec="aac", fps=30, threads=4, write_logfile=False, temp_audiofile=False)
 
 if __name__ == '__main__':
      generate_static_video()

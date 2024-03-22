@@ -1180,13 +1180,22 @@ section {
   line-height: 1.6;
 }
 
+
+.sys_arc figcaption {
+  font-size: 14px;
+  color: #556877;
+  margin-top: 10px;
+  text-align: center;
+}
+
 @media (max-width: 768px) {
   #sys_arc .container {
     padding: 30px 0;
   }
 }
 
-}
+
+
 
 /* ======= Data Storage Section ======= */
 .database .container {
