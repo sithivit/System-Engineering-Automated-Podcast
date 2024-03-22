@@ -91,6 +91,7 @@
           <li class="dropdown"><a href="system-design.html"><span>System Design</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a href="system-design.html#sys_arc">System Architecture</a></li>
+              <li><a href="system-design.html#backend_arc">Backend Architecture</a></li>
               <li><a href="system-design.html#database">Data Storage</a></li>
               <li><a href="system-design.html#apis">APIs</a></li>
             </ul>
@@ -147,7 +148,7 @@
           <h1>System Design</h1>
         </div>
           <div class="col-lg-12 d-flex flex-column justify-content-center pt-6 pt-lg-0 order-2 order-lg-1" data-aos="fade-up" data-aos-delay="200">
-            <h2>The design of our system, which consists of 4 main components.</h2>
+            <h2>The design of our system, backend, and all the APIs used.</h2>
           </div>
       </div>
     </div>
@@ -158,7 +159,7 @@
 
 
     <!-- ======= System Architecture Section ======= -->
-    <section id="sys_arc" class="sys_arc">
+    <section id="sys_arc" class="sys_arc section-bg">
       <div class="container" data-aos="fade-up">
 
         <div class="section-title">
@@ -169,16 +170,51 @@
           <div class="col-lg-12 text-center">
             <p>
 <!--              We have used css+html for the frontend of our project as well as Python for the backend....-->
-              Our project has 4 main components: script, audio, video generation, and web deployment.
+              Our project has 3 main components: user, frontend and backend.
               Each of these uses different technologies and models:
             </p>
           </div>
           <div class="row">
           <div class="col-lg-12 text-center">
-            <img src="assets/img/design/Structure.png" alt="Image 1">
+            <img src="assets/img/design/arch1.png" alt="Image 1">
             <figcaption>System Architecture</figcaption>
           </div>
             <div class="log-lg-12">
+              <p></p>
+              <p>User: Can engage with the website through various means, including listening to episodes and using the suggestions feature
+              to generate a new episode.</p>
+              <p>Frontend: The website is deployed using Azure, coded in .. Users can ..</p>
+              <p>Backend: (Explained using the suggestion feature example) When a request is sent to generate an episode, the
+              backend starts the necessary processes including generating text, auido and video and combining all of these
+              together to produce a podcast episode.</p>
+            </div>
+
+      </div>
+    </section><!-- End System Architecture Section -->
+
+    <!-- ======= System Architecture Section ======= -->
+    <section id="backend_arc" class="sys_arc">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Backend Architecture</h2>
+        </div>
+
+        <div class="row content">
+          <div class="col-lg-12 text-center">
+            <p>
+<!--              We have used css+html for the frontend of our project as well as Python for the backend....-->
+              Our backend has 3 main components: script, audio and video generation.
+              Each of these uses different technologies and models:
+            </p>
+          </div>
+          <div class="row">
+          <div class="col-lg-12 text-center">
+            <img src="assets/img/design/Structure1.png" alt="Image 1">
+            <figcaption>Backend Architecture</figcaption>
+          </div>
+            <div class="log-lg-12">
+              <p></p>
               <p>1. Script Generation: Firstly, </p>
               <p>2. Audio Generation: Uses IBM Watson and ElevenLabs Text-To-Speech tools to generate audio files based on the script. It receives
               a variable with the script and turns it into audio mp3 file using either a pre-made voice (IBM Watson) or a cloned voice (ElevenLabs),
@@ -186,7 +222,6 @@
               <p>3. Video Generation: Uses MidJourney and StabilityAI Text-To-Image tools in order to generate images that are used as covers
               for the video part. It receives an mp3 file and turns it into an mp4 file by inserting the image and adding the audio file to it,
               using moviepy Python library for audio and video processing.</p>
-              <p>4. Web Deployment:</p>
             </div>
 
       </div>
