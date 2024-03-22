@@ -67,7 +67,7 @@ def generate_image(text):
     image = data["artifacts"][0]  # Take the first image
 
     # Construct the path to save the image in the 'tmp' folder
-    tmp_folder = os.path.join(os.path.dirname(__file__), '..', '..', '..', 'tmp')
+    tmp_folder = os.path.join(os.getcwd(), "tmp")
     image_path = os.path.join(tmp_folder, 'text_to_image.png')
 
     with open(image_path, "wb") as f:

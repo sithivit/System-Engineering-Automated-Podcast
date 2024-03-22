@@ -19,8 +19,11 @@ exports.episode_list = asyncHandler(async (req, res, next) => {
 
 // Handle episode create on POST.
 exports.episode_create_post = asyncHandler(async (req, res, next) => {
+    // Single Agent Episode
     if (req.body.isSingleAgent) {
-        fetch('https://episodesgen.azurewebsites.net/api/GenerateEpisode', {
+        // 'https://episodesgen.azurewebsites.net/api/GenerateEpisode'
+        // 'http://localhost:7071/api/GenerateEpisode'
+        fetch('http://localhost:7071/api/GenerateEpisode', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -29,9 +32,9 @@ exports.episode_create_post = asyncHandler(async (req, res, next) => {
                 title: req.body.title,
                 description: req.body.description,
                 keywords: req.body.keywords,
+                single: req.body.isSingleAgent,
                 local: req.body.isLocalModel,
-                api: req.body.api,
-                subKeywords: req.body.subKeywords,
+                api: req.body.api
             })
         })
             .then(response => {
@@ -41,8 +44,9 @@ exports.episode_create_post = asyncHandler(async (req, res, next) => {
                 res.send(error.data);
             });
     }
+    // Duo Agents Episode
     else {
-        fetch('https://episodesgen.azurewebsites.net/api/GenerateEpisode', {
+        fetch('http://localhost:7071/api/GenerateEpisode', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -51,10 +55,11 @@ exports.episode_create_post = asyncHandler(async (req, res, next) => {
                 title: req.body.title,
                 description: req.body.description,
                 keywords: req.body.keywords,
-                local: this.state.isLocalModel,
-                api: this.state.api,
+                single: req.body.isSingleAgent,
+                guestName: req.body.guestName,
                 subKeywords: req.body.subKeywords,
-                agentNames: [this.state.agentOne.trim(), this.state.agentTwo.trim()],
+                local: req.body.isLocalModel,
+                api: req.body.api
             })
         })
             .then(response => {

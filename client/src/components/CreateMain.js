@@ -37,8 +37,7 @@ export default class CreateMain extends React.Component {
         description: '',
         keywords: '',
         subKeywords: '',
-        agentOne: '',
-        agentTwo: '',
+        gutstName: '',
         api: '',
         isGenerated: false,
         isLocalModel: true,
@@ -60,9 +59,9 @@ export default class CreateMain extends React.Component {
             title: this.state.title,
             description: this.state.description,
             keywords: this.state.keywords,
-            subKeywords: this.state.subKeywords,
             isSingleAgent: this.state.isSingleAgent,
-            agentNames: [this.state.agentOne.trim(), this.state.agentTwo.trim()],
+            guestName: this.state.guestName,
+            subKeywords: this.state.subKeywords,
             isLocalModel: this.state.isLocalModel,
             api: this.state.api
         })
@@ -125,16 +124,6 @@ export default class CreateMain extends React.Component {
                                     error={this.state.keywords.trim() === "" && this.state.isSumitAttempted}
                                     helperText={this.state.keywords.trim() === "" && this.state.isSumitAttempted ? 'Field required!' : ' '}
                                 />
-                                <TextField
-                                    id="subKeywords"
-                                    label="Subtopic Keywords"
-                                    defaultValue=""
-                                    variant="filled"
-                                    required
-                                    onChange={this._handleFieldChange}
-                                    // error={this.state.keywords.trim() === "" && this.state.isSumitAttempted}
-                                    helperText={this.state.keywords.trim() === "" && this.state.isSumitAttempted ? 'Field required!' : ' '}
-                                />
                             </>
 
                             <>
@@ -162,20 +151,21 @@ export default class CreateMain extends React.Component {
                                 </Grid>
                                 <Collapse in={this.state.isDuoAgent}>
                                     <TextField
-                                        id="agentOne"
-                                        label="Agent Name 1"
+                                        id="guestName"
+                                        label="Guest Name"
                                         variant="filled"
                                         onChange={this._handleFieldChange}
                                         required={this.state.isDuoAgent}
-                                        sx={{ width: "19vw" }}
+                                        sx={{ width: "40vw" }}
                                     />
                                     <TextField
-                                        id="agentTwo"
-                                        label="Agent Name 2"
+                                        id="subKeywords"
+                                        label="Subtopic Keywords"
+                                        defaultValue=""
                                         variant="filled"
                                         onChange={this._handleFieldChange}
                                         required={this.state.isDuoAgent}
-                                        sx={{ width: "19vw", ml: "2vw" }}
+                                        sx={{ width: "40vw", mt: "20px" }}
                                     />
                                 </Collapse>
                             </>
@@ -230,7 +220,10 @@ export default class CreateMain extends React.Component {
                             >
                                 <Grid item>
                                     <Button
+                                        component="label"
+                                        role={undefined}
                                         variant="outlined"
+                                        tabIndex={-1}
                                         startIcon={<CloudUploadIcon />}
                                     >
                                         Upload RAG (Optional)
@@ -270,27 +263,6 @@ export default class CreateMain extends React.Component {
                         >
                             Episode generated and uploaded successfully!
                         </Box>
-                        {/* <Card sx={{ width: '50vw', marginLeft: '25vw' }} >
-                            <CardMedia
-                                component='video'
-                                image={`https://aipodcaststorage.blob.core.windows.net/podcast-media/${this.state.title}.mp4`}
-                                controls
-                            />
-                        </Card> */}
-                        {/* <Link to={"/episodes"}>
-                            <Button
-                                variant="contained"
-                                sx={{
-                                    width: "20vw",
-                                    minWidth: "200px",
-                                    maxWidth: "300px",
-                                    marginTop: "50px",
-                                    marginLeft: "40vw"
-                                }}
-                            >
-                                Return to Episodes
-                            </Button>
-                        </Link> */}
 
                     </Collapse>
                 </main>

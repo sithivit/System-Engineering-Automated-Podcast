@@ -4,8 +4,8 @@ from ibm_watson import TextToSpeechV1
 from ibm_cloud_sdk_core.authenticators import IAMAuthenticator
 # from config import apikey, url, elevenlabs_api
 from dotenv import load_dotenv
-#from shared.AudioMerger import merge_audio_files, add_music_based_on_sentiment #add_background_music_to_audio
-from AudioMerger import merge_audio_files, add_music_based_on_sentiment #add_background_music_to_audio
+#add_background_music_to_audio
+from shared.AudioMerger import merge_audio_files, add_music_based_on_sentiment #add_background_music_to_audio
 from textblob import TextBlob
 
 import time
@@ -146,7 +146,7 @@ def generate_with_elevenlabs(text, voice, count):
         )
 
         # Define the relative path to the tmp folder
-        tmp_folder = os.path.join(os.path.dirname(__file__), '..', '..', '..', 'tmp')
+        tmp_folder = os.path.join(os.getcwd(), "tmp")
 
         # Create the tmp folder if it doesn't exist
         os.makedirs(tmp_folder, exist_ok=True)
@@ -197,7 +197,7 @@ def get_audio_file(text, person1_name=None, person2_name=None):
     merge_audio_files()
 
     sentiment = analyze_sentiment(text)
-    tmp_folder = os.path.join(os.path.dirname(__file__), '..', '..', '..', 'tmp')
+    tmp_folder = os.path.join(os.getcwd(), "tmp")
     add_music_based_on_sentiment(os.path.join(tmp_folder, 'final_speech.mp3'), sentiment)
 
 # if __name__ == '__main__':
