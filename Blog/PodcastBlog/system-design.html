@@ -153,10 +153,16 @@
           data-aos="fade-up" data-aos-delay="200">
           <h1>System Design</h1>
         </div>
+<<<<<<< Updated upstream
         <div class="col-lg-12 d-flex flex-column justify-content-center pt-6 pt-lg-0 order-2 order-lg-1"
           data-aos="fade-up" data-aos-delay="200">
           <h2>The design of our system, backend, and all the APIs used.</h2>
         </div>
+=======
+          <div class="col-lg-12 d-flex flex-column justify-content-center pt-6 pt-lg-0 order-2 order-lg-1" data-aos="fade-up" data-aos-delay="200">
+            <h2>The design of our system and backend, as well as all the APIs used.</h2>
+          </div>
+>>>>>>> Stashed changes
       </div>
     </div>
 
@@ -369,7 +375,78 @@
         </div>
 
       </div>
+<<<<<<< Updated upstream
     </section><!-- End Clients Section -->
+=======
+    </div>
+
+    <div class="faq-list">
+      <ul>
+        <li data-aos="fade-up" data-aos-delay="100">
+          <a data-bs-toggle="collapse" class="collapse" data-bs-target="#faq-list-1">OpenAI API<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+          <div id="faq-list-1" class="collapse show" data-bs-parent=".faq-list">
+            <p>-Used for generating the script.</p>
+            <p>Primarily used for generating the script of the episodes by sending prompts to OpenAI.</p>
+          </div>
+        </li>
+        <li data-aos="fade-up" data-aos-delay="100">
+          <a data-bs-toggle="collapse" class="collapse" data-bs-target="#faq-list-2">ElevenLabs API<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+          <div id="faq-list-2" class="collapse show" data-bs-parent=".faq-list">
+            <p>-Used for converting Text to Speech and cloning voices (e.g., cloning Joe Rogan voice).</p>
+            <p>
+            For instance, to clone the voice of Joe Rogan, we followed a straightforward process.
+            We first uploaded sections of his speech from his podcast "Joe Rogan Experience".
+            Then, we used the Voice ID generated and incorporated it as a voice option within our
+            Text-To-Speech component of the code, called AudioGeneration. From there, it is very
+            easy to generate audio chunks, using his or someone else's voice by selecting the preferred voice option.</p>
+          </div>
+        </li>
+        <li data-aos="fade-up" data-aos-delay="100">
+          <a data-bs-toggle="collapse" class="collapse" data-bs-target="#faq-list-3">IBM Watson API<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+          <div id="faq-list-3" class="collapse show" data-bs-parent=".faq-list">
+            <p>-Also used for converting Text to Speech.</p>
+            <p>
+            Just like with ElevenLabs API, IBM Watson API helps us turn text into speech.
+            However, using IBM watson we chose to work with pre-recorded voices, making things a bit easier,
+            though sacrificing a bit of naturalness in the voice quality.</p>
+          </div>
+        </li>
+        <li data-aos="fade-up" data-aos-delay="100">
+          <a data-bs-toggle="collapse" class="collapse" data-bs-target="#faq-list-4">StabilityAI API<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+          <div id="faq-list-4" class="collapse show" data-bs-parent=".faq-list">
+            <p>-Tool used for converting Text to Image.</p>
+            <p>We used StabilityAI API to automate the process of generating images that are used for video generation.
+            A function within video generation uses the text script to identify its keywords and then these
+            keywords are used in a prompt in order to generate an image using StabilityAI. </p>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+</section><!-- End APIs Section -->
+
+
+
+<!-- ======= Clients Section ======= -->
+<section id="clients" class="clients section-bg">
+  <div class="container">
+
+    <div class="row justify-content-center" data-aos="zoom-in">
+
+      <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center larger-image">
+        <img src="assets/img/clients/client-1.png" class="img-fluid" alt="">
+      </div>
+
+      <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+        <img src="assets/img/clients/client-2.png" class="img-fluid" alt="">
+      </div>
+
+    </div>
+
+  </div>
+</section><!-- End Clients Section -->
+>>>>>>> Stashed changes
 
 
 
