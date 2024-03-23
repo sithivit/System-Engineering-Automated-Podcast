@@ -37,7 +37,7 @@ class LocalSingleAgentScript:
         return relevant_docs
         
         
-    def brain_storm(self, podcast_name, specific_topics):
+    def brain_storm(self, podcast_name, description, specific_topics):
         relevant_docs = self.enrich_brainstorm_with_rag(specific_topics)
         enriched_context = " ".join(relevant_docs)
         enriched_context = extract_text_by_keywords(enriched_context, podcast_name, specific_topics)
@@ -46,6 +46,7 @@ class LocalSingleAgentScript:
             
             The scripts should also be related to the following topics {topics}
             Based on our research, here is some relevant information: {enriched_context}
+            This is the description of the podcast: {description}
             Please expand on this idea and write a brief paragraph in the form of a premise: {name}
             """
 
@@ -56,6 +57,7 @@ class LocalSingleAgentScript:
             "name": podcast_name, 
             "topics": specific_topics,
             "enriched_context": enriched_context,
+            "description": description
             })
 
         return brain_storm
@@ -91,8 +93,8 @@ class LocalSingleAgentScript:
         expanded_para = llm_chain.run({"segment": segment})
         return expanded_para
 
-    def run(self, name, specific_topics):
-        brain_storm = self.brain_storm(name, specific_topics)
+    def run(self, name, description, specific_topics):
+        brain_storm = self.brain_storm(name, description ,specific_topics)
         segment1, segment2, segment3 = self.expand_premises(brain_storm)
 
         para1 = self.expand_segments(segment1)
@@ -125,6 +127,7 @@ class OpenAISingleAgentScript():
         brain_storming_template = f""" 
             The scripts should also be related to the following topics: {specific_topics}
             Based on our research, here is some relevant information: {enriched_context}
+            This is the description of the podcast: {description}
             Please expand on this idea and write a brief paragraph in the form of a premise: {podcast_name}
         """
 
@@ -168,8 +171,8 @@ class OpenAISingleAgentScript():
 
         return response.choices[0].message['content']
 
-    def run(self, name, specific_topics):
-        brain_storm = self.brain_storm(name, specific_topics)
+    def run(self, name, description, specific_topics):
+        brain_storm = self.brain_storm(name, description, specific_topics)
         segment1, segment2, segment3 = self.expand_premises(brain_storm)
 
         para1 = self.expand_segments(segment1)
