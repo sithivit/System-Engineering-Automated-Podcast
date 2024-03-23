@@ -286,7 +286,49 @@
                 <p>We used os to remove the mp3 file that were no longer needed.</p>
               </div>
               <div class="col-lg-6 text-center">
-                <img src="assets/img/logos/os.png" alt="Image 6">
+                <img src="assets/img/logos/os.png" alt="Image 7">
+              </div>
+          </div>
+        </li>
+
+        <li data-aos="fade-up" data-aos-delay="100">
+          <a data-bs-toggle="collapse" class="collapse" data-bs-target="#faq-list-8">OpenAI<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+          <div id="faq-list-8" class="collapse show" data-bs-parent=".faq-list">
+            <div class="row">
+              <div class="col-lg-6 text-center">
+                <p>OpenAI module is for communicating with server side LLM of OpenAI</p>
+                <p>We used it to generate podcast script given that user have OpenAI apikey</p>
+              </div>
+              <div class="col-lg-6 text-center">
+                <img src="assets/img/logos/openai.png" alt="Image 8">
+              </div>
+          </div>
+        </li>
+
+      <li data-aos="fade-up" data-aos-delay="100">
+          <a data-bs-toggle="collapse" class="collapse" data-bs-target="#faq-list-9">LangChain<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+          <div id="faq-list-9" class="collapse show" data-bs-parent=".faq-list">
+            <div class="row">
+              <div class="col-lg-6 text-center">
+                <p>LangChainis a large language model integration framework</p>
+                <p>We used it to integrate both local and server LLM to our application</p>
+              </div>
+              <div class="col-lg-6 text-center">
+                <img src="assets/img/logos/langchain.jpeg" alt="Image 9">
+              </div>
+          </div>
+        </li>
+
+        <li data-aos="fade-up" data-aos-delay="100">
+          <a data-bs-toggle="collapse" class="collapse" data-bs-target="#faq-list-10">Transformers<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+          <div id="faq-list-10" class="collapse show" data-bs-parent=".faq-list">
+            <div class="row">
+              <div class="col-lg-6 text-center">
+                <p>Transformers provides APIs to quickly download and use pretrained models for wide variety of things from hugginface</p>
+                <p>We used it to create embedding for transforming text information into vector</p>
+              </div>
+              <div class="col-lg-6 text-center">
+                <img src="assets/img/logos/transformers.png" alt="Image 9">
               </div>
           </div>
         </li>
@@ -303,16 +345,64 @@
 
     <div class="section-title text-center">
       <h2>Script Generation</h2>
+      <p>The script generation works as follows:</p>
     </div>
 
     <div class="row">
 
 <!--      <div class="col-lg-12 d-flex flex-column justify-content-center align-items-center">-->
+      <h3>Single Agent Script</h3>
       <div class="col-lg-12">
         <p>
-          The script generation works as follows:...
+          Firstly, there are two classes that user can choose from given the type of podcast that they want which is single or duo podcast. The classes are split into two different file in singleAgentScript.py and multiAgentScript.py.
+          Lets have a look at singleAgentScript.py
         </p>
+        <div class="row">
+          <div class="col-lg-6 text-center">
+            <img src="assets/img/code/script/localSingleAgentScript.png" alt="script Image 1">
+            <figcaption class="image2-label"> Initialising of singleAgentscript class</figcaption>
+          </div>
+          <div class="col-lg-6 text-center">
+            <img src="assets/img/code/script/OpenAISingleAgentScript.png" alt="script Image 2">
+            <figcaption class="image2-label"> Initialising of OpenAISingleAgentScript class</figcaption>
+          </div>
+        </div>
+        <p>
+          The script will choose the class according to what user want using local LLM or server LLM. Both class follow the same procedure in generating the script. First, it will brainstorm the idea of the topics then generate Introduction, Body and Conclusion scripts.
+          Then the LLM can expand on each premises from the brainstorm stage and generate the podcast script according to the result of expanding each premises as a single person podcast.
+        </p>
+        <h3>Multi Agent script</h3>
+        <div class="col-lg-6 text-center">
+          <img src="assets/img/code/script/MultiAgentscript_init.png">
+        </div>
+        <p>
+          For multi agent podcast, we model the code to simulate two AI agents talking together like a duo podcast for example Joe Rogan. The init method except OPENAI_API key if given otherwise it will initialize local LLM.
+        </p>
+        <img src="assets/img/code/script/Init_llm.png">
+        <P>
+          This is how the class initialize LLM.
+        </p>
+        <p>
+          We tried different method of prompt engineering for desired result and found out that this template give out the best result for duo podcast generation
+        </p>
+        <img src="assets/img/code/script/prompt_template.png">
       </div>
+      <p>If you want to have a closer look at our podcast script generation logic please take a look at our code at under multiAgentScript.py and singleAgentScript.py</p>
+      <h3>
+        RAG implementation
+      </h3>
+      <p>
+        Our RAG implementation is under directory documentParser which contain rag_utils.py file. First of all, the code will try to create embedding by loading "sentence-transformers/all-MiniLM-l6-v2" model from hugginface hub. Then it will extract information from each file in document directory (The file can be pdf or txt). 
+        The embedding will transform the information into vector database where we can execute similarity check between the given prompt for podcast generation and known information in document directory
+      </p>      
+      <div class="col-lg-6 text-center">
+        <img src="assets/img/code/script/init_embedding.png">
+        <figcaption class="image2-label"> Initialising of huggingface embedding</figcaption>
+      </div>
+      <div class="col-lg-6 text-center">
+            <img src="assets/img/code/script/save_data.png">
+            <figcaption class="image2-label"> Main implementation of saving vector data from document directory</figcaption>
+          </div>
     </div>
   </div>
 </section><!-- End Script Generation Section -->

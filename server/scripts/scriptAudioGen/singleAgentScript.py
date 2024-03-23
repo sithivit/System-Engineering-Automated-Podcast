@@ -105,8 +105,8 @@ class LocalSingleAgentScript:
 
 class OpenAISingleAgentScript():
     def __init__(self, api_key):
-        self.api_key = api_key
-        openai.api_key = self.api_key
+        self.__api_key = api_key
+        openai.api_key = self.__api_key
 
     def enrich_brainstorm_with_rag(self, specific_topics):
         # Example function to query RAG system and retrieve relevant content
