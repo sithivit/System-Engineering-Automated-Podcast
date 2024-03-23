@@ -919,9 +919,10 @@ section {
 }
 
 .tech-decisions table {
-  width: 100%;
+  width: 60%;
   border-collapse: collapse;
   margin-top: 30px;
+  margin: 0 auto;
   border: 2px solid #000; /* Increased border thickness */
 }
 
@@ -930,8 +931,11 @@ section {
   padding: 20px; /* Increased padding */
   text-align: left;
   border-bottom: 1px solid #000; /* Added border at the bottom of each row */
-  width: 50%;
+  width: 90%; /* Adjust the width of the columns */
 }
+
+
+
 
 .tech-decisions th {
   background-color: #f2f2f2;
@@ -953,8 +957,68 @@ section {
   }
 }
 
+/* ======= Technical Decisions Section ======= */
+.tech-decisions1 .container {
+  padding: 60px 0;
+}
+
+.tech-decisions1 .section-title h2 {
+  font-weight: 700;
+  font-size: 32px;
+  color: #37517e;
+  font-family: "Poppins", sans-serif;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.tech-decisions1 .section-title p {
+  font-size: 16px;
+  color: #556877;
+  line-height: 1.6;
+  text-align: center;
+}
+
+.tech-decisions1 table {
+  width: 60%;
+  border-collapse: collapse;
+  margin-top: 30px;
+  margin: 0 auto;
+  border: 2px solid #000; /* Increased border thickness */
+}
+
+.tech-decisions1 th,
+.tech-decisions1 td {
+  padding: 20px; /* Increased padding */
+  text-align: left;
+  border-bottom: 1px solid #000; /* Added border at the bottom of each row */
+  width: 40%; /* Adjust the width of the columns */
+}
+
+.tech-decisions1 th:nth-child(2),
+.tech-decisions1 td:nth-child(2) {
+  width: 20%; /* Adjust the width of the second column */
+}
 
 
+.tech-decisions1 th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+  color: #37517e;
+}
+
+.tech-decisions1 tbody tr:hover {
+  background-color: #f2f2f2;
+}
+
+.tech-decisions1 tbody tr:nth-child(even) {
+  background-color: #e6f2ff; /* Slightly different color for even rows */
+}
+
+@media (max-width: 768px) {
+  .tech-decisions1 .container {
+    padding: 30px 0;
+  }
+}
 
 
 
@@ -1050,7 +1114,6 @@ section {
 }
 
 
-/* ======= Prototype Video Section ======= */
 .prototype .container {
   padding: 60px 0;
 }
@@ -1067,47 +1130,27 @@ section {
 .prototype .section-title p {
   font-size: 16px;
   color: #556877;
+  line-height: 1.6;
   text-align: center;
 }
 
-.prototype .d-flex {
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+.prototype .row {
+  margin-top: 30px;
 }
 
-.prototype .btn-watch-video {
-  font-family: "Poppins", sans-serif;
-  font-weight: 500;
-  font-size: 16px;
-  letter-spacing: 1px;
-  display: inline-block;
-  padding: 12px 32px;
-  border-radius: 4px;
-  transition: 0.3s;
-  line-height: 1;
+.prototype .row .col-lg-4 {
   text-align: center;
-  margin: 15px 0;
 }
 
-
-.prototype .btn-watch-video {
-  background-color: #37517e;
-  color: #fff;
-  display: flex;
-  align-items: center;
+.prototype .row .col-lg-4 img {
+  max-width: 90%;
+  height: auto;
+  margin-bottom: 15px;
 }
 
-.prototype .btn-watch-video i {
-  font-size: 24px;
-  margin-right: 8px;
-}
-
-.prototype .btn-watch-video:hover,
-.prototype .btn-get-started:hover {
-  background-color: #47b2e4;
-  color: #fff;
-  text-decoration: none;
+.prototype .row .col-lg-4 figcaption {
+  font-size: 14px;
+  color: #556877;
 }
 
 @media (max-width: 768px) {
@@ -1115,6 +1158,7 @@ section {
     padding: 30px 0;
   }
 }
+
 
 /* ======= System Architecture Section ======= */
 #sys_arc .container {
@@ -1136,13 +1180,22 @@ section {
   line-height: 1.6;
 }
 
+
+.sys_arc figcaption {
+  font-size: 14px;
+  color: #556877;
+  margin-top: 10px;
+  text-align: center;
+}
+
 @media (max-width: 768px) {
   #sys_arc .container {
     padding: 30px 0;
   }
 }
 
-}
+
+
 
 /* ======= Data Storage Section ======= */
 .database .container {
@@ -1315,6 +1368,18 @@ section {
 
 .dependencies .faq-list #faq-list-7 img {
   max-width: 66%; /* Adjust the maximum width as needed */
+  height: auto;
+  /* Additional styles if needed */
+}
+
+.dependencies .faq-list #faq-list-8 img {
+  max-width: 20%; /* Adjust the maximum width as needed */
+  height: auto;
+  /* Additional styles if needed */
+}
+
+.dependencies .faq-list #faq-list-11 img {
+  max-width: 20%; /* Adjust the maximum width as needed */
   height: auto;
   /* Additional styles if needed */
 }
@@ -1605,96 +1670,52 @@ section {
 }
 
 
-/* ======= Achievements Section ======= */
-#achievements {
-  padding: 60px 0; /* Adjust padding as needed */
-
-}
-
-#achievements .container {
-  text-align: center;
-}
-
-#achievements .section-title h2 {
-  font-weight: 700;
-  font-size: 32px;
-  color: #37517e; /* Title text color */
-  font-family: "Poppins", sans-serif;
-  margin-bottom: 30px;
-}
-
-#achievements .content {
-  margin-top: 30px;
-}
-
-#achievements .content h2 {
-  font-size: 28px;
-  color: #37517e; /* Subtitle text color */
-  font-family: "Poppins", sans-serif;
-  margin-bottom: 15px;
-}
-
-#achievements .content p {
-  font-size: 16px;
-  color: #556877; /* Text color */
-  line-height: 1.6;
-}
-
-@media (max-width: 768px) {
-  #achievements .container {
-    padding: 30px 0;
-  }
-}
 
 
 
 
 /* ======= Evaluation Section ======= */
-#eval {
+.eval .container {
   padding: 60px 0;
-  background-color: #f8f9fa; /* Background color */
 }
 
-#eval .container {
-  text-align: center;
-}
-
-#eval .section-title h2 {
+.eval .section-title h2 {
   font-weight: 700;
   font-size: 32px;
-  color: #37517e; /* Title text color */
+  color: #37517e;
   font-family: "Poppins", sans-serif;
+  text-align: center;
   margin-bottom: 30px;
 }
 
-#eval .content p {
+.eval .content p {
   font-size: 16px;
-  color: #556877; /* Text color */
+  color: #556877;
   line-height: 1.6;
   text-align: center;
 }
 
-#eval .faq-list {
+.eval .faq-list {
   margin-top: 30px;
 }
 
-#eval .faq-list ul {
+.eval .faq-list ul {
   padding: 0;
   list-style: none;
 }
 
-#eval .faq-list li+li {
+.eval .faq-list li+li {
   margin-top: 15px;
 }
 
-#eval .faq-list li {
+.eval .faq-list li {
   padding: 20px;
   background: #eee;
   border-radius: 4px;
   position: relative;
 }
 
-#eval .faq-list a {
+.eval .faq-list a {
   display: block;
   position: relative;
   font-family: "Poppins", sans-serif;
@@ -1708,44 +1729,45 @@ section {
   transition: 0.3s;
 }
 
-#eval .faq-list .icon-show,
-#eval .faq-list .icon-close {
+.eval .faq-list .icon-show,
+.eval .faq-list .icon-close {
   font-size: 24px;
   position: absolute;
   right: 0;
   top: 0;
 }
 
-#eval .faq-list p {
+.eval .faq-list p {
   margin-bottom: 0;
   padding: 10px 0 0 0;
 }
 
-#eval .faq-list .icon-show {
+.eval .faq-list .icon-show {
   display: none;
 }
 
-#eval .faq-list a.collapsed {
+.eval .faq-list a.collapsed {
   color: #37517e;
 }
 
-#eval .faq-list a.collapsed:hover {
+.eval .faq-list a.collapsed:hover {
   color: #47b2e4;
 }
 
-#eval .faq-list a.collapsed .icon-show {
+.eval .faq-list a.collapsed .icon-show {
   display: inline-block;
 }
 
-#eval .faq-list a.collapsed .icon-close {
+.eval .faq-list a.collapsed .icon-close {
   display: none;
 }
 
 @media (max-width: 768px) {
-  #eval .container {
+  .eval .container {
     padding: 30px 0;
   }
 }
+
 
 /* ======= Future Work Section ======= */
 .future_work .container {
@@ -1835,7 +1857,6 @@ section {
 }
 
 
-/* ======= Weekly Reports Section ======= */
 .reports .container {
   padding: 60px 0;
 }
@@ -1850,45 +1871,34 @@ section {
 }
 
 .reports .content p {
-  font-size: 16px;
+  font-size: 18px;
   color: #556877;
   line-height: 1.6;
   text-align: center;
 }
 
-@media (max-width: 768px) {
-  .reports .container {
-    padding: 30px 0;
-  }
+.reports .content ul {
+  padding: 0;
+  list-style: none;
+  margin-top: 20px;
 }
 
-
-/* ======= Legal Issues Section ======= */
-.legal .container {
-  padding: 60px 0;
+.reports .content ul li {
+  margin-bottom: 10px;
 }
 
-.legal .section-title h2 {
-  font-weight: 700;
-  font-size: 32px;
+.reports .content ul li a {
+  display: inline-block;
+  font-size: 16px;
   color: #37517e;
-  font-family: "Poppins", sans-serif;
-  text-align: center;
-  margin-bottom: 30px;
+  text-decoration: none;
+  transition: color 0.3s;
 }
 
-.legal .content p {
-  font-size: 16px;
-  color: #556877;
-  line-height: 1.6;
-  text-align: center;
+.reports .content ul li a:hover {
+  color: #47b2e4;
 }
 
-@media (max-width: 768px) {
-  .legal .container {
-    padding: 30px 0;
-  }
-}
 
 
 /*--------------------------------------------------------------
@@ -2250,7 +2260,7 @@ section {
 
 .team .pic img {
   border-radius: 50%;
-  max-width: 100%;
+  max-width: 75%;
 }
 
 .team .member-info h4 {

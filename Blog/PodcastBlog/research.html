@@ -43,25 +43,26 @@
   <header id="header" class="fixed-top ">
     <div class="container d-flex align-items-center">
 
-      <h1 class="logo me-auto"><a href="home.html">AI Podcast</a></h1>
+      <h1 class="logo me-auto"><a href="index.html">AI Podcast</a></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
-      <!-- <a href="home.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+      <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
       <nav id="navbar" class="navbar">
         <ul>
-<!--          <li><a class="nav-link scrollto active" href="#hero">Intro</a></li>-->
-          <li class="dropdown"><a href="home.html"><span>Home</span> <i class="bi bi-chevron-down"></i></a>
+          <!--          <li><a class="nav-link scrollto active" href="#hero">Intro</a></li>-->
+          <li class="dropdown"><a href="index.html"><span>Home</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="home.html#">Abstract</a></li>
-              <li><a href="home.html#">Video</a></li>
-              <li><a href="home.html#team">Team Members</a></li>
-              <li><a href="home.html#">Project Timeline</a></li>
-<!--              <li><a href="#">Deep Drop Down 2</a></li>-->
+              <li><a href="index.html#abstract">Abstract</a></li>
+              <li><a href="index.html#prototype_video">Video</a></li>
+              <li><a href="index.html#team">Team Members</a></li>
+              <li><a href="index.html#gantt">Project Timeline</a></li>
+              <!--              <li><a href="#">Deep Drop Down 2</a></li>-->
             </ul>
           </li>
 
-<!--          <li><a class="nav-link scrollto" href="#about">Requirements</a></li>-->
-          <li class="dropdown"><a href="requirements.html"><span>Requirements</span> <i class="bi bi-chevron-down"></i></a>
+          <!--          <li><a class="nav-link scrollto" href="#about">Requirements</a></li>-->
+          <li class="dropdown"><a href="requirements.html"><span>Requirements</span> <i
+                class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a href="requirements.html#background">Project Background</a></li>
               <li><a href="requirements.html#objectives">Project Objectives</a></li>
@@ -82,21 +83,24 @@
           <li class="dropdown"><a href="hci.html"><span>HCI</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a href="hci.html#sketches">Sketches</a></li>
-              <li><a href="hci.html#prototype_video">Prototype Video</a></li>
+              <li><a href="hci.html#prototype_video">Prototype</a></li>
               <li><a href="hci.html#prototype_eval">Evaluation of Prototype</a></li>
               <li><a href="hci.html#imp_version">Improved Version</a></li>
             </ul>
           </li>
 
-          <li class="dropdown"><a href="system-design.html"><span>System Design</span> <i class="bi bi-chevron-down"></i></a>
+          <li class="dropdown"><a href="system-design.html"><span>System Design</span> <i
+                class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a href="system-design.html#sys_arc">System Architecture</a></li>
+              <li><a href="system-design.html#backend_arc">Function App Architecture</a></li>
               <li><a href="system-design.html#database">Data Storage</a></li>
               <li><a href="system-design.html#apis">APIs</a></li>
             </ul>
           </li>
 
-          <li class="dropdown"><a href="implementation.html"><span>Implementation</span> <i class="bi bi-chevron-down"></i></a>
+          <li class="dropdown"><a href="implementation.html"><span>Implementation</span> <i
+                class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a href="implementation.html#dependencies">Libraries and Tools</a></li>
               <li><a href="implementation.html#script">Script Generation</a></li>
@@ -115,7 +119,7 @@
 
           <li class="dropdown"><a href="evaluation.html"><span>Evaluation</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="evaluation.html#achievements">Summary of Achievements</a></li>
+              <li><a href="evaluation.html#achievements">Final MoSCoW list</a></li>
               <li><a href="evaluation.html#ind_contribution">Individual Contributions</a></li>
               <li><a href="evaluation.html#eval">Evaluation</a></li>
               <li><a href="evaluation.html#future_work">Future Work</a></li>
@@ -322,12 +326,12 @@
             <p>Initially, we needed to determine our Text-to-Speech tool. Some platforms provided pre-existing voices with various
               specifications (e.g., Male, American or Female, Australian), while others allowed voice cloning [1]. After considering
               the options, we opted for IBM Watson for its pre-made voices due to its high accuracy, quality voices, reliable algorithms
-              (e.g., processing human speech), and future-ready features such as integration with Watson Assistant and multilingualism[3].
+              (e.g., processing human speech), and future-ready features such as integration with Watson Assistant and multilingualism[2].
               Regarding voice-cloning, ElevenLabs emerged as our choice for its instant voice cloning capabilities and cost-effectiveness
-              compared to alternatives. Although PlayHT was considered, given its usage by PodcastAI, a thorough comparison with ElevenLabs
+              compared to alternatives[3]. Although PlayHT was considered, given its usage by PodcastAI, a thorough comparison with ElevenLabs
               revealed its diminished functionality and quality, coupled with a higher cost.</p>
             <p class="section-title">Audio Processing</p>
-            <p>We then needed to figure out the audio proccesing part, including merging files together,
+            <p>We then needed to figure out the audio processing part, including merging files together,
             adding music, cutting, etc. A crucial requirement for us was the tool's capability to import and export mp3 files,
             rather than solely playing the sound within Python. Considering that many Python libraries offer similar audio processing functionalities,
             we decided to choose pydub as it seemed to cover our needs, while also being easy to use[4]. We also used
@@ -349,14 +353,14 @@
             of our podcust, we reviewed 2 different approaches when it came to video generating - generation of a dynamic video
               and generation of a static video.</p>
             <p class="section-title">First Potential Solution</p>
-            <p>Initially, we wanted to utilise a text-to-video tool such as synthesia[] to generate video clips for our episodes.
+            <p>Initially, we wanted to utilise a text-to-video tool such as synthesia[6] to generate video clips for our episodes.
               The idea would be: generate video based on what the host or the guest is saying and combine it with the audio
               from text-to-speech model.
               However, after researching deeper, we realised that the text-to-video tools, including synthesia and
               others are really expensive while providing us with something that we do not necessarily need as people
-              usually listen to podcasts while doing something else (chores, drive, work out)[2] and hence will not focus
+              usually listen to podcasts while doing something else (chores, drive, work out)[7] and hence will not focus
               on the video element of the podcast. Therefore, we made a decision to do something simpler and more
-              cost effective.
+              cost-effective.
             </p>
             <p class="section-title">Second Potential Solution</p>
             <p>As a result, we implemented the static video method. The approach included two different ways of choosing the
@@ -365,14 +369,14 @@
               The first method was to generate a number of neutral themed pictures,
               and once the audio part is ready, select a random neutral-themed picture from the folder with these images. Then,
               simply play this image throughout the episode, using it as a cover for the episode. The technology we wanted to use
-              was MidJourney (text-to-image tool) as it generated very high quality pictures, following the prompt closely[3]. The
+              was MidJourney (text-to-image tool) as it generated very high quality pictures, following the prompt closely[8]. The
               only negative it had was the absence of the api for it, therefore we would have to do more manual work and the podcast
               would not be as automated.
             </p>
             <p>The other method of selecting an image included using a different text-to-image tool, which had an api.
             After the final consideration of the three best tools tailored for our needs (DeepAI, Replicate and StabilityAI),
             we decided to choose StabilityAI for its ease of use, well-written documentation
-            and decent quality of images, coupled with free accessibility[4]. The video generation process included analysing
+            and decent quality of images, coupled with free accessibility[9]. The video generation process included analysing
               the text script to identify 5-10 keywords, which would then be used to generate an image displayed throughout the episode.</p>
           </div>
           <p class="section-title">Video Processing</p>
@@ -389,12 +393,12 @@
 
 
 <!-- ======= Technical Decisions Section ======= -->
-<section id="tech-decisions" class="tech-decisions section-bg">
+<section id="tech-decisions" class="tech-decisions1 section-bg">
   <div class="container" data-aos="fade-up">
 
     <div class="section-title">
       <h2>Technical Decisions</h2>
-      <p>This is a simple table with two columns that you can fill.</p>
+      <p>This is a summary of the technologies that we have used throughout the process of building our project.</p>
     </div>
 
     <table>
@@ -409,6 +413,22 @@
           <td>Programming Language</td>
           <td>Python</td>
         </tr>
+      <tr>
+          <td>Method of Loading Local Model</td>
+          <td>Langchain & GPT4All</td>
+        </tr>
+      <tr>
+          <td>Local Model</td>
+          <td>mistral-7b-openorca.gguf2.Q4_0.gguf </td>
+        </tr>
+      <tr>
+          <td>Online LLM</td>
+          <td>OpenAI Chatgpt-3.5-turbo</td>
+        </tr>
+      <tr>
+          <td>RAG</td>
+          <td>transformers (sentence-transformers/all-MiniLM-l6-v2)</td>
+        </tr>
         <tr>
           <td>Text-to-Speech</td>
           <td>IBM Watson & ElevenLabs</td>
@@ -421,11 +441,11 @@
           <td>Sentiment Analysis</td>
           <td>textblob</td>
         </tr>
-        <tr>
+      <tr>
           <td>Music</td>
           <td>YouTube Audio Library</td>
         </tr>
-        <tr>
+      <tr>
           <td>Text-to-Image</td>
           <td>MidJourney & StabilityAI</td>
         </tr>
@@ -437,9 +457,27 @@
           <td>Image Processing</td>
           <td>numpy</td>
         </tr>
+      <tr>
+          <td>Frontend (Website)</td>
+          <td>ReactJS</td>
+        </tr>
+      <tr>
+          <td>Backend (Website)</td>
+          <td>NodeJS & Express</td>
+        </tr>
+      <tr>
+          <td>Database (Website)</td>
+          <td>MongoDB (using Azure CosmosDB)</td>
+        </tr>
+      <tr>
+          <td>Storage (Website)</td>
+          <td>Azure blob storage</td>
+        </tr>
+
         <!-- Add more rows as needed -->
       </tbody>
     </table>
+
 
   </div>
 </section><!-- End Table Section -->
@@ -456,8 +494,19 @@
     <div class="row">
       <div class="col-lg-12">
         <ul>
-          <li>[1] Apple (2020). Swift - Apple Developer. [online] Available at: <a href="https://developer.apple.com/swift/" target="_blank">https://developer.apple.com/swift/</a> [Accessed 22 Jan. 2020]</li>
+<!--          <li>[1] Apple (2020). Swift - Apple Developer. [online] Available at: <a href="https://developer.apple.com/swift/" target="_blank">https://developer.apple.com/swift/</a> [Accessed 22 Jan. 2020]</li>-->
           <!-- Add more references here in the same format if needed -->
+          <li>[1] Broadhurst, M. (2024). Best AI Text-to-Speech Tools: Top 5 Picks for Superior Audio Quality. Broadhurst Digital - Sales and Marketing Technology Consultancy. Available at: <a href="https://broadhurst.digital/blog/best-ai-text-to-speech-tools" target="_blank">https://broadhurst.digital/blog/best-ai-text-to-speech-tools</a> (Accessed: 20 March 2024).</li>
+          <li>[2] Speechify (2023). The Ultimate Guide to IBM Watson Text to Speech. Available at: <a href="https://speechify.com/blog/the-ultimate-guide-to-ibm-watson-text-to-speech/" target="_blank">https://speechify.com/blog/the-ultimate-guide-to-ibm-watson-text-to-speech/</a> (Accessed: 20 March 2024).</li>
+          <li>[3] Staniszewski, M. (2023). Best Text to Voice Software. ElevenLabs Blog. Available at: <a href="https://elevenlabs.io/blog/best-text-to-voice-software/" target="_blank">https://elevenlabs.io/blog/best-text-to-voice-software/</a> (Accessed: 20 March 2024).</li>
+          <li>[4] Nordseele et al. (2023). Python Music, Audio Processing and Sound Manipulation. Lines. Available at: <a href="https://llllllll.co/t/python-music-audio-processing-and-sound-manipulation/64378" target="_blank">https://llllllll.co/t/python-music-audio-processing-and-sound-manipulation/64378</a> (Accessed: 20 March 2024).</li>
+          <li>[5] BairesDev (2023). 8 Best Python Sentiment Analysis Libraries. Available at: <a href="https://www.bairesdev.com/blog/best-python-sentiment-analysis-libraries/" target="_blank">https://www.bairesdev.com/blog/best-python-sentiment-analysis-libraries/</a> (Accessed: 20 March 2024).</li>
+          <li>[6] Rebelo, M. (2023). The Best AI Video Generators. Zapier. Available at: <a href="https://zapier.com/blog/best-ai-video-generator/" target="_blank">https://zapier.com/blog/best-ai-video-generator/</a> (Accessed: 20 March 2024).</li>
+          <li>[7] Gray, C. (2024). Podcast Statistics & Industry Trends 2024: Listens, Gear, & More. The Podcast Host. Available at: <a href="https://www.thepodcasthost.com/listening/podcast-industry-stats/" target="_blank">https://www.thepodcasthost.com/listening/podcast-industry-stats/</a> (Accessed: 20 March 2024).</li>
+          <li>[8] Gwira, C. (2024). 12 Best AI Text-to-Image Tools in 2024 (Compared). Elegant Themes Blog. Available at: <a href="https://www.elegantthemes.com/blog/design/best-ai-text-to-image-tools#3-midjourney" target="_blank">https://www.elegantthemes.com/blog/design/best-ai-text-to-image-tools#3-midjourney</a> (Accessed: 20 March 2024).</li>
+          <li>[9] Eden AI (No date). Top Free Image Generation Tools, APIs, and Open Source Models. Available at: <a href="https://www.edenai.co/post/top-free-image-generation-tools-apis-and-open-source-models" target="_blank">https://www.edenai.co/post/top-free-image-generation-tools-apis-and-open-source-models</a> (Accessed: 20 March 2024).</li>
+
+
         </ul>
       </div>
     </div>
@@ -507,39 +556,39 @@
           <div class="col-lg-3 col-md-6 footer-links">
             <h4>Navigation</h4>
             <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Intro</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Requirements</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Research</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="index.html">Home</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="requirements.html">Requirements</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="research.html">Research</a></li>
             </ul>
           </div>
 
           <div class="col-lg-3 col-md-6 footer-links">
             <h4></h4>
             <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">HCI</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">System Design</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Implementation</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="hci.html">HCI</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="system-design.html">System Design</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="implementation.html">Implementation</a></li>
             </ul>
           </div>
 
           <div class="col-lg-3 col-md-6 footer-links">
             <h4></h4>
             <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Testing</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Evaluation</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Appendicies</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="testing.html">Testing</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="evaluation.html">Evaluation</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="appendices.html">Appendices</a></li>
             </ul>
           </div>
 
-          <div class="col-lg-12 col-md-6 footer-links text-center">
-            <h4>Our Social Networks</h4>
-            <p>Check our source code and...</p>
-            <div class="social-links">
-              <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-              <a href="#" class="google-plus"><i class="bx bxl-github"></i></a>
-              <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
-            </div>
-          </div>
+<!--          <div class="col-lg-12 col-md-6 footer-links text-center">-->
+<!--            <h4>Our Social Networks</h4>-->
+<!--            <p>Check our source code and...</p>-->
+<!--            <div class="social-links">-->
+<!--              <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>-->
+<!--              <a href="#" class="google-plus"><i class="bx bxl-github"></i></a>-->
+<!--              <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>-->
+<!--            </div>-->
+<!--          </div>-->
 
         </div>
       </div>

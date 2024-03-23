@@ -43,25 +43,26 @@
   <header id="header" class="fixed-top ">
     <div class="container d-flex align-items-center">
 
-      <h1 class="logo me-auto"><a href="home.html">AI Podcast</a></h1>
+      <h1 class="logo me-auto"><a href="index.html">AI Podcast</a></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
-      <!-- <a href="home.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+      <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
       <nav id="navbar" class="navbar">
         <ul>
-<!--          <li><a class="nav-link scrollto active" href="#hero">Intro</a></li>-->
-          <li class="dropdown"><a href="home.html"><span>Home</span> <i class="bi bi-chevron-down"></i></a>
+          <!--          <li><a class="nav-link scrollto active" href="#hero">Intro</a></li>-->
+          <li class="dropdown"><a href="index.html"><span>Home</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="home.html#">Abstract</a></li>
-              <li><a href="home.html#">Video</a></li>
-              <li><a href="home.html#team">Team Members</a></li>
-              <li><a href="home.html#">Project Timeline</a></li>
-<!--              <li><a href="#">Deep Drop Down 2</a></li>-->
+              <li><a href="index.html#abstract">Abstract</a></li>
+              <li><a href="index.html#prototype_video">Video</a></li>
+              <li><a href="index.html#team">Team Members</a></li>
+              <li><a href="index.html#gantt">Project Timeline</a></li>
+              <!--              <li><a href="#">Deep Drop Down 2</a></li>-->
             </ul>
           </li>
 
-<!--          <li><a class="nav-link scrollto" href="#about">Requirements</a></li>-->
-          <li class="dropdown"><a href="requirements.html"><span>Requirements</span> <i class="bi bi-chevron-down"></i></a>
+          <!--          <li><a class="nav-link scrollto" href="#about">Requirements</a></li>-->
+          <li class="dropdown"><a href="requirements.html"><span>Requirements</span> <i
+                class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a href="requirements.html#background">Project Background</a></li>
               <li><a href="requirements.html#objectives">Project Objectives</a></li>
@@ -82,21 +83,24 @@
           <li class="dropdown"><a href="hci.html"><span>HCI</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a href="hci.html#sketches">Sketches</a></li>
-              <li><a href="hci.html#prototype_video">Prototype Video</a></li>
+              <li><a href="hci.html#prototype_video">Prototype</a></li>
               <li><a href="hci.html#prototype_eval">Evaluation of Prototype</a></li>
               <li><a href="hci.html#imp_version">Improved Version</a></li>
             </ul>
           </li>
 
-          <li class="dropdown"><a href="system-design.html"><span>System Design</span> <i class="bi bi-chevron-down"></i></a>
+          <li class="dropdown"><a href="system-design.html"><span>System Design</span> <i
+                class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a href="system-design.html#sys_arc">System Architecture</a></li>
+              <li><a href="system-design.html#backend_arc">Function App Architecture</a></li>
               <li><a href="system-design.html#database">Data Storage</a></li>
               <li><a href="system-design.html#apis">APIs</a></li>
             </ul>
           </li>
 
-          <li class="dropdown"><a href="implementation.html"><span>Implementation</span> <i class="bi bi-chevron-down"></i></a>
+          <li class="dropdown"><a href="implementation.html"><span>Implementation</span> <i
+                class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a href="implementation.html#dependencies">Libraries and Tools</a></li>
               <li><a href="implementation.html#script">Script Generation</a></li>
@@ -115,7 +119,7 @@
 
           <li class="dropdown"><a href="evaluation.html"><span>Evaluation</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="evaluation.html#achievements">Summary of Achievements</a></li>
+              <li><a href="evaluation.html#achievements">Final MoSCoW list</a></li>
               <li><a href="evaluation.html#ind_contribution">Individual Contributions</a></li>
               <li><a href="evaluation.html#eval">Evaluation</a></li>
               <li><a href="evaluation.html#future_work">Future Work</a></li>
@@ -147,7 +151,7 @@
           <h1>Implementation</h1>
         </div>
           <div class="col-lg-12 d-flex flex-column justify-content-center pt-6 pt-lg-0 order-2 order-lg-1" data-aos="fade-up" data-aos-delay="200">
-            <h2>The description of the implementation</h2>
+            <h2>The detailed description of the implementation of the main sections of our podcast.</h2>
           </div>
       </div>
     </div>
@@ -186,7 +190,8 @@
 
     <div class="row content">
       <div class="col-lg-12 text-center">
-        <p>Throughout the project we have used... (python, elevenlabs etc)</p>
+        <p>Throughout the project we used python as the language for the backend. We also used a total
+        number of 13 libraries within python to code the backend part of the project.</p>
       </div>
     </div>
 
@@ -197,7 +202,7 @@
           <div id="faq-list-1" class="collapse show" data-bs-parent=".faq-list">
             <div class="row">
               <div class="col-lg-6 text-center">
-                <p>We used Python to build the most of our backend, including Script Generation, Audio Generation and Video Generation. aaaAAA</p>
+                <p>We used Python to build our backend, including Script Generation, Audio Generation and Video Generation.</p>
               </div>
               <div class="col-lg-6 text-center">
                 <img src="assets/img/logos/python.png" alt="Image 1">
@@ -212,7 +217,9 @@
             <div class="row">
               <div class="col-lg-6 text-center">
                 <p>Python library for audio processing</p>
-                <p>We used moviepy to deal with the audio files including concatintaing multiple mp3 files and</p>
+                <p>We used moviepy to process audio files, including concatenating multiple mp3 files, giving mp3 file a name etc.
+                We also used it for video processing, helping us do tasks like working out the duration of a video, combining video
+                  and audio clips together, etc.</p>
               </div>
               <div class="col-lg-6 text-center">
                 <img src="assets/img/logos/moviepy.png" alt="Image 2">
@@ -225,8 +232,9 @@
           <div id="faq-list-3" class="collapse show" data-bs-parent=".faq-list">
             <div class="row">
               <div class="col-lg-6 text-center">
-                <p>Python library for ...</p>
-                <p>We used ibm watson for</p>
+                <p>Python library for text-to-speech conversion.</p>
+                <p>We used ibm watson for pre-made voices that we added to our voices' dictionary. We also
+                needed to use IBM Watson's API, which the library helped us with.</p>
               </div>
               <div class="col-lg-6 text-center">
                 <img src="assets/img/logos/IBM_Watson.png" alt="Image 3">
@@ -239,8 +247,8 @@
           <div id="faq-list-4" class="collapse show" data-bs-parent=".faq-list">
             <div class="row">
               <div class="col-lg-6 text-center">
-                <p>Python library for ...</p>
-                <p>We used ...</p>
+                <p>Python library for text-to-speech conversion.</p>
+                <p>We used elevenlabs library to generate an audio file using the voice, text and the API.</p>
               </div>
               <div class="col-lg-6 text-center">
                 <img src="assets/img/logos/Eleven_Labs.png" alt="Image 4">
@@ -283,7 +291,7 @@
             <div class="row">
               <div class="col-lg-6 text-center">
                 <p>Python module for using operating system dependent functionality.</p>
-                <p>We used os to remove the mp3 file that were no longer needed.</p>
+                <p>We used os to remove the files used in generation that were no longer needed.</p>
               </div>
               <div class="col-lg-6 text-center">
                 <img src="assets/img/logos/os.png" alt="Image 7">
@@ -329,6 +337,96 @@
               </div>
               <div class="col-lg-6 text-center">
                 <img src="assets/img/logos/transformers.png" alt="Image 9">
+              </div>
+          </div>
+        </li>
+
+
+        <li data-aos="fade-up" data-aos-delay="100">
+          <a data-bs-toggle="collapse" class="collapse" data-bs-target="#faq-list-8">nltk<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+          <div id="faq-list-8" class="collapse show" data-bs-parent=".faq-list">
+            <div class="row">
+              <div class="col-lg-6 text-center">
+                <p>Python library for natural language processing tasks.</p>
+                <p>We used nltk's functions to identify the keywords of the script, that we later used in the image
+                generation prompt.</p>
+              </div>
+              <div class="col-lg-6 text-center">
+                <img src="assets/img/logos/nltk.png" alt="Image 6">
+              </div>
+          </div>
+        </li>
+
+        <li data-aos="fade-up" data-aos-delay="100">
+          <a data-bs-toggle="collapse" class="collapse" data-bs-target="#faq-list-9">dotenv<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+          <div id="faq-list-9" class="collapse show" data-bs-parent=".faq-list">
+            <div class="row">
+              <div class="col-lg-6 text-center">
+                <p>Python module used for loading environment variables.</p>
+                <p>We used dotenv to hide sensitive information, while still being able to use it. We created a .env file,
+                  stored the APIs in there and used dotenv to load them back in.</p>
+              </div>
+              <div class="col-lg-6 text-center">
+                <img src="assets/img/logos/python.png" alt="Image 6">
+              </div>
+          </div>
+        </li>
+
+        <li data-aos="fade-up" data-aos-delay="100">
+          <a data-bs-toggle="collapse" class="collapse" data-bs-target="#faq-list-10">collections<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+          <div id="faq-list-10" class="collapse show" data-bs-parent=".faq-list">
+            <div class="row">
+              <div class="col-lg-6 text-center">
+                <p>Python module used for providing specialized data structures.</p>
+                <p>We used module called Counter from collection to count the frequency of some words, which
+                helped us in determining the keywords used for image generation.</p>
+              </div>
+              <div class="col-lg-6 text-center">
+                <img src="assets/img/logos/python.png" alt="Image 6">
+              </div>
+          </div>
+        </li>
+
+        <li data-aos="fade-up" data-aos-delay="100">
+          <a data-bs-toggle="collapse" class="collapse" data-bs-target="#faq-list-11">requests<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+          <div id="faq-list-11" class="collapse show" data-bs-parent=".faq-list">
+            <div class="row">
+              <div class="col-lg-6 text-center">
+                <p>Python library for making HTTP requests.</p>
+                <p>We used requests to send a POST request to a specified URL in order to generate an image based on
+                  given text prompts and additional parameters.</p>
+              </div>
+              <div class="col-lg-6 text-center">
+                <img src="assets/img/logos/req1.png" alt="Image 6">
+              </div>
+          </div>
+        </li>
+
+        <li data-aos="fade-up" data-aos-delay="100">
+          <a data-bs-toggle="collapse" class="collapse" data-bs-target="#faq-list-12">numpy<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+          <div id="faq-list-12" class="collapse show" data-bs-parent=".faq-list">
+            <div class="row">
+              <div class="col-lg-6 text-center">
+                <p>Python library used for numerical computing.</p>
+                <p>We used numpy to convert an image into a numpy array, which helped take the image's dimension
+                that were later used in the video generation.</p>
+              </div>
+              <div class="col-lg-6 text-center">
+                <img src="assets/img/logos/numpy.png" alt="Image 6">
+              </div>
+          </div>
+        </li>
+
+        <li data-aos="fade-up" data-aos-delay="100">
+          <a data-bs-toggle="collapse" class="collapse" data-bs-target="#faq-list-13">random<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+          <div id="faq-list-13" class="collapse show" data-bs-parent=".faq-list">
+            <div class="row">
+              <div class="col-lg-6 text-center">
+                <p>Python module used for generating random numbers.</p>
+                <p>We used random to generate a picture used for video generation from a folder with 20+ pictures.</p>
+              </div>
+              <div class="col-lg-6 text-center">
+                <img src="assets/img/logos/python.png" alt="Image 6">
               </div>
           </div>
         </li>
@@ -596,39 +694,39 @@
           <div class="col-lg-3 col-md-6 footer-links">
             <h4>Navigation</h4>
             <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Intro</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Requirements</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Research</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="index.html">Home</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="requirements.html">Requirements</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="research.html">Research</a></li>
             </ul>
           </div>
 
           <div class="col-lg-3 col-md-6 footer-links">
             <h4></h4>
             <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">HCI</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">System Design</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Implementation</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="hci.html">HCI</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="system-design.html">System Design</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="implementation.html">Implementation</a></li>
             </ul>
           </div>
 
           <div class="col-lg-3 col-md-6 footer-links">
             <h4></h4>
             <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Testing</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Evaluation</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Appendicies</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="testing.html">Testing</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="evaluation.html">Evaluation</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="appendices.html">Appendices</a></li>
             </ul>
           </div>
 
-          <div class="col-lg-12 col-md-6 footer-links text-center">
-            <h4>Our Social Networks</h4>
-            <p>Check our source code and...</p>
-            <div class="social-links">
-              <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-              <a href="#" class="google-plus"><i class="bx bxl-github"></i></a>
-              <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
-            </div>
-          </div>
+<!--          <div class="col-lg-12 col-md-6 footer-links text-center">-->
+<!--            <h4>Our Social Networks</h4>-->
+<!--            <p>Check our source code and...</p>-->
+<!--            <div class="social-links">-->
+<!--              <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>-->
+<!--              <a href="#" class="google-plus"><i class="bx bxl-github"></i></a>-->
+<!--              <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>-->
+<!--            </div>-->
+<!--          </div>-->
 
         </div>
       </div>

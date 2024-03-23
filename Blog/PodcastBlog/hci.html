@@ -43,25 +43,26 @@
   <header id="header" class="fixed-top ">
     <div class="container d-flex align-items-center">
 
-      <h1 class="logo me-auto"><a href="home.html">AI Podcast</a></h1>
+      <h1 class="logo me-auto"><a href="index.html">AI Podcast</a></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
-      <!-- <a href="home.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+      <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
       <nav id="navbar" class="navbar">
         <ul>
-<!--          <li><a class="nav-link scrollto active" href="#hero">Intro</a></li>-->
-          <li class="dropdown"><a href="home.html"><span>Home</span> <i class="bi bi-chevron-down"></i></a>
+          <!--          <li><a class="nav-link scrollto active" href="#hero">Intro</a></li>-->
+          <li class="dropdown"><a href="index.html"><span>Home</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="home.html#">Abstract</a></li>
-              <li><a href="home.html#">Video</a></li>
-              <li><a href="home.html#team">Team Members</a></li>
-              <li><a href="home.html#">Project Timeline</a></li>
-<!--              <li><a href="#">Deep Drop Down 2</a></li>-->
+              <li><a href="index.html#abstract">Abstract</a></li>
+              <li><a href="index.html#prototype_video">Video</a></li>
+              <li><a href="index.html#team">Team Members</a></li>
+              <li><a href="index.html#gantt">Project Timeline</a></li>
+              <!--              <li><a href="#">Deep Drop Down 2</a></li>-->
             </ul>
           </li>
 
-<!--          <li><a class="nav-link scrollto" href="#about">Requirements</a></li>-->
-          <li class="dropdown"><a href="requirements.html"><span>Requirements</span> <i class="bi bi-chevron-down"></i></a>
+          <!--          <li><a class="nav-link scrollto" href="#about">Requirements</a></li>-->
+          <li class="dropdown"><a href="requirements.html"><span>Requirements</span> <i
+                class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a href="requirements.html#background">Project Background</a></li>
               <li><a href="requirements.html#objectives">Project Objectives</a></li>
@@ -82,21 +83,24 @@
           <li class="dropdown"><a href="hci.html"><span>HCI</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a href="hci.html#sketches">Sketches</a></li>
-              <li><a href="hci.html#prototype_video">Prototype Video</a></li>
+              <li><a href="hci.html#prototype_video">Prototype</a></li>
               <li><a href="hci.html#prototype_eval">Evaluation of Prototype</a></li>
               <li><a href="hci.html#imp_version">Improved Version</a></li>
             </ul>
           </li>
 
-          <li class="dropdown"><a href="system-design.html"><span>System Design</span> <i class="bi bi-chevron-down"></i></a>
+          <li class="dropdown"><a href="system-design.html"><span>System Design</span> <i
+                class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a href="system-design.html#sys_arc">System Architecture</a></li>
+              <li><a href="system-design.html#backend_arc">Function App Architecture</a></li>
               <li><a href="system-design.html#database">Data Storage</a></li>
               <li><a href="system-design.html#apis">APIs</a></li>
             </ul>
           </li>
 
-          <li class="dropdown"><a href="implementation.html"><span>Implementation</span> <i class="bi bi-chevron-down"></i></a>
+          <li class="dropdown"><a href="implementation.html"><span>Implementation</span> <i
+                class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a href="implementation.html#dependencies">Libraries and Tools</a></li>
               <li><a href="implementation.html#script">Script Generation</a></li>
@@ -115,7 +119,7 @@
 
           <li class="dropdown"><a href="evaluation.html"><span>Evaluation</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="evaluation.html#achievements">Summary of Achievements</a></li>
+              <li><a href="evaluation.html#achievements">Final MoSCoW list</a></li>
               <li><a href="evaluation.html#ind_contribution">Individual Contributions</a></li>
               <li><a href="evaluation.html#eval">Evaluation</a></li>
               <li><a href="evaluation.html#future_work">Future Work</a></li>
@@ -201,22 +205,24 @@
               to produce the second set of sketches.
             </p>
             <p>
-              This version would have...
+              This version would maintain most features, but would also now have the user suggestions feature (which
+              can be used by users to enter a topic they would like an episode to cover). We also improved the navigattion,
+              making it clearer and easier to use.
             </p>
           </div>
 
           <div class="row">
             <div class="col-lg-4 text-center">
-              <img src="assets/img/hci/Sketch1.png" alt="Image 1">
-              <figcaption>CHANGE PICTURES AND SIZES</figcaption>
+              <img src="assets/img/hci/Sketch4.png" alt="Image 1">
+              <figcaption>User Interface Sketch 4</figcaption>
             </div>
             <div class="col-lg-4 text-center">
-              <img src="assets/img/hci/Sketch2.png" alt="Image 2">
-              <figcaption>User Interface Sketch 2</figcaption>
+              <img src="assets/img/hci/Sketch5.png" alt="Image 2">
+              <figcaption>User Interface Sketch 5</figcaption>
             </div>
             <div class="col-lg-4 text-center">
-              <img src="assets/img/hci/Sketch3.png" alt="Image 3">
-              <figcaption>User Interface Sketch 3</figcaption>
+              <img src="assets/img/hci/Sketch6.png" alt="Image 3">
+              <figcaption>User Interface Sketch 6</figcaption>
             </div>
           </div>
         </div>
@@ -232,25 +238,23 @@
       <h2>Prototype</h2>
       <p>After we drew some sketches, we produced the first version of our prototype. We took the best things
       out of the sketches and produced a more detailed version of our future product. We focused on making it functional,
-      but also keeping the user interface simple and not overloaded with too much content. We added ...</p>
+      but also keeping the user interface simple and not overloaded with too much content. We added the
+      login page to address user accounts, added the play, pause, forward, etc buttons and improved
+      the design of some other buttons and tabs.</p>
     </div>
 
-<!--    <div class="d-flex justify-content-center justify-content-lg-start">-->
-<!--&lt;!&ndash;      <a href="#about" class="btn-get-started scrollto">Watch</a>&ndash;&gt;-->
-<!--      <a href="https://www.youtube.com/watch?v=RcYjXbSJBN8&t=679s&ab_channel=PowerfulJRE" class="glightbox btn-watch-video"><i class="bi bi-play-circle"></i><span>Watch</span></a>-->
-<!--    </div>-->
 
     <div class="row">
       <div class="col-lg-4 text-center">
-        <img src="assets/img/hci/Prototype1.png" alt="Image 1">
+        <img src="assets/img/hci/Prototype5.png" alt="Image 1">
         <figcaption>User Interface Prototype 1</figcaption>
       </div>
       <div class="col-lg-4 text-center">
-        <img src="assets/img/hci/Prototype4.png" alt="Image 2">
+        <img src="assets/img/hci/Prototype6.png" alt="Image 2">
         <figcaption>User Interface Prototype 2</figcaption>
       </div>
       <div class="col-lg-4 text-center">
-        <img src="assets/img/hci/Prototype3.png" alt="Image 3">
+        <img src="assets/img/hci/Prototype7.png" alt="Image 3">
         <figcaption>User Interface Prototype 1</figcaption>
       </div>
     </div>
@@ -267,7 +271,8 @@
 
         <div class="section-title">
           <h2>Evaluation of Prototype</h2>
-          <p>We then proceeded to carry out heuristics evaluation in order to locate problems in a fast and low-cost way</p>
+          <p>We then proceeded to carry out heuristics evaluation in order to locate problems in a fast and low-cost way to
+          help us improve our prototype.</p>
         </div>
 
         <div class="row text-center">
@@ -276,7 +281,9 @@
             <figcaption>Heuristics Evaluation</figcaption>
           </div>
 
-          <p>The main problems were..</p>
+          <p>The first problem located was the absence of the FAQ block, which would help the users
+            navigate the tool. Another issue was that the search feature was not easily accessible. Finally,
+          it was not very clear that the users could browse episodes by categories.</p>
 
       </div>
 
@@ -290,7 +297,7 @@
         <div class="section-title">
           <h2>Improved Prototype</h2>
           <p>We then asked for feedback and improved our prototype, modifying the
-          interface and adding new elements such as..</p>
+          interface and adding new elements such as categories tab and filter feature.</p>
         </div>
 
         <div class="row">
@@ -347,39 +354,39 @@
           <div class="col-lg-3 col-md-6 footer-links">
             <h4>Navigation</h4>
             <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Intro</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Requirements</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Research</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="index.html">Home</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="requirements.html">Requirements</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="research.html">Research</a></li>
             </ul>
           </div>
 
           <div class="col-lg-3 col-md-6 footer-links">
             <h4></h4>
             <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">HCI</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">System Design</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Implementation</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="hci.html">HCI</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="system-design.html">System Design</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="implementation.html">Implementation</a></li>
             </ul>
           </div>
 
           <div class="col-lg-3 col-md-6 footer-links">
             <h4></h4>
             <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Testing</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Evaluation</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Appendicies</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="testing.html">Testing</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="evaluation.html">Evaluation</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="appendices.html">Appendices</a></li>
             </ul>
           </div>
 
-          <div class="col-lg-12 col-md-6 footer-links text-center">
-            <h4>Our Social Networks</h4>
-            <p>Check our source code and...</p>
-            <div class="social-links">
-              <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-              <a href="#" class="google-plus"><i class="bx bxl-github"></i></a>
-              <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
-            </div>
-          </div>
+<!--          <div class="col-lg-12 col-md-6 footer-links text-center">-->
+<!--            <h4>Our Social Networks</h4>-->
+<!--            <p>Check our source code and...</p>-->
+<!--            <div class="social-links">-->
+<!--              <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>-->
+<!--              <a href="#" class="google-plus"><i class="bx bxl-github"></i></a>-->
+<!--              <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>-->
+<!--            </div>-->
+<!--          </div>-->
 
         </div>
       </div>
