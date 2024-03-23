@@ -21,9 +21,10 @@ def generate_static_video():
     #if the image generated is not suitable
     image_path = choose_image()
     # Construct the paths to the files in the 'tmp' folder
-    tmp_folder = os.path.join(os.getcwd(), "tmp")
+    tmp_folder = os.path.abspath(os.path.join(os.getcwd(), os.pardir, os.pardir, os.pardir, "tmp"))
     # image_path = os.path.join(tmp_folder, 'text_to_image.png')
     mp3_path = os.path.join(tmp_folder, 'final_speech_with_music.mp3')
+    tmp_video_path = os.path.join(tmp_folder, 'tmp_file.mp4')
     output_video_path = os.path.join(tmp_folder, 'output_video.mp4')
 
     # Load image
@@ -47,7 +48,7 @@ def generate_static_video():
     final_video_clip = CompositeVideoClip([video_clip.set_audio(audio_clip)])
 
     # Write the final video to an MP4 file
-    final_video_clip.write_videofile(output_video_path, codec="libx264", audio_codec="aac", fps=30, threads=4, write_logfile=False, temp_audiofile=False)
+    final_video_clip.write_videofile(output_video_path, codec="libx264", audio_codec="aac", fps=30, threads=4, write_logfile=False, temp_audiofile=tmp_video_path)
 
 if __name__ == '__main__':
      generate_static_video()
