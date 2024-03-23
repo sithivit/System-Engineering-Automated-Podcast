@@ -153,9 +153,10 @@
           data-aos="fade-up" data-aos-delay="200">
           <h1>System Design</h1>
         </div>
-          <div class="col-lg-12 d-flex flex-column justify-content-center pt-6 pt-lg-0 order-2 order-lg-1" data-aos="fade-up" data-aos-delay="200">
-            <h2>The design of our system and backend, as well as all the APIs used.</h2>
-          </div>
+        <div class="col-lg-12 d-flex flex-column justify-content-center pt-6 pt-lg-0 order-2 order-lg-1"
+          data-aos="fade-up" data-aos-delay="200">
+          <h2>The design of our system and backend, as well as all the APIs used.</h2>
+        </div>
 
       </div>
     </div>
@@ -177,7 +178,7 @@
           <div class="col-lg-12 text-center">
             <p>
               <!--              We have used css+html for the frontend of our project as well as Python for the backend....-->
-              Our project has 3 main components: user, frontend and backend.
+              Our project has 3 main components: frontend, backend and the function app.
               Each of these uses different technologies and models:
             </p>
           </div>
@@ -188,15 +189,18 @@
             </div>
             <div class="log-lg-12">
               <p></p>
-              <p>User: Can engage with the website through various means, including listening to episodes and using the
-                suggestions feature
-                to generate a new episode.</p>
-              <p>Frontend: The website is deployed using Azure, coded in .. Users can ..</p>
-              <p>Backend: (Explained using the suggestion feature example) When a request is sent to generate an
-                episode, the
-                backend starts the necessary processes including generating text, auido and video and combining all of
-                these
-                together to produce a podcast episode.</p>
+              <p>Frontend: The website is developed using ReactJS, along with Material-UI React component library
+                to fasten the development process. Users can play the generated episodes as well as sending arguments to
+                generate a new episode via the frontend.</p>
+              <p>Backend: The server is developed using NodeJS and ExpressJS. When a request is sent to generate an
+                episode, the server calls the function app API and pass in the necessary arguments to run the generation
+                process. The server itself along with the build files from frontend is deployed using Azure web app
+                service.
+              </p>
+              <p>Function App: The function app is developed using Python and includes all the automated python scripts
+                for generating the podcast. It gets triggered when a HTTP request is received. The python scripts then
+                generate the podcast and upload it to the database so that the users can play it from the frontend. The
+                function app is deployed using Azure function app.</p>
             </div>
 
           </div>
@@ -207,14 +211,14 @@
       <div class="container" data-aos="fade-up">
 
         <div class="section-title">
-          <h2>Backend Architecture</h2>
+          <h2>Function App Architecture</h2>
         </div>
 
         <div class="row content">
           <div class="col-lg-12 text-center">
             <p>
               <!--              We have used css+html for the frontend of our project as well as Python for the backend....-->
-              Our backend has 3 main components: script, audio and video generation.
+              Our function app has 3 main components: script generation, audio & video generation, and file management.
               Each of these uses different technologies and models:
             </p>
           </div>
@@ -226,17 +230,22 @@
             <div class="log-lg-12">
               <p></p>
               <p>1. Script Generation: Firstly, </p>
-              <p>2. Audio Generation: Uses IBM Watson and ElevenLabs Text-To-Speech tools to generate audio files based
+              <p>2.1. Audio Generation: Uses IBM Watson and ElevenLabs Text-To-Speech tools to generate audio files
+                based
                 on the script. It receives
                 a variable with the script and turns it into audio mp3 file using either a pre-made voice (IBM Watson)
                 or a cloned voice (ElevenLabs),
                 as well as different audio processing python libraries to add music and concatenate individuaal speech
                 files.</p>
-              <p>3. Video Generation: Uses MidJourney and StabilityAI Text-To-Image tools in order to generate images
+              <p>2.2. Video Generation: Uses MidJourney and StabilityAI Text-To-Image tools in order to generate images
                 that are used as covers
                 for the video part. It receives an mp3 file and turns it into an mp4 file by inserting the image and
                 adding the audio file to it,
                 using moviepy Python library for audio and video processing.</p>
+              <p>3. File Management: Uses Blob Storage API and MongoDB API from Cosmos DB to upload the generated
+                episode. It firstly uploads the video file to the blob storage, then creates a document containing
+                episode title, description and the video link to upload to the Cosmos DB. It also cleans up all the
+                generated file after the episode is fully uploaded to save server space.</p>
             </div>
 
           </div>
