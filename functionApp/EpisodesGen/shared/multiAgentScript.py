@@ -88,7 +88,7 @@ class MultiAgentScript:
             openai.api_key = api
             self.llm = openai.ChatCompletion
         else:
-            local_path = "/models/mistral-7b-openorca.gguf2.Q4_0.gguf"  
+            local_path = os.path.join("shared", "llm_models", "mistral-7b-openorca.gguf2.Q4_0.gguf")
 
             # Callbacks support token-wise streaming
             callbacks = [StreamingStdOutCallbackHandler()]
