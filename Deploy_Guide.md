@@ -17,7 +17,7 @@ If you have already deployed this before, please refer to last section for simpl
     - Open your terminal, and use git clone to download the repository.
 
     - Download the Required_Files.zip and unzip it, we will need it later in this guide.
-    - Download link: https://aipodcaststorage.blob.core.windows.net/deploy-required-files/Required_Files.zip
+    - https://aipodcaststorage.blob.core.windows.net/deploy-required-files/Required_Files.zip
 
     - Create a .env file under path "System-Engineering-Automated-Podcast\functionApp\EpisodesGen\shared"
     - Fill in the following variables with your own API keys
@@ -31,6 +31,7 @@ If you have already deployed this before, please refer to last section for simpl
         elevenlabs_api : ElevenLabs API (used for text to speech conversion)
 
         AZURE_STORAGE_CONNECTION_STRING : The connection string from Azure Storage Account
+        AZURE_STORAGE_CONTAINER_NAME : The container name of the blob storage
 
         COSMOS_CONNECTION_STRING : The connection string from Azure Cosmos DB
         Example : "mongodb://<COSMOSDB_USER>:<COSMOSDB_PASSWORD>@<COSMOSDB_USER>.mongo.cosmos.azure.com:<COSMOSDB_PORT>/?ssl=true&replicaSet=globaldb&retrywrites=false&maxIdleTimeMS=120000&appName=@<COSMOSDB_USER>@"
@@ -41,6 +42,7 @@ If you have already deployed this before, please refer to last section for simpl
         COSMOSDB_HOST : HOST from Azure Cosmos DB
         COSMOSDB_PORT : PORT from Azure Cosmos DB
         COSMOSDB_ARGS : "ssl=true&replicaSet=globaldb&retrywrites=false&maxIdleTimeMS=120000&appName=@<COSMOSDB_USER>@"
+        COSMOSDB_COLLECTION = The collection name of the target mongoDB
 
     - Create a .env file under path "System-Engineering-Automated-Podcast\server"
     - Fill in the following variables with your own API keys
@@ -51,6 +53,11 @@ If you have already deployed this before, please refer to last section for simpl
         COSMOSDB_HOST : HOST from Azure Cosmos DB
         COSMOSDB_PORT : PORT from Azure Cosmos DB
         COSMOSDB_ARGS : "ssl=true&replicaSet=globaldb&retrywrites=false&maxIdleTimeMS=120000&appName=@<COSMOSDB_USER>@"
+
+    - Download the local language model file from the following link:
+    - https://gpt4all.io/models/gguf/mistral-7b-openorca.gguf2.Q4_0.gguf
+
+    - Put the downloaded .gguf file in folder "System-Engineering-Automated-Podcast\functionApp\EpisodesGen\shared\llm_models"
 
 ## Build the client files
 

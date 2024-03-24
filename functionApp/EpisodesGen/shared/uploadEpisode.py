@@ -11,10 +11,10 @@ def run(episode_title, description):
 def uploadBlob(episode_title):
     CONNECTION_STR = os.getenv("AZURE_STORAGE_CONNECTION_STRING")
     service_client = BlobServiceClient.from_connection_string(CONNECTION_STR)
-    container_name = "podcast-media"
+    container_name = os.getenv("AZURE_STORAGE_CONTAINER_NAME")
 
     local_file_name = str(episode_title) + ".mp4"
-    upload_file_path = "output_video.mp4"
+    upload_file_path = os.path.join("tmp", "output_video.mp4")
 
     # Create a blob client using the episode title as the name for the blob
     blob_client = service_client.get_blob_client(container=container_name, blob=local_file_name)
@@ -23,17 +23,18 @@ def uploadBlob(episode_title):
 
     # Upload the video
     with open(file=upload_file_path, mode="rb") as data:
-        blob_client.upload_blob(data)
+        blob_client.upload_blob(data, connection_timeout=600)
 
 def uploadCosmos(title, description):
     CONNECTION_STR = os.getenv("COSMOS_CONNECTION_STRING")
-    DB_NAME = "aipodcast-database"
-    COLLECTION_NAME = "Episode"
+    DB_NAME = os.getenv("COSMOSDB_DBNAME")
+    COLLECTION_NAME = os.getenv("COSMOSDB_COLLECTION")
+    container_name = os.getenv("AZURE_STORAGE_CONTAINER_NAME")
 
     client = MongoClient(CONNECTION_STR)
     db = client[DB_NAME]
     collection = db[COLLECTION_NAME]
-    media = "https://aipodcaststorage.blob.core.windows.net/podcast-media/" + title + ".mp4"
+    media = "https://aipodcaststorage.blob.core.windows.net/" + container_name + "/" + title + ".mp4"
 
     episode = {
         "title": title,
@@ -43,3 +44,5 @@ def uploadCosmos(title, description):
 
     collection.insert_one(episode)
     
+if __name__ == "__main__":
+    run("test_title", "test_desc")

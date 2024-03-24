@@ -32,11 +32,11 @@ def main(req: HttpRequest) -> HttpResponse:
 
         # OpenAI Model
         if str(local).capitalize() == 'False':
-            # api = str(req_body.get('api'))
-            # model = OpenAISingleAgentScript(api)
-            # text = model.run(title, keywords)
-            text ="""
-                [Intro] hey hey! this is (example text) a test, lets see if it works or not! Hello! i'm Joe.         
+            api = str(req_body.get('api'))
+            model = OpenAISingleAgentScript(api)
+            text = model.run(title, keywords)
+            # text ="""
+            #     [Intro] hey hey! this is (example text) a test, lets see if it works or not! Hello! i'm Joe.         
             
             # """
             # print(text)
@@ -72,7 +72,7 @@ def main(req: HttpRequest) -> HttpResponse:
     GenerateVideo.generate_static_video()
 
     # Upload and clean up local files
-    # uploadEpisode.run(title, description)
+    uploadEpisode.run(title, description)
     cleanUpFiles.run()
 
 
