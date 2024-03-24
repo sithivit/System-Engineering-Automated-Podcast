@@ -24,9 +24,9 @@ If you have already deployed this before, please refer to last section for simpl
 
         STABILITY_API_KEY : StabilityAI API (used for image generation)
 
-        apikey : IBM Watson API key (used for text to speech conversion)
+        ibm_api : IBM Watson API key (used for text to speech conversion)
 
-        url : IBM Watson url (used for text to speech conversion)
+        ibm_url : IBM Watson url (used for text to speech conversion)
 
         elevenlabs_api : ElevenLabs API (used for text to speech conversion)
 
