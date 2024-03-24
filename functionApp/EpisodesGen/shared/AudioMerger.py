@@ -42,7 +42,7 @@ def add_music_based_on_sentiment(audio_file_path, sentiment):
     tmp_folder = os.path.join(os.getcwd(), "tmp")
 
     # root_path = os.path.join(os.getcwd(), "shared","music")
-    root_path = os.path.join(os.getcwd(), "music")
+    root_path = os.path.join(os.getcwd(), "shared", "music")
     # Define paths to your music files
     positive_music_path = os.path.join(root_path, "sappheiros-embrace.mp3")
     negative_music_path = os.path.join(root_path, "DangerousToys-SefChol.mp3")
