@@ -312,7 +312,14 @@
         <li data-aos="fade-up" data-aos-delay="100">
           <a data-bs-toggle="collapse" class="collapse" data-bs-target="#faq-list-2">Script Generation<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
           <div id="faq-list-2" class="collapse show" data-bs-parent=".faq-list">
-            <p>Script generation inlcludes..</p>
+            <p>
+              For script Generation, we have decide to tackle this in two different methods, Local and server LLM. For server LLM, we have opted to go with OpenAI due to past experience as a team have with the API. The user will need to put their OpenAI api into the website if they want to use the feature
+              Moving on to local LLM, we have used LangChain and GPT4All to load our model. We have download and test multiple model from huggingface namely gpt4all-falcon and mistral-openorca which works decently with what we are trying to do
+            </p>
+            <p class="section-title">Retrieval Augmented Generation (RAG)</p>
+            <p>
+              For RAG system, we decide to use model from huggingface community namely, "sentence-transformers/all-MiniLM-l6-v2" to transform our information which is usually in pdf or txt into vector based data. Then we can retrieve this information using LangChain and similarity search.
+            </p>
           </div>
         </li>
 
