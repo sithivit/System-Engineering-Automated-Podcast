@@ -72,8 +72,8 @@ def main(req: HttpRequest) -> HttpResponse:
     GenerateVideo.generate_static_video()
 
     # Upload and clean up local files
-    uploadEpisode.run(title, description)
-    cleanUpFiles.run()
+    # uploadEpisode.run(title, description)
+    # cleanUpFiles.run()
 
 
     return HttpResponse(
