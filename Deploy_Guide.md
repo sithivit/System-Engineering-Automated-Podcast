@@ -124,6 +124,8 @@ The server is now up and running, however in order to run the episode generation
 
     - Copy "ffmpeg.exe" and "ffprobe.exe" from Required_Files to "System-Engineering-Automated-Podcast\functionApp\EpisodesGen"
 
+    - Create an empty folder called "tmp" under "EpisodesGen" folder
+
     - Run command in terminal:
 
         - "pip install -r requirements.txt"
