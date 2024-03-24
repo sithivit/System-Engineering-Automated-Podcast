@@ -28,8 +28,8 @@ tts.set_service_url(url)
 
 #Default voices
 # HOST_VOICE = 'en-US_AllisonV3Voice'
-HOST_VOICE = 'WYq8XiuI3ZWCHlgYJyXd'
-GUEST_VOICE = 'en-GB_JamesV3Voice'
+HOST_VOICE = 'XBSddMF70d18aTEYDAA1'
+GUEST_VOICE = 'xZqUT4MAIVTj3AHaSqLz'
 
 
 #Voices
@@ -43,15 +43,15 @@ voice_dict = {
     6: {'name': 'Charlotte', 'code': 'en-GB_CharlotteV3Voice', 'description': 'Female, British'},
     7: {'name': 'James', 'code': 'en-GB_James_3Voice', 'description': 'Male, British'},
     8: {'name': 'Kate', 'code': 'en-GB_KateV3Voice', 'description': 'Female, British'},
-    9: {'name': 'Joe Rogan', 'code': 'YzVShEvNmXgfimrPg5hS', 'description': 'Joe Rogan, American'},
-    10: {'name': 'Rowan Atkinson', 'code': '63QpnmWLWLkcsADaIjJL', 'description': 'Rowan Atkinson, British'},
-    11: {'name': 'Lebron James', 'code': 'S7FPaLv9KoU8avlTGzdg', 'description': 'Lebron James, American'},
-    12: {'name': 'Elon Musk', 'code': 'WYq8XiuI3ZWCHlgYJyXd', 'description': 'Elon Musk, American'},
-    13: {'name': 'Dwayne Johnson', 'code': 'X6koFsdijBDKfhLTEoej', 'description': 'Dwayne Johnson, American'},
-    14: {'name': 'Mark Zuckerberg', 'code': 'YC1myRnOQZlmLW2UCmdS', 'description': 'Mark Zuckerberg, American'},
-    15: {'name': 'Steve Jobs', 'code': 'gXIAlgQovuFD9m9tkI3i', 'description': 'Steve Jobs, American'},
-    16: {'name': 'Leonardo DiCaprio', 'code': 'keIYVYqLXT1lmkzMY8Ck', 'description': 'Leonardo DiCaprio, American'},
-    17: {'name': 'Tom Holland', 'code': 'zU7OYQgpIH2kTwJbxAMi', 'description': 'Tom Holland, British'},
+    9: {'name': 'Joe Rogan', 'code': 'XBSddMF70d18aTEYDAA1', 'description': 'Joe Rogan, American'},
+    10: {'name': 'Rowan Atkinson', 'code': '9C1E9DwllS5uOPUHrohd', 'description': 'Rowan Atkinson, British'},
+    11: {'name': 'Lebron James', 'code': '4976648IkPFljFZqkh4g', 'description': 'Lebron James, American'},
+    12: {'name': 'Elon Musk', 'code': 'xZqUT4MAIVTj3AHaSqLz', 'description': 'Elon Musk, American'},
+    13: {'name': 'Dwayne Johnson', 'code': 'w85iO5WVpFPJ2ATD8Tn0', 'description': 'Dwayne Johnson, American'},
+    14: {'name': 'Mark Zuckerberg', 'code': '657x95Xv93MyaXTvJ0BL', 'description': 'Mark Zuckerberg, American'},
+    15: {'name': 'Steve Jobs', 'code': 'DVfaWUQU8KNLwOMCDcg1', 'description': 'Steve Jobs, American'},
+    16: {'name': 'Leonardo DiCaprio', 'code': 'ze6v89dxUaFFrUgG1j21', 'description': 'Leonardo DiCaprio, American'},
+    17: {'name': 'Tom Holland', 'code': 'R2oLI5PpLUmVjc3EOL8a', 'description': 'Tom Holland, British'},
     # Add more voices as needed
 }
 
