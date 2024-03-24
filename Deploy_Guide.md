@@ -16,20 +16,41 @@ If you have already deployed this before, please refer to last section for simpl
 
     - Open your terminal, and use git clone to download the repository.
 
-    - Download the Required_Files.zip and unzip it.
+    - Download the Required_Files.zip and unzip it, we will need it later in this guide.
     - Download link: https://aipodcaststorage.blob.core.windows.net/deploy-required-files/Required_Files.zip
 
-    - In Required_Files\functionApp\.env , fill in your apis:
+    - Create a .env file under path "System-Engineering-Automated-Podcast\functionApp\EpisodesGen\shared"
+    - Fill in the following variables with your own API keys
 
-        STABILITY_API_KEY - StabilityAI API (used for image generation)
+        STABILITY_API_KEY : StabilityAI API (used for image generation)
 
-        apikey - IBM Watson API key (used for text to speech conversion)
+        apikey : IBM Watson API key (used for text to speech conversion)
 
-        url -IBM Watson url (used for text to speech conversion)
+        url : IBM Watson url (used for text to speech conversion)
 
-        elevenlabs_api - ElevenLabs API (used for text to speech conversion)
+        elevenlabs_api : ElevenLabs API (used for text to speech conversion)
 
-    - Copy files from Required_Files folder to paths as instructed.
+        AZURE_STORAGE_CONNECTION_STRING : The connection string from Azure Storage Account
+
+        COSMOS_CONNECTION_STRING : The connection string from Azure Cosmos DB
+        Example : "mongodb://<COSMOSDB_USER>:<COSMOSDB_PASSWORD>@<COSMOSDB_USER>.mongo.cosmos.azure.com:<COSMOSDB_PORT>/?ssl=true&replicaSet=globaldb&retrywrites=false&maxIdleTimeMS=120000&appName=@<COSMOSDB_USER>@"
+
+        COSMOSDB_USER : USERNAME from Azure Cosmos DB
+        COSMOSDB_PASSWORD : PASSWORD from Azure Cosmos DB
+        COSMOSDB_DBNAME : Database name from Azure Cosmos DB
+        COSMOSDB_HOST : HOST from Azure Cosmos DB
+        COSMOSDB_PORT : PORT from Azure Cosmos DB
+        COSMOSDB_ARGS : "ssl=true&replicaSet=globaldb&retrywrites=false&maxIdleTimeMS=120000&appName=@<COSMOSDB_USER>@"
+
+    - Create a .env file under path "System-Engineering-Automated-Podcast\server"
+    - Fill in the following variables with your own API keys
+
+        COSMOSDB_USER : USERNAME from Azure Cosmos DB
+        COSMOSDB_PASSWORD : PASSWORD from Azure Cosmos DB
+        COSMOSDB_DBNAME : Database name from Azure Cosmos DB
+        COSMOSDB_HOST : HOST from Azure Cosmos DB
+        COSMOSDB_PORT : PORT from Azure Cosmos DB
+        COSMOSDB_ARGS : "ssl=true&replicaSet=globaldb&retrywrites=false&maxIdleTimeMS=120000&appName=@<COSMOSDB_USER>@"
 
 ## Build the client files
 
