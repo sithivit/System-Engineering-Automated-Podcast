@@ -6,8 +6,7 @@ import random
 
 def choose_image():
     random_image_number = random.randint(1, 23)
-    # images_folder = os.path.join(os.getcwd(), "shared","photos")
-    images_folder = os.path.join(os.getcwd(), "photos")
+    images_folder = os.path.join(os.getcwd(), "shared","photos")
 
     # Construct the filename based on the random number
     random_image_filename = f"BGImage{random_image_number}.png"
@@ -21,7 +20,7 @@ def generate_static_video():
     #if the image generated is not suitable
     image_path = choose_image()
     # Construct the paths to the files in the 'tmp' folder
-    tmp_folder = os.path.abspath(os.path.join(os.getcwd(), os.pardir, os.pardir, os.pardir, "tmp"))
+    tmp_folder = os.path.join(os.getcwd(), "tmp")
     # image_path = os.path.join(tmp_folder, 'text_to_image.png')
     mp3_path = os.path.join(tmp_folder, 'final_speech_with_music.mp3')
     tmp_video_path = os.path.join(tmp_folder, 'tmp_file.mp4')
