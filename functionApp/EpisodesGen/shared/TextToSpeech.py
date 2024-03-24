@@ -18,13 +18,13 @@ import os
 load_dotenv()
 
 #Setup
-apikey = os.getenv('apikey')
-url = os.getenv('url')
-elevenlabs_api = os.getenv('elevenlabs_api')
+ibm_apikey = os.getenv('ibm_api')
+ibm_url = os.getenv('ibm_url')
+elevenlabs_apikey = os.getenv('elevenlabs_api')
 
-authenticator = IAMAuthenticator(apikey)
+authenticator = IAMAuthenticator(ibm_apikey)
 tts = TextToSpeechV1(authenticator=authenticator)
-tts.set_service_url(url)
+tts.set_service_url(ibm_url)
 
 #Default voices
 # HOST_VOICE = 'en-US_AllisonV3Voice'
@@ -142,7 +142,7 @@ def generate_with_elevenlabs(text, voice, count):
         audio = generate(
             text=text,
             voice=voice,
-            api_key=elevenlabs_api,
+            api_key=elevenlabs_apikey,
         )
 
         # Define the relative path to the tmp folder
