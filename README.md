@@ -1,47 +1,8 @@
 # System-Engineering-Automated-Podcast
 This is a project for system engineering coursework
 
-Dedicated tasks:
-AI scripts
-Video Processing
-Audio Generation
-Video/Graphics Generation
-Video Editing
-Hosting and Distribution (This involves Frontend stuffs)
+Navigating the vast landscape of podcasts can be a daunting task, often resulting in information overload for enthusiasts. Traditional formats often fall short in addressing individual preferences, leaving listeners seeking a more personalized and engaging experience. Recognizing this challenge, our mission is to provide listeners with a uniquely tailored exploration of the podcast world, ensuring a more enjoyable and user-centric experience.
 
-to use local models, run this command:
-mkdir models
+Our AI-driven podcast allows users to wield a higher impact on the content they consume. Now, listeners can actively shape their podcasting journey by selecting topics of interest and enjoying a dynamic exploration of cloned voices—remarkably realistic replicas of real individuals. This interactive and personalized approach ensures that each episode is not just informative but also a delightful experience tailored to the diverse preferences of our audience.
 
-then download .gguf model files from hugginface
-
-Ken:
-AI scripts and Video/Graphics Generation
-
-Dataset:
-- Joe Rogan (Multi)
-- Philosophize this (Solo)
-
-Resource on video generation:
-https://github.com/FelippeChemello/podcast-maker
-
-TODO:
-
-https://ronreiter.medium.com/making-a-news-podcast-generator-1c088fbbd702
-https://learn.microsoft.com/en-us/azure/machine-learning/concept-model-catalog?view=azureml-api-2
-
-
-RAG:
-https://medium.com/international-school-of-ai-data-science/implementing-rag-with-langchain-and-hugging-face-28e3ea66c5f7
-https://medium.com/@thedatabeast/revolutionizing-ai-with-rag-implementing-retrieval-augmented-generation-for-breakthrough-f1509b5c9db0
-
-Change prompting at multiagentscript
-use pinecone for embedding
-
-
-Kirill finish this code:
-Options for voices
-Multiple voices in podcast script
-
-Ken finish this code:
-pinecone embedding for factual documents
-Video generation
+Please see Deploy_Guide.md to view the deployment guide
