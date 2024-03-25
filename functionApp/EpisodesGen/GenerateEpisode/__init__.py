@@ -57,7 +57,7 @@ def main(req: HttpRequest) -> HttpResponse:
         guest_name = req_body.get('guestName')
         subtopics = req_body.get('subkeywords')
         local = req_body.get('local')
-        api = ''
+        api = None
 
         if str(local).capitalize() == 'False':
             api = str(req_body.get('api'))
@@ -72,8 +72,8 @@ def main(req: HttpRequest) -> HttpResponse:
     GenerateVideo.generate_static_video()
 
     # Upload and clean up local files
-    # uploadEpisode.run(title, description)
-    # cleanUpFiles.run()
+    uploadEpisode.run(title, description)
+    cleanUpFiles.run()
 
 
     return HttpResponse(

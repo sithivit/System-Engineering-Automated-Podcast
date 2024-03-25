@@ -46,6 +46,14 @@ export default function IndexMain() {
                         </Typography>
                     </Container>
                 </Box>
+                <Box>
+                    <Container sx={{ pt: 8, pb: 8, px: 3, backgroundColor: 'grey.100', border: '1px solid grey.300', borderRadius: '5px' }} maxWidth="md">
+                        <Typography variant="body2" align="justify" color="text.secondary" paragraph style={{ fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif' }}>
+                            DISCLAIMER: This podcast features computer-generated voices emulating the likeness of real individuals, and the content is entirely produced using AI language models. The voices, opinions, and conversations presented in this podcast are entirely fictional and do not represent the thoughts, beliefs, or attitudes of the individuals whose personas are replicated. The content is created for entertainment purposes only and is not intended to convey the genuine perspectives of any actual person. The use of AI technology in this context is an exploration of the capabilities of language models and should not be mistaken for authentic dialogue. Any similarities to real events, individuals, or entities are coincidental. Viewers are advised to interpret this content as a creative exercise and not as an accurate portrayal of the beliefs or opinions of the individuals depicted or any associated organizations.
+                        </Typography>
+                    </Container>
+                </Box>
+
             </main>
             <footer>
                 <Box sx={{ bgcolor: 'background.paper', p: 6 }} component="footer">

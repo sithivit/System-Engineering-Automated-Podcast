@@ -8,6 +8,7 @@ from langchain.prompts import PromptTemplate
 import random
 import openai
 
+import logging
 import os
 from dotenv import load_dotenv
 load_dotenv()
@@ -88,7 +89,7 @@ class MultiAgentScript:
             openai.api_key = api
             self.llm = openai.ChatCompletion
         else:
-            local_path = "/models/mistral-7b-openorca.gguf2.Q4_0.gguf"  
+            local_path = os.path.join(os.getcwd(), "shared", "llm_models", "mistral-7b-openorca.gguf2.Q4_0.gguf")
 
             # Callbacks support token-wise streaming
             callbacks = [StreamingStdOutCallbackHandler()]
@@ -115,7 +116,7 @@ class MultiAgentScript:
         # If using a local GPT-4 model
         else:
             response = self.llm.generate([prompt])
-            return response
+            return response.generations[0][0].text
 
     def generate_prompt(self, template, **kwargs):
         """

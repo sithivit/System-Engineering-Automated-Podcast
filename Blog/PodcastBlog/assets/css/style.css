@@ -1799,34 +1799,68 @@ section {
 
 
 /* ======= User Manual Section ======= */
-#user_man {
+.user_man .container {
   padding: 60px 0;
-  background-color: #f8f9fa; /* Background color */
 }
 
-#user_man .container {
-  text-align: center;
-}
-
-#user_man .section-title h2 {
+.user_man .section-title h2 {
   font-weight: 700;
   font-size: 32px;
-  color: #37517e; /* Title text color */
+  color: #37517e;
   font-family: "Poppins", sans-serif;
+  text-align: center;
   margin-bottom: 30px;
 }
 
-#user_man .content p {
+.user_man .section-title p {
   font-size: 16px;
-  color: #556877; /* Text color */
+  color: #556877;
   line-height: 1.6;
+  text-align: center;
+}
+
+.user_man .content p {
+  font-size: 16px;
+  color: #556877;
+  line-height: 1.6;
+  text-align: center;
+}
+
+.user_man .text-center {
+  position: relative;
+}
+
+.user_man img.small-image {
+  max-width: 10%;
+}
+
+.user_man figcaption {
+  position: absolute;
+  bottom: 2%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 14px; /* Adjust the font size as needed */
+  color: #8a8a8a; /* Change the color of the label */
+  margin-top: 15px; /* Adjust the space between label and image */
+}
+
+.user_man .text-center figcaption {
+  position: absolute;
+  bottom: 2%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 14px; /* Adjust the font size as needed */
+  color: #8a8a8a; /* Change the color of the label */
+  margin-top: 15px; /* Adjust the space between label and image */
 }
 
 @media (max-width: 768px) {
-  #user_man .container {
+  .user_man .container {
     padding: 30px 0;
   }
 }
+
+
 
 
 /* ======= Deployment Manual Section ======= */
@@ -1899,6 +1933,50 @@ section {
   color: #47b2e4;
 }
 
+.legal .container {
+  padding: 60px 0;
+}
+
+.legal .section-title h2 {
+  font-weight: 700;
+  font-size: 32px;
+  color: #37517e;
+  font-family: "Poppins", sans-serif;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.legal .content h1,
+.legal .content h2,
+.legal .content h3 {
+  font-weight: 700;
+  color: #37517e;
+}
+
+.legal .content p {
+  font-size: 16px;
+  color: #37517e;
+  line-height: 1.6;
+  text-align: justify;
+  margin-bottom: 15px;
+}
+
+.legal .content ul {
+  padding-left: 20px;
+}
+
+.legal .content ul li {
+  margin-bottom: 10px;
+}
+
+.legal .content ul li a {
+  color: #37517e;
+  text-decoration: none;
+}
+
+.legal .content ul li a:hover {
+  color: #47b2e4;
+}
 
 
 /*--------------------------------------------------------------
