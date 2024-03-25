@@ -173,18 +173,11 @@
           <div class="col-lg-12t">
             <h2>Functional Test</h2>
             <ul>
-              <li>Input Validation: Test the podcast anem and topic input fields for various inputs, including special characters, long text, and empty fields stil generate relate script</li>
-              <li>Error Handling: Invalid inputs or system failures and displays appropriate messages to user</li>
+              <li>Unit Test: LocalSingleAgentScript, OpenAISingleAgentScript, MultiAgentScript, TextToSpeechFunction, VideoGeneration, TextToImage</li>
               <li>User Interface: Test User Interface is well design and responsive</li>
-            </ul>
-            <h2>Integration Test</h2>
-            <ul>
-              <li>API Integration: Test the integration points between the front-end aplication and the back-end services, including the AI model's API.</li>
-              <li>Third-Party services: Test the integration to ensure they work within your application</li>
             </ul>
             <h2>Performance Test</h2>
             <ul>
-              <li>Load Testing: Stimualte multiple users acessingt he application simultaneously to check how the system performs under load</li>
               <li>Speed Test: Test the speed of each podcast generation</li>
             </ul>
 
@@ -200,32 +193,48 @@
         </div>
 
         <div class="row content">
-          <div class="col-lg-12 text-center">
+          <div class="row">
+            <h2>Unit Test: LocalSingleAgentScript</h2>
+            <div class="col-lg-6 text-left">
+              <img src="assets/img/code/test/LocalSingleAgent_test.png" alt="script Image 1">
+            </div>
+            <figcaption class="image2-label"> Unit test for all methods under LocalSingleAgentScript class</figcaption>
             <p>
-              For functional test, we ..
+             In the code, we have test all methods of LocalSingleAgentScript. The LocalSingleAgentScript is an implementation of script generation try to replicate a solo podcast script.
+             To make sure thats the result is right and as expected we got all tests passed the test. 
+             For OpenAISingleAgentScript, the test are similar provided that OpenAI key are needed and a little bit of tweak. 
             </p>
-            <p></p>
-
+            <h2>Unit Test: MultiAgentScript</h2>
+            <div class="col-lg-6 text-left">
+              <img src="assets/img/code/test/multiagentscript.png">
+              <figcaption class="image2-label"> Unit test multiAgentScript for generation of local LLM</figcaption>
+            </div>
+          <p>The multiAgentScript composes of generation text with local LLM and server OpenAI, the above code test if local LLM works</p>
+          <h2>Unit Test: TextToSpeechFunction</h2>
+          <div class="col-lg-6 text-left">
+            <img src="assets/img/code/test/TTSFunction.png">
+            <figcaption class="image2-label"> Unit test for change Text to Speech</figcaption>
+          </div>
+          <p>In our TextToSpeech Function we used Elevenlabs and IBM Watson API, they were some problems testing this but nothing major that would affect the final product</p>            
+          <div class="col-lg-6 text-left">
+            <img src="assets/img/code/test/TTPFunction.png">
+            <figcaption class="image2-label"> Unit test for change Text Processing for Image creation</figcaption>
+          </div>
+          <p>For image creation, we used stability API to create appropriate image for podcast, we also create extract keyword functions.</p> 
+          </div>
+          <h2>User Interface test:</h2>
+          <p> Multiple users including three team members have been using the website, the users experience are great and the user interface is very user friendly.
+          </p>
+          <ul>
+            <li>Sittivit Bunlungsak (Ken): ken.bunlungsak.22@ucl.ac.uk</li>
+            <li>Kang Shen: kang.shen.22@ucl.ac.uk</li>
+            <li>Kiril Kanakaev: kiril.kamakaev.22@ucl.ac.uk</li>
+            <li>Tatsan Kantasit (Scooter): scooterkingen@gmail.com</li>
+          </ul>
+          </div>
+        </div>
       </div>
     </section><!-- End Compatibility Testing Section -->
-
-        <!-- ======= User Acceptance Testing Section ======= -->
-    <section id="user_acceptance" class="user_acceptance">
-      <div class="container" data-aos="fade-up">
-
-        <div class="section-title">
-          <h2>Integration Test</h2>
-        </div>
-
-        <div class="row content">
-          <div class="col-lg-12 text-center">
-            <p>
-              For integration test, we...
-            </p>
-            <p></p>
-
-      </div>
-    </section><!-- End User Acceptance Testing Section -->
 
        <!-- ======= User Acceptance Testing Section ======= -->
     <section id="user_acceptance" class="user_acceptance">
@@ -237,8 +246,9 @@
 
         <div class="row content">
           <div class="col-lg-12 text-center">
+            <h2>Speed Test:</h2>
             <p>
-              For performance test, we...
+              We measured CPU and GPU needed to run Local LLM and the time it would take for the whole generation. The average time for a single podcast script to be generated takes around 10-20 seconds for RTX 3060 and AMD Ryzen 7 5800H. However, for duo podcast, the time varies.
             </p>
             <p></p>
 
