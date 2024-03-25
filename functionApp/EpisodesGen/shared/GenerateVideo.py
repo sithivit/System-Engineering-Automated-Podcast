@@ -5,7 +5,7 @@ import os
 import random
 
 def choose_image():
-    random_image_number = random.randint(1, 23)
+    random_image_number = random.randint(1, 31)
     images_folder = os.path.join(os.getcwd(), "shared","photos")
 
     # Construct the filename based on the random number
